@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Graphik", sans-serif;
+    font-weight: normal;
+    src: url('../../assets/fonts/Graphik-Medium-Web.woff2') format('woff2'),
+  }
+
+  @font-face {
+    font-family: "Graphik", sans-serif;
+    font-weight: bold;
+    src: url('../../assets/fonts/Graphik-Regular-Web.woff2') format('woff2'),
+  }
+
+}
+
+body {
+  color: #232323;
+  background: #fff;
+
+}
+
+
+.navBarShadow {
+  box-shadow: 0px 45px 45px 0px rgba(0, 0, 0, 0.10), 0px 11px 25px 0px rgba(0, 0, 0, 0.27);
+}
