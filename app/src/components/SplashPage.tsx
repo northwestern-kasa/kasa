@@ -48,7 +48,6 @@ export default function SplashPage() {
                     </div>
                 </div>
             </div>
-            
         </section>
     )
 }
