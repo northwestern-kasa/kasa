@@ -8,6 +8,9 @@ export default function Contact() {
     >
       <main className="">
         <SplashPage />
+        <div id="contactbox" className="">
+
+        </div>
       </main>
       <Footer/>
     </div>
