@@ -6,8 +6,7 @@ import Events from './pages/events';
 import Apply from './pages/apply';
 import Contact from './pages/contact';
 import Login from './pages/login';
-
-
+import Register from './pages/register';
 
 export default function App() {
   return (
@@ -20,6 +19,7 @@ export default function App() {
         <Route path="/apply" element={<Apply/>} />
         <Route path="/contact" element={<Contact/>} />
         <Route path="/login" element={<Login/>} />
+        <Route path="/register" element={<Register/>} />
       </Routes>
     </Router>
   )
