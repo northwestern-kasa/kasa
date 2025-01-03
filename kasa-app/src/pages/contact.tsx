@@ -24,14 +24,14 @@ export default function Contact() {
             </div>
 
             <div id="rightcol" className="flex flex-col justify-center">
-              <form className="lg:space-y-9 space-y-5 place-items-center">
+              <form className="space-y-5 place-items-center">
                 <div className="flex flex-col place-content-between sm:flex-row ">
                   <input type="text" placeholder="First Name" className="contactInput"/>
                   <input type="text" placeholder="Last Name" className="contactInput"/>
                 </div>
                 <input type="email" placeholder="Email" className="contactInput w-full"/>
                 <input type="text" placeholder="Subject" className="contactInput w-full"/>
-                <textarea rows={7} placeholder="Message" className="contactInput w-full"/>
+                <textarea rows={7} placeholder="Message" className="contactInput w-full resize-none"/>
                 <div className="flex flex-col place-content-end sm:flex-row ">
                   <button
                     type="submit"
