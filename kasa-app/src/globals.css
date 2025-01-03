@@ -26,3 +26,26 @@ body {
 .navBarShadow {
   box-shadow: 0px 45px 45px 0px rgba(0, 0, 0, 0.10), 0px 11px 25px 0px rgba(0, 0, 0, 0.27);
 }
+
+.contactBox {
+  width: 50rem;
+  height: 27rem;
+  border-radius: 75px;
+  border: 5px solid #C7C9D8;
+  background: #FFF;
+  box-shadow: 0px 572px 160px 0px rgba(0, 0, 0, 0.00), 0px 366px 146px 0px rgba(0, 0, 0, 0.02), 0px 206px 123px 0px rgba(0, 0, 0, 0.07), 0px 91px 91px 0px rgba(0, 0, 0, 0.11), 0px 23px 50px 0px rgba(0, 0, 0, 0.13);
+}
+
+.contactInput {
+  font-size: small;
+  border-radius: 23px;
+  border: 1.5px solid #C7C9D8;
+  color: #838595;
+  padding: 3px;
+  padding-left: 8px;
+  padding-top: 7px;
+}
+
+/* .contactInput:focus {
+  border: 2px solid green;
+} */
