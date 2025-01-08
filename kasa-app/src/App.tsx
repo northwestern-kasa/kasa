@@ -4,6 +4,7 @@ import Home from './pages/home';
 import Family from './pages/family';
 import Events from './pages/events';
 import Apply from './pages/apply';
+import MemberForm from './pages/memberform';
 import Contact from './pages/contact';
 import Login from './pages/login';
 import Register from './pages/register';
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/family" element={<Family/>} />
         <Route path="/events" element={<Events/>} />
         <Route path="/apply" element={<Apply/>} />
+        <Route path="/memberform" element={<MemberForm/>} />
         <Route path="/directory" element={<Directory/>} />
         <Route path="/contact" element={<Contact/>} />
         <Route path="/login" element={<Login/>} />

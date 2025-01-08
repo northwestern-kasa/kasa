@@ -21,7 +21,7 @@ export default function Login() {
 
   return (
     <div className="flex justify-center items-center h-screen">
-      <div id="container" className="flex flex-col space-y-8 items-center justify-center rounded-[3rem] navBarShadow p-16 w-1/4">
+      <div id="container" className="flex flex-col space-y-8 items-center justify-center rounded-[3rem] navBarShadow p-16 w-1/4 min-w-96">
         <div id="header" className="flex flex-col space-y-1 text-center">
           <h2 id="header" className="font-bold text-3xl">LOGIN</h2>
           <h6 className="text-lg">to access this page</h6>

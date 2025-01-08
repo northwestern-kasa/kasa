@@ -27,7 +27,7 @@ export default function Contact() {
 
         <div
           id="contactPage"
-          className="mb-10 flex flex-col items-center justify-center"
+          className="mb-10 -mt-40 flex flex-col items-center justify-center place-content-center"
         >
           <h1 className="text-center font-extrabold text-5xl">Get in Touch</h1>
           <p className="text-center mt-1 mb-12 text-gray-500">
