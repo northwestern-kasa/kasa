@@ -61,15 +61,15 @@ export default function Contact() {
                 method="POST"
                 className="space-y-5 place-items-center"
               >
-                <div className="flex flex-col place-content-between sm:flex-row ">
+                <div className="flex flex-col w-full place-content-between sm:flex-row ">
                   <input
-                    {...register("firstName", { required: "First name is required" })}
+                    {...register("firstname", { required: "First name is required" })}
                     type="text"
                     placeholder="First Name"
                     className="contactInput"
                   />
                   <input
-                    {...register("lastName")}
+                    {...register("lastname")}
                     type="text"
                     placeholder="Last Name"
                     className="contactInput"
@@ -93,7 +93,7 @@ export default function Contact() {
                   placeholder="Message"
                   className="contactInput w-full resize-none"
                 />
-                <div className="flex flex-col place-content-end sm:flex-row ">
+                <div className="flex flex-col place-content-end w-full sm:flex-row ">
                   <button
                     type="submit"
                     className="
