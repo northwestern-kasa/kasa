@@ -14,7 +14,7 @@ const pageHeaders: any = {
     "/": "home",
     "/family": "Families!",
     "/events": "Our Events",
-    "/apply": "Applications",
+    "/apply": "Application",
     "/directory": "Directory",
     "/contact": "Contact Us",
 }
