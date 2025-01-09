@@ -14,7 +14,7 @@ interface MemberFormInputs {
   mandatory_safety: boolean;
 }
 
-export default function MemberForm({ user }) {
+export default function MemberForm({ user }: {user: any}) {
   const [isSubmitted, setIsSubmitted] = useState(false)
   if (!user) {
     return <Navigate to="/login" replace/>
