@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import api from "../fetchApiService";
 import { useForm, SubmitHandler } from 'react-hook-form'
 
@@ -14,9 +14,16 @@ export default function Login() {
     // formState: { errors },
   } = useForm<LoginFormInputs>()
 
+  const navigate = useNavigate()
+
   const login: SubmitHandler<LoginFormInputs> = async (data) => {
-    const res = await api.post("/login", data);
-    console.log(res)
+    try {
+      const res = await api.post("/login", data);
+      console.log(res)
+      navigate("/memberform")
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (

@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import api from "../fetchApiService";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useEffect, useState } from "react";
+import AlreadyApplied from "../components/AlreadyApplied";
 
 interface MemberFormInputs {
   name: string;
@@ -12,17 +14,102 @@ interface MemberFormInputs {
   mandatory_safety: boolean;
 }
 
-export default function MemberForm() {
+export default function MemberForm({ user }) {
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  if (!user) {
+    return <Navigate to="/login" replace/>
+  }
+
+  const retrieveApplication = async () => {
+    const res = await api.get("/user/getApplication")
+    
+    const data = JSON.parse(res.S)
+
+    if (data.submitted) {
+      setIsSubmitted(true)
+    }
+
+    const answers = data.answers
+
+    if (answers) {
+      answers.forEach((answer: { identifier: number; value: any }) => {
+          switch (answer.identifier) {
+            case 1:
+              setValue("name", answer.value);
+              break;
+            case 2:
+              setValue("year", answer.value);
+              break;
+            case 3:
+              setValue("birthday", answer.value);
+              break;
+            case 4:
+              setValue("connection", answer.value);
+              break;
+            case 5:
+              setValue("why_join", answer.value);
+              break;
+            case 6:
+              setValue("gm_attend", answer.value === "Yes");
+              break;
+            case 7:
+              setValue("mandatory_safety", answer.value === "Yes");
+              break;
+            default:
+              break;
+          }
+        });
+    }
+  }
+
+  useEffect(() => {
+    retrieveApplication();
+  }, [])
+
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<MemberFormInputs>();
 
   const apply: SubmitHandler<MemberFormInputs> = async (data) => {
-    const res = await api.post("/apply", data);
+    const submission = {
+      answers: [
+        { identifier: 1, value: data.name },
+        { identifier: 2, value: data.year },
+        { identifier: 3, value: data.birthday },
+        { identifier: 4, value: data.connection },
+        { identifier: 5, value: data.why_join },
+        { identifier: 6, value: data.gm_attend ? "Yes" : "No" },
+        { identifier: 7, value: data.mandatory_safety ? "Yes" : "No" },
+      ],
+      submittedAt: new Date().toISOString(),
+    };
+    const res = await api.post("/user/submitApplication", submission);
     console.log(res);
   };
+
+  const saveApplication: SubmitHandler<MemberFormInputs> = async (data) => {
+    const submission = {
+      answers: [
+        { identifier: 1, value: data.name },
+        { identifier: 2, value: data.year },
+        { identifier: 3, value: data.birthday },
+        { identifier: 4, value: data.connection },
+        { identifier: 5, value: data.why_join },
+        { identifier: 6, value: data.gm_attend ? "Yes" : "No" },
+        { identifier: 7, value: data.mandatory_safety ? "Yes" : "No" },
+      ],
+      submittedAt: new Date().toISOString(),
+    };
+    const res = await api.post("/user/saveApplication", submission);
+    console.log(res);
+  };
+
+  if (isSubmitted) {
+    return <AlreadyApplied/>
+  }
 
   return (
     <div className="flex justify-center items-center m-20">
@@ -214,10 +301,10 @@ export default function MemberForm() {
             </div>
           </div>
           <div className="flex flex-row justify-between space-x-20">
-            <Link to="/save" className="flex w-48 mt-5 justify-center rounded-full bg-purple-500 text-white px-3 py-1.5 text-md">
+            <button onClick={handleSubmit(saveApplication)} className="flex w-48 mt-5 justify-center rounded-full bg-purple-500 text-white px-3 py-1.5 text-md">
                 Save
-            </Link>
-            <button
+            </button>
+            <button 
                 type="submit"
                 className="flex w-48 mt-5 justify-center rounded-full bg-red text-white px-3 py-1.5 text-md"
             >

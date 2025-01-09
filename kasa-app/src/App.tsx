@@ -9,8 +9,25 @@ import Contact from './pages/contact';
 import Login from './pages/login';
 import Register from './pages/register';
 import Directory from './pages/directory';
+import { useEffect, useState } from 'react';
+import api from './fetchApiService';
 
 export default function App() {
+  const [user, setUser] = useState({});
+  const validateToken = async () => {
+    try {
+      const res = await api.get("/validateToken")
+      setUser({
+        userId: res.userId,
+        role: res.role
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  useEffect(() => {
+    validateToken()
+  }, [])
   return (
     <Router>
       <Header/>
@@ -19,7 +36,7 @@ export default function App() {
         <Route path="/family" element={<Family/>} />
         <Route path="/events" element={<Events/>} />
         <Route path="/apply" element={<Apply/>} />
-        <Route path="/memberform" element={<MemberForm/>} />
+        <Route path="/memberform" element={<MemberForm user={user} />} />
         <Route path="/directory" element={<Directory/>} />
         <Route path="/contact" element={<Contact/>} />
         <Route path="/login" element={<Login/>} />
