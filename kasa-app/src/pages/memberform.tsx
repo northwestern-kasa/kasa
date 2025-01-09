@@ -61,7 +61,7 @@ export default function MemberForm() {
           />
 
           {/* Year */}
-          
+
           <fieldset className="border-4 p-4 w-full rounded-lg">
             <legend>Year</legend>
             <div className="flex flex-col space-y-2 mt-2">
@@ -122,12 +122,11 @@ export default function MemberForm() {
               </div>
             </div>
             {errors.year && (
-            <p className=" text-red text-sm text-end">
-              {errors.year.message}
-            </p>
-          )}
+              <p className=" text-red text-sm text-end">
+                {errors.year.message}
+              </p>
+            )}
           </fieldset>
-          
 
           {/* Birthday */}
           <div className="flex flex-row justify-between">
@@ -147,9 +146,7 @@ export default function MemberForm() {
 
           {/* Connection */}
           <div className="flex flex-row justify-between">
-            <label htmlFor="connection">
-              How did you hear about KASA?
-            </label>
+            <label htmlFor="connection">How did you hear about KASA?</label>
             {errors.connection && (
               <p className="!mt-1 text-red text-sm text-end">
                 {errors.connection.message}
@@ -206,25 +203,28 @@ export default function MemberForm() {
               })}
             />
             <div className="flex place-content-between space-x-8">
-                <label htmlFor="mandatory_safety">
+              <label htmlFor="mandatory_safety">
                 Will you be at the MANDATORY Safety & Wellness GM next Thursday?
-                </label>
-                {errors.mandatory_safety && (
+              </label>
+              {errors.mandatory_safety && (
                 <p className=" text-red text-sm text-end">
-                    {errors.mandatory_safety.message}
+                  {errors.mandatory_safety.message}
                 </p>
-                )}
+              )}
             </div>
-            
+          </div>
+          <div className="flex flex-row justify-between space-x-20">
+            <Link to="/save" className="flex w-48 mt-5 justify-center rounded-full bg-purple-500 text-white px-3 py-1.5 text-md">
+                Save
+            </Link>
+            <button
+                type="submit"
+                className="flex w-48 mt-5 justify-center rounded-full bg-red text-white px-3 py-1.5 text-md"
+            >
+                Submit
+            </button>
           </div>
           
-
-          <button
-            type="submit"
-            className="flex w-3/4 mt-5 justify-center rounded-full bg-red text-white px-3 py-1.5 text-md m-auto"
-          >
-            Submit
-          </button>
         </form>
       </div>
     </div>
