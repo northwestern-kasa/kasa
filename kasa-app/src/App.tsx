@@ -9,6 +9,7 @@ import Contact from './pages/contact';
 import Login from './pages/login';
 import Register from './pages/register';
 import Directory from './pages/directory';
+import Wip from './pages/wip';
 import { useEffect, useState } from 'react';
 import api from './fetchApiService';
 
@@ -29,16 +30,16 @@ export default function App() {
     validateToken()
   }, [])
   return (
-    <Router basename="/kasa">
+    <Router>
       <Header/>
       <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/family" element={<Family/>} />
-        <Route path="/events" element={<Events/>} />
+        <Route path="/" element={<Wip/>} />
+        <Route path="/family" element={<Wip/>} />
+        <Route path="/events" element={<Wip/>} />
         <Route path="/apply" element={<Apply/>} />
         <Route path="/memberform" element={<MemberForm user={user} />} />
-        <Route path="/directory" element={<Directory/>} />
-        <Route path="/contact" element={<Contact/>} />
+        <Route path="/directory" element={<Wip/>} />
+        <Route path="/contact" element={<Wip/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />
       </Routes>
