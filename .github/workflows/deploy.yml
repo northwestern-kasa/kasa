@@ -31,10 +31,6 @@ jobs:
           cache: 'npm'
           cache-dependency-path: kasa-app/package-lock.json
 
-      - name: Navigate to kasa-app
-        working-directory: ./kasa-app
-        run: echo "Navigating to kasa-app directory"
-
       - name: Install dependencies
         working-directory: ./kasa-app
         run: npm ci
