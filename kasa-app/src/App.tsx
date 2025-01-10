@@ -29,7 +29,7 @@ export default function App() {
     validateToken()
   }, [])
   return (
-    <Router>
+    <Router basename="/kasa">
       <Header/>
       <Routes>
         <Route path="/" element={<Home/>} />

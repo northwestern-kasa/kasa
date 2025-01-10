@@ -1,5 +1,5 @@
 class FetchApiService {
-    private static baseUrl: string = "http://localhost:8080"
+    private static baseUrl: string = "http://northwesternkasaenv.eba-jsgpsqpc.us-east-2.elasticbeanstalk.com"
 
     private async request(route: string, options: RequestInit) {
         const res = await fetch(`${FetchApiService.baseUrl}${route}`, {
