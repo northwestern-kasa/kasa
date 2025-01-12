@@ -9,7 +9,7 @@ export default function Apply() {
     >
       <main className="">
         <SplashPage />
-        <div id="content" className="w-full flex justify-center -mt-60 pb-48">
+        <div id="content" className="w-full flex justify-center -mt-40 pb-48">
           <div id="apply-container" className="border border-gray-300 rounded-2xl p-8">
             <p className="text-gray-500 text-sm">Winter 2025</p>
             <h4 className="font-bold text-2xl">General Member Application</h4>

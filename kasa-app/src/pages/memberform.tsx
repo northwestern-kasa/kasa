@@ -115,7 +115,7 @@ export default function MemberForm({ user }: {user: any}) {
     <div className="flex justify-center items-center m-20">
       <div
         id="container"
-        className="flex flex-col space-y-8 items-center justify-center rounded-[3rem] navBarShadow p-16 w-fit min-w-screen"
+        className="flex flex-col space-y-8 items-center justify-center rounded-[3rem] navBarShadow p-16 min-w-62"
       >
         <div id="header" className="flex flex-col space-y-1 text-center">
           <h2 id="header" className="font-bold text-3xl">
