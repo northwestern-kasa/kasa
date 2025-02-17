@@ -56,13 +56,32 @@ export default function Home() {
   const presidents = execs.filter(
     (exec) => exec.fields.role.toLowerCase() === "president"
   );
-  const president = presidents[0];
-  // All other exec members
+  const culturalHeads = execs.filter(
+    (exec) => exec.fields.role.toLowerCase() == "cultural"
+  );
+
+  const publicityHeads = execs.filter(
+    (exec) => exec.fields.role.toLowerCase() == "Publicity"
+  );
+
+  const fundraisingHeads = execs.filter(
+    (exec) => exec.fields.role.toLowerCase() == "Fundraising"
+  );
+  const comDevHeads = execs.filter(
+    (exec) => exec.fields.role.toLowerCase() == "Community Development"
+  );
+  const outReachHeads = execs.filter(
+    (exec) => exec.fields.role.toLowerCase() == "Publicity"
+  );
+
+
+
   const otherExecs = execs.filter(
     (exec) => exec.fields.role.toLowerCase() !== "president"
   );
 
-  console.log(otherExecs)
+
+  console.log(otherExecs);
 
   return (
     <div>
@@ -106,32 +125,47 @@ export default function Home() {
           ) : (
             <>
               {/* President ExecCard */}
-              {president && (
-                <div className="mb-16">
-                  <ExecCard
-                    images={[
-                      {
-                        src: president.fields.photo.fields.file.url,
-                        alt: president.fields.name,
-                      },
-                    ]}
-                  />
-                </div>
-              )}
+              <ExecCard
+                images={presidents.map((president) => ({
+                  src: president.fields.photo.fields.file.url,
+                  alt: president.fields.name,
+                }))}
+                role="Presidents"
+              />
 
               {/* Other ExecCards in a responsive grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 place-items-center mb-24">
-                {otherExecs.map((exec) => (
-                  <ExecCard
-                    key={exec.sys.id}
-                    images={[
-                      {
-                        src: exec.fields.photo.fields.file.url,
-                        alt: exec.fields.name,
-                      },
-                    ]}
-                  />
-                ))}
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 place-items-center mb-24">
+                <ExecCard
+                  images={culturalHeads.map((exec) => ({
+                    src: exec.fields.photo.fields.file.url,
+                    alt: exec.fields.name,
+                  }))}
+                  role="Cultural Chairs"
+                />
+                {/* <ExecCard
+                  images={publicityHeads.map((exec) => ({
+                    src: exec.fields.photo.fields.file.url,
+                    alt: exec.fields.name,
+                  }))}
+                />
+                <ExecCard
+                  images={otherExecs.map((exec) => ({
+                    src: exec.fields.photo.fields.file.url,
+                    alt: exec.fields.name,
+                  }))}
+                />
+                <ExecCard
+                  images={otherExecs.map((exec) => ({
+                    src: exec.fields.photo.fields.file.url,
+                    alt: exec.fields.name,
+                  }))}
+                />
+                <ExecCard
+                  images={otherExecs.map((exec) => ({
+                    src: exec.fields.photo.fields.file.url,
+                    alt: exec.fields.name,
+                  }))}
+                /> */}
               </div>
             </>
           )}
