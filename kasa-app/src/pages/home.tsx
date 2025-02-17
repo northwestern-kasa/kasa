@@ -61,17 +61,17 @@ export default function Home() {
   );
 
   const publicityHeads = execs.filter(
-    (exec) => exec.fields.role.toLowerCase() == "Publicity"
+    (exec) => exec.fields.role.toLowerCase() == "publicity"
   );
 
   const fundraisingHeads = execs.filter(
-    (exec) => exec.fields.role.toLowerCase() == "Fundraising"
+    (exec) => exec.fields.role.toLowerCase() == "fundraising"
   );
   const comDevHeads = execs.filter(
-    (exec) => exec.fields.role.toLowerCase() == "Community Development"
+    (exec) => exec.fields.role.toLowerCase() == "community development"
   );
   const outReachHeads = execs.filter(
-    (exec) => exec.fields.role.toLowerCase() == "Publicity"
+    (exec) => exec.fields.role.toLowerCase() == "publicity"
   );
 
 
@@ -81,7 +81,7 @@ export default function Home() {
   );
 
 
-  console.log(otherExecs);
+
 
   return (
     <div>
@@ -115,7 +115,7 @@ export default function Home() {
         </div>
 
         {/* Meet the Execs Section */}
-        <div id="execs" className="mt-32 flex flex-col items-center">
+        <div id="execs" className="mt-32 flex flex-col items-center ">
           <h2 className="text-center font-bold text-2xl mb-8">
             Meet the 24&apos;-25&apos; Executives
           </h2>
@@ -134,7 +134,7 @@ export default function Home() {
               />
 
               {/* Other ExecCards in a responsive grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 place-items-center mb-24">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-11 mt-10 place-items-center mb-24">
                 <ExecCard
                   images={culturalHeads.map((exec) => ({
                     src: exec.fields.photo.fields.file.url,
@@ -142,30 +142,62 @@ export default function Home() {
                   }))}
                   role="Cultural Chairs"
                 />
-                {/* <ExecCard
-                  images={publicityHeads.map((exec) => ({
+                <ExecCard
+                  images={otherExecs.map((exec) => ({
                     src: exec.fields.photo.fields.file.url,
                     alt: exec.fields.name,
                   }))}
+                  role="Publicity Chairs"
                 />
                 <ExecCard
                   images={otherExecs.map((exec) => ({
                     src: exec.fields.photo.fields.file.url,
                     alt: exec.fields.name,
                   }))}
+                  role="Fundraising Chairs"
                 />
                 <ExecCard
                   images={otherExecs.map((exec) => ({
                     src: exec.fields.photo.fields.file.url,
                     alt: exec.fields.name,
                   }))}
+                  role="Outreach Chairs"
                 />
                 <ExecCard
                   images={otherExecs.map((exec) => ({
                     src: exec.fields.photo.fields.file.url,
                     alt: exec.fields.name,
                   }))}
-                /> */}
+                  role="Community Development"
+                />
+                <ExecCard
+                  images={otherExecs.map((exec) => ({
+                    src: exec.fields.photo.fields.file.url,
+                    alt: exec.fields.name,
+                  }))}
+                  role="Wellness"
+                />
+                <ExecCard
+                  images={otherExecs.map((exec) => ({
+                    src: exec.fields.photo.fields.file.url,
+                    alt: exec.fields.name,
+                  }))}
+                  role="Family Heads"
+                />
+                <ExecCard
+                  images={otherExecs.map((exec) => ({
+                    src: exec.fields.photo.fields.file.url,
+                    alt: exec.fields.name,
+                  }))}
+                  role="Social Media"
+                />
+                <ExecCard
+                  images={otherExecs.map((exec) => ({
+                    src: exec.fields.photo.fields.file.url,
+                    alt: exec.fields.name,
+                  }))}
+                  role="Secretary"
+                />
               </div>
             </>
           )}

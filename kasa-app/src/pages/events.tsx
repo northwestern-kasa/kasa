@@ -11,8 +11,8 @@ export default function Events() {
         <SplashPage />
         
         {/* Content area */}
-        <section className="-mt-16 mb-24 flex flex-col items-center">
-          <h1 className="text-4xl font-bold mb-10"> Events</h1>
+        <section className="-mt-44 mb-24 flex flex-col items-center">
+          <h1 className="text-4xl font-bold mb-10">Our Events</h1>
           
           {/* Grid of placeholder cards */}
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-12">
