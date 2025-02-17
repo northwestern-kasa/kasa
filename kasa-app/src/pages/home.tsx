@@ -2,43 +2,97 @@ import SplashPage from "../components/SplashPage";
 import Footer from "../components/Footer";
 import HomeInfoCard from "../components/HomeInfoCard";
 
-import community from "../../assets/etc/community.svg"
-import cultural from "../../assets/etc/cultural.svg"
-import impact from "../../assets/etc/impact.svg"
+import community from "../../assets/etc/community.svg";
+import cultural from "../../assets/etc/cultural.svg";
+import impact from "../../assets/etc/impact.svg";
 
-import underlineBlue from "../../assets/etc/blueunderline.svg"
-import underlineRed from "../../assets/etc/redunderline.svg"
+import underlineBlue from "../../assets/etc/blueunderline.svg";
+// import underlineRed from "../../assets/etc/redunderline.svg";
 import blob1 from "../../assets/blobs/mission-blob1.svg";
 import blob2 from "../../assets/blobs/mission-blob2.svg";
 
+// Sample data
+const infoCards = [
+  {
+    img: community,
+    header: "Community",
+    text: "As a club dedicated to community building, we unite Korean-American students through cultural events, social gatherings, and community service."
+  },
+  {
+    img: cultural,
+    header: "Cultural",
+    text: "From KASA Show to various cultural events, we strive to foster a supportive environment where members can celebrate their diverse heritage."
+  },
+  {
+    img: impact,
+    header: "Impact",
+    text: "Through outreach events and volunteer initiatives, we aim to help members grow personally and academically, and contribute positively to our community."
+  }
+];
+
+const president = {
+  role: "President",
+  name: "Esther Tang",
+  image: "https://via.placeholder.com/200x200?text=Esther+Tang"
+};
+
+const executives = [
+  {
+    role: "Wellness",
+    name: "Lucas Kim",
+    image: "https://via.placeholder.com/200x200?text=Lucas+Kim"
+  },
+  {
+    role: "Fundraising",
+    name: "Henry Im",
+    image: "https://via.placeholder.com/200x200?text=Henry+Im"
+  },
+  {
+    role: "Secretary",
+    name: "Toby Zheng",
+    image: "https://via.placeholder.com/200x200?text=Toby+Zheng"
+  },
+  {
+    role: "Publicity",
+    name: "Taewon Yoon",
+    image: "https://via.placeholder.com/200x200?text=Taewon+Yoon"
+  },
+  {
+    role: "Social Media",
+    name: "Jenna Jeon",
+    image: "https://via.placeholder.com/200x200?text=Jenna+Jeon"
+  },
+  {
+    role: "Outreach",
+    name: "Rie Kim",
+    image: "https://via.placeholder.com/200x200?text=Rie+Kim"
+  },
+  {
+    role: "Community Dev",
+    name: "Leslie Kim",
+    image: "https://via.placeholder.com/200x200?text=Leslie+Kim"
+  },
+  {
+    role: "Cultural",
+    name: "Anthony Chung",
+    image: "https://via.placeholder.com/200x200?text=Anthony+Chung"
+  },
+  {
+    role: "Family Heads",
+    name: "Kevin Rha",
+    image: "https://via.placeholder.com/200x200?text=Kevin+Rha"
+  }
+];
+
 export default function Home() {
+  return (
+    <div>
+      <main>
+        {/* Hero/Splash section */}
+        <SplashPage />
 
-  const infoCards = [
-    {
-      img: community,
-      header: "Community",
-      text: "KASA holds a welcoming community of a widely diverse number of students at Northwestern University"
-    },
-    {
-      img: cultural,
-      header: "Cultural",
-      text: "KASA holds a welcoming community of a widely diverse number of students at Northwestern University"
-    },
-    {
-      img: impact,
-      header: "Impact",
-      text: "KASA holds a welcoming community of a widely diverse number of students at Northwestern University"
-    }
-  ]
-
-
-    return (
-    <div
-      className={""}
-    >
-      <main className="">
-          <SplashPage />
-          <div id="whatIs" className="mt-[32px] lg:mt-[160px]">
+        {/* Info Cards Section */}
+        <div id="whatIs" className="mt-[32px] lg:mt-[160px]">
           <h1 className="text-[44px] font-bold text-center"> What is KASA? </h1>
           <div id="underlineblue" className="flex items-center justify-center -mt-[16px]">
             <img src={underlineBlue} alt="underline" className="w-[380px] h-[28px]"/>
@@ -50,33 +104,51 @@ export default function Home() {
           </div>
         </div>
 
-        <div id="mission" className="my-[300px] relative">
-          <h1 className="text-[44px] font-bold text-center">Our Mission</h1>
-          <div id="underlinered" className="flex items-center justify-center -mt-[16px]">
-            <img src={underlineRed} alt="underline" className="w-[380px] h-[28px]"/>
-          </div>
-          <div className="flex items-center justify-center mt-8">
-            <div className="text-center w-[760px]">
-              Yorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-            </div>
-          </div>
-          <img src={blob1} alt="blob1" className="absolute left-0 top-0 -translate-y-1/3"/>
-          <img src={blob2} alt="blob2" className="absolute right-0 top-0 -translate-y-1/3"/>
-        </div>
+        {/* Meet the Execs Section */}
+        <div id="execs" className="mt-32 flex flex-col items-center">
+          <h2 className="text-center font-bold text-2xl mb-8">
+            Meet the 24&apos;-25&apos; Executives
+          </h2>
 
-        <div id="execs" className="mt-[128px]">
-          <div id="execText" className="text-center font-bold text-[24px]">
-            Meet the 24'-25' Executives
-          </div>
-          <div id="execImage" className="flex items-center justify-center">
-            <div className="w-[120px] h-[120px] border-2">
-              <img src={blob1} alt="blob1" className="w-[50px]"/> {/* change to exec image later when we take it */}
+          {/* President Card */}
+          <div className="mb-16">
+            <div className="bg-white rounded-xl shadow-lg p-6 w-full max-w-xs flex flex-col items-center text-center">
+              <h3 className="font-semibold text-lg mb-2">{president.role}</h3>
+              <div className="w-28 h-28 rounded-full overflow-hidden shadow-md">
+                <img
+                  src={president.image}
+                  alt={president.name}
+                  className="object-cover w-full h-full"
+                />
+              </div>
+              <p className="mt-4 font-medium">{president.name}</p>
             </div>
-            
+          </div>
+
+          {/* Other Exec Cards in a responsive grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 place-items-center mb-24">
+            {executives.map((exec) => (
+              <div
+                key={exec.role}
+                className="bg-white rounded-xl shadow-md p-6 w-full max-w-xs flex flex-col items-center text-center"
+              >
+                <h4 className="font-semibold">{exec.role}</h4>
+                <div className="w-24 h-24 rounded-full overflow-hidden shadow-md mt-3">
+                  <img
+                    src={exec.image}
+                    alt={exec.name}
+                    className="object-cover w-full h-full"
+                  />
+                </div>
+                <p className="mt-4">{exec.name}</p>
+              </div>
+            ))}
           </div>
         </div>
       </main>
-      <Footer/>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

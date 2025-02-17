@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-// import Home from './pages/home';
+import Home from './pages/home';
 // import Family from './pages/family';
-// import Events from './pages/events';
+import Events from './pages/events';
 import Apply from './pages/apply';
 import MemberForm from './pages/memberform';
 // import Contact from './pages/contact';
@@ -12,6 +12,7 @@ import Register from './pages/register';
 import Wip from './pages/wip';
 import { useEffect, useState } from 'react';
 import api from './fetchApiService';
+import Family from './pages/family';
 
 export default function App() {
   const [user, setUser] = useState({});
@@ -33,10 +34,10 @@ export default function App() {
     <Router>
       <Header/>
       <Routes>
-        <Route path="/" element={<Wip/>} />
-        <Route path="/family" element={<Wip/>} />
-        <Route path="/events" element={<Wip/>} />
-        <Route path="/apply" element={<Apply/>} />
+        <Route path="/" element={<Home />} />
+        <Route path="/family" element={<Family />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/apply" element={<Wip/>} />
         <Route path="/memberform" element={<MemberForm user={user} />} />
         <Route path="/directory" element={<Wip/>} />
         <Route path="/contact" element={<Wip/>} />

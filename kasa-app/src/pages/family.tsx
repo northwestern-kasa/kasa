@@ -12,7 +12,7 @@ export default function Family() {
     >
       <main className="">
         <SplashPage />
-        <div id="familyContent" className="mt-24">
+        <div id="familyContent" className="-mt-16">
           <div id="familyMain">
             <h1 className="text-center font-bold text-[72px]">What are Families?</h1>
             <div className="flex items-center justify-center">
