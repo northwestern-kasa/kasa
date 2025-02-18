@@ -1,4 +1,3 @@
-import styles from './nametag.module.css'
 
 export default function NameTag(props: object) {
     return (
