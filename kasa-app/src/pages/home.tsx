@@ -71,7 +71,7 @@ export default function Home() {
     (exec) => exec.fields.role.toLowerCase() == "community development"
   );
   const outReachHeads = execs.filter(
-    (exec) => exec.fields.role.toLowerCase() == "publicity"
+    (exec) => exec.fields.role.toLowerCase() == "outreach"
   );
 
 
@@ -137,33 +137,33 @@ export default function Home() {
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-11 mt-10 place-items-center mb-24">
                 <ExecCard
                   images={culturalHeads.map((exec) => ({
-                    src: exec.fields.photo.fields.file.url,
+                    src: (exec.fields.photo ? (exec.fields.photo.fields.file.url) : "/Logo.svg"),
                     alt: exec.fields.name,
                   }))}
                   role="Cultural Chairs"
                 />
                 <ExecCard
-                  images={otherExecs.map((exec) => ({
-                    src: exec.fields.photo.fields.file.url,
+                  images={publicityHeads.map((exec) => ({
+                    src: (exec.fields.photo ? (exec.fields.photo.fields.file.url) : "/Logo.svg"),
                     alt: exec.fields.name,
                   }))}
                   role="Publicity Chairs"
                 />
                 <ExecCard
-                  images={otherExecs.map((exec) => ({
-                    src: exec.fields.photo.fields.file.url,
+                  images={fundraisingHeads.map((exec) => ({
+                    src: (exec.fields.photo ? (exec.fields.photo.fields.file.url) : "/Logo.svg"),
                     alt: exec.fields.name,
                   }))}
                   role="Fundraising Chairs"
                 />
                 <ExecCard
-                  images={otherExecs.map((exec) => ({
-                    src: exec.fields.photo.fields.file.url,
+                  images={outReachHeads.map((exec) => ({
+                    src: (exec.fields.photo ? (exec.fields.photo.fields.file.url) : "/Logo.svg"),
                     alt: exec.fields.name,
                   }))}
                   role="Outreach Chairs"
                 />
-                <ExecCard
+                {/* <ExecCard
                   images={otherExecs.map((exec) => ({
                     src: exec.fields.photo.fields.file.url,
                     alt: exec.fields.name,
@@ -197,7 +197,7 @@ export default function Home() {
                     alt: exec.fields.name,
                   }))}
                   role="Secretary"
-                />
+                /> */}
               </div>
             </>
           )}
