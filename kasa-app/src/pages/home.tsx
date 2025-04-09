@@ -74,8 +74,8 @@ export default function Home() {
   const wellnessHeads = execs.filter(
     (exec) => exec.fields.role.toLowerCase() === "wellness"
   );
-  const sillaFamilyHeads = execs.filter(
-    (exec) => exec.fields.role.toLowerCase() === "silla family head"
+  const FamilyHeads = execs.filter(
+    (exec) => exec.fields.role.toLowerCase().includes("family")
   );
   const socialMediaHeads = execs.filter(
     (exec) => exec.fields.role.toLowerCase() === "social media"
@@ -191,7 +191,7 @@ export default function Home() {
                   role="Wellness"
                 />
                 <ExecCard
-                  images={sillaFamilyHeads.map((exec) => ({
+                  images={FamilyHeads.map((exec) => ({
                     src: exec.fields.photo
                       ? exec.fields.photo.fields.file.url
                       : "/Logo.svg",
