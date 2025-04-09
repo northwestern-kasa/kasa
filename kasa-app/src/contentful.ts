@@ -9,7 +9,7 @@ export const fetchExecutives = async () => {
   try {
     const response = await client.getEntries({
       content_type: "executiveMember",
-      order: 'fields.role'
+      order: ['fields.role'],
 
     });
     return response.items;

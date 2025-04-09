@@ -1,13 +1,13 @@
-import topLeftBlob from "../../assets/blobs/top-left.svg";
-import topMidLeftBlob from "../../assets/blobs/top-mid-left.svg";
-import topMidRightBlob from "../../assets/blobs/top-mid-right.svg";
-import topRightBlob from "../../assets/blobs/top-right.svg";
-import midLeftBlob from "../../assets/blobs/mid-left.svg";
-import midRightBlob from "../../assets/blobs/mid-right.svg";
-import textLogo from "../../assets/text-logo.svg";
+// import topLeftBlob from "../../assets/blobs/top-left.svg";
+// import topMidLeftBlob from "../../assets/blobs/top-mid-left.svg";
+// import topMidRightBlob from "../../assets/blobs/top-mid-right.svg";
+// import topRightBlob from "../../assets/blobs/top-right.svg";
+// import midLeftBlob from "../../assets/blobs/mid-left.svg";
+// import midRightBlob from "../../assets/blobs/mid-right.svg";
+// import textLogo from "../../assets/text-logo.svg";
 import SplashPage from "../components/SplashPage";
 
-import NavBar from "../components/NavBar";
+// import NavBar from "../components/NavBar";
 
 export default function Wip() {
   return (

@@ -11,6 +11,9 @@ node_modules
 dist
 dist-ssr
 *.local
+.env
+/.env
+/Users/anthonychung/Software Projects/Projects/KASA-2025/kasa-FRONT/kasa-app/.env
 
 # Editor directories and files
 .vscode/*
