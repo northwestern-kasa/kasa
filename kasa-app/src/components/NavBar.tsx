@@ -45,14 +45,14 @@ export default function NavBar() {
 
       {/* Full-Screen Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 bg-black bg-opacity-50 transition-transform duration-300 ${
-          isOpen ? "-translate-x-full" : "translate-x-0"
+        className={`fixed md:hidden inset-0 bg-black bg-opacity-50 transition-transform duration-300 ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
         } z-40`}
       >
         {/* Slide-Out Panel from the Left */}
         <div
           className={`absolute left-0 top-0 h-full w-3/4 sm:w-1/2 bg-white shadow-lg transition-transform duration-300 ${
-            isOpen ? "-translate-x-full" : "translate-x-0"
+            isOpen ? "translate-x-0" : "-translate-x-full"
           }`}
         >
           {/* Close Button */}
