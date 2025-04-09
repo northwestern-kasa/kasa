@@ -91,7 +91,7 @@ export default function Home() {
         <SplashPage />
 
         {/* Info Cards Section */}
-        <div id="whatIs" className="mt-[32px] lg:mt-[160px]">
+        <div id="whatIs" className="-mt-44 lg:mt-24">
           <h1 className="text-[44px] font-bold text-center"> What is KASA? </h1>
           <div
             id="underlineblue"

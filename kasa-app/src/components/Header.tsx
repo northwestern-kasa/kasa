@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/Logo.svg";
-import profile from "../../assets/profile.png";
+import profile from "../../assets/profile.svg";
 import NavBar from "./NavBar";
 
 export default function Header() {
@@ -17,7 +17,7 @@ export default function Header() {
       </div>
       
       {/* Profile icon always visible */}
-      <Link to="/login" className="w-10">
+      <Link to="/login" className="w-8">
         <img src={profile} alt="Default profile picture" />
       </Link>
     </header>
