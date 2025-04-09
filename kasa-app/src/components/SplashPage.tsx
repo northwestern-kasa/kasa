@@ -24,7 +24,7 @@ export default function SplashPage() {
   const header = pageHeaders[currentPath];
 
   return (
-    <section id="splash" className=" h-[75vh] ">
+    <section id="splash" className="relative  h-[75vh] overflow-hidden">
       <img
         src={topLeftBlob}
         alt="blob"
@@ -78,7 +78,7 @@ export default function SplashPage() {
             >
               {header}
             </h1>
-            <div className="scale-75">
+            <div className="scale-75 hidden md:block relative z-50">
               <NavBar />
             </div>
           </div>

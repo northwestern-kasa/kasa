@@ -1,9 +1,10 @@
-import { Link, useLocation } from 'react-router-dom'
-import { useState } from 'react'
+import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
+import Cheeseburger from "./CheeseBurger";
 
 export default function NavBar() {
-  const [isOpen, setIsOpen] = useState(false)
-  const currentPath = useLocation().pathname
+  const [isOpen, setIsOpen] = useState(false);
+  const currentPath = useLocation().pathname;
 
   const menuItems = [
     { path: "/", label: "Home" },
@@ -12,15 +13,15 @@ export default function NavBar() {
     { path: "/apply", label: "Apply" },
     { path: "/directory", label: "Directory" },
     { path: "/contact", label: "Contact" },
-  ]
+  ];
 
-  const toggleMenu = () => setIsOpen(!isOpen)
+  const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="relative p-4">
+    <nav className="p-4 relative z-50">
       {/* Desktop Navbar */}
       <div className="hidden md:flex navBarShadow space-x-20 rounded-full py-4 px-24 text-2xl font-sans">
-        {menuItems.map(item => (
+        {menuItems.map((item) => (
           <Link key={item.path} to={item.path}>
             <h3 className={currentPath === item.path ? "font-bold" : ""}>
               {item.label}
@@ -29,29 +30,59 @@ export default function NavBar() {
         ))}
       </div>
 
-      {/* Mobile Navbar */}
-      <div className="absolute top-0 left-0 md:hidden flex items-center justify-between">
-        {/* You could also place a logo or title here */}
-        <button onClick={toggleMenu} className="focus:outline-none">
-          {/* Simple Hamburger Icon using SVG */}
-          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
+      {/* Mobile Navbar: Hamburger Menu */}
+      <div className="fixed md:hidden flex items-center left-1 top-1">
+        <Cheeseburger
+          isToggled={isOpen}
+          onClick={toggleMenu}
+          rounded={true}
+          color="gray"
+          width={50}
+          height={50}
+        />
+        
       </div>
 
-      {/* Mobile Menu Dropdown */}
-      {isOpen && (
-        <div className="md:hidden absolute top-16 right-4 bg-white shadow-md rounded-md py-2 w-40 z-50">
-          {menuItems.map(item => (
-            <Link key={item.path} to={item.path} onClick={() => setIsOpen(false)}>
-              <div className={`px-4 py-2 ${currentPath === item.path ? "font-bold" : ""}`}>
-                {item.label}
-              </div>
-            </Link>
-          ))}
+      {/* Full-Screen Mobile Menu Overlay */}
+      <div
+        className={`fixed inset-0 bg-black bg-opacity-50 transition-transform duration-300 ${
+          isOpen ? "-translate-x-full" : "translate-x-0"
+        } z-40`}
+      >
+        {/* Slide-Out Panel from the Left */}
+        <div
+          className={`absolute left-0 top-0 h-full w-3/4 sm:w-1/2 bg-white shadow-lg transition-transform duration-300 ${
+            isOpen ? "-translate-x-full" : "translate-x-0"
+          }`}
+        >
+          {/* Close Button */}
+          <div className="flex justify-start p-4">
+            <button
+              onClick={toggleMenu}
+              aria-label="Close mobile menu"
+              className="text-gray-800 text-2xl focus:outline-none"
+            >
+              ✕
+            </button>
+          </div>
+          {/* Menu List */}
+          <ul className="mt-8 space-y-6 text-center">
+            {menuItems.map((item) => (
+              <li key={item.path}>
+                <Link
+                  to={item.path}
+                  onClick={() => setIsOpen(false)}
+                  className={`block text-xl px-4 py-2 ${
+                    currentPath === item.path ? "font-bold" : ""
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
-      )}
+      </div>
     </nav>
-  )
+  );
 }
