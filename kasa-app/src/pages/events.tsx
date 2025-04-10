@@ -85,7 +85,19 @@ function EventCard({ event }: { event: any }) {
             {new Date(event.fields.date).toLocaleDateString()}
           </p>
         )}
+        {/* Display video if present */}
+        {event.fields.video && (
+          // Using native HTML5 video element
+          <video controls className="mt-4 w-full h-auto">
+            <source 
+              src={event.fields.video.fields.file.url} 
+              type="video/quicktime" 
+            />
+            Your browser does not support the video tag.
+          </video>
+        )}
       </div>
     </div>
   );
 }
+

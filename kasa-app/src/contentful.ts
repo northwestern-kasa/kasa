@@ -23,7 +23,7 @@ export const fetchEvents = async () => {
   try {
     const response = await client.getEntries({
       content_type: "event",
-      order: ['fields.date'],
+      order: ['-sys.createdAt'],
 
     });
     return response.items;
