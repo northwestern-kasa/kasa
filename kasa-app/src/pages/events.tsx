@@ -3,23 +3,23 @@ import SplashPage from "../components/SplashPage";
 import { useState, useEffect } from "react";
 import { fetchEvents } from "../contentful";
 
-interface Event {
-  fields: {
-    title: string;
-    description?: string;
-    date?: string;
-    image?: {
-      fields: {
-        file: {
-          url: string;
-        };
-      };
-    };
-  };
-}
+// interface Event {
+//   fields: {
+//     title: string;
+//     description?: string;
+//     date?: string;
+//     image?: {
+//       fields: {
+//         file: {
+//           url: string;
+//         };
+//       };
+//     };
+//   };
+// }
 
 export default function Events() {
-  const [events, setEvents] = useState<Event[]>([]);
+  const [events, setEvents] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -64,7 +64,7 @@ export default function Events() {
   );
 }
 
-function EventCard({ event }: { event: Event }) {
+function EventCard({ event }: { event: any }) {
   return (
     <div className="w-64 bg-white rounded-md shadow-md overflow-hidden">
       {/* Event image, if present */}
