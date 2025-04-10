@@ -18,3 +18,17 @@ export const fetchExecutives = async () => {
     return [];
   }
 };
+
+export const fetchEvents = async () => {
+  try {
+    const response = await client.getEntries({
+      content_type: "event",
+      order: ['fields.date'],
+
+    });
+    return response.items;
+  } catch (error) {
+    console.error("Error fetching events:", error);
+    return [];
+  }
+};

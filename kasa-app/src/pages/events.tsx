@@ -1,34 +1,91 @@
 import Footer from "../components/Footer";
 import SplashPage from "../components/SplashPage";
+import { useState, useEffect } from "react";
+import { fetchEvents } from "../contentful";
+
+interface Event {
+  fields: {
+    title: string;
+    description?: string;
+    date?: string;
+    image?: {
+      fields: {
+        file: {
+          url: string;
+        };
+      };
+    };
+  };
+}
 
 export default function Events() {
+  const [events, setEvents] = useState<Event[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function getEvents() {
+      try {
+        const data = await fetchEvents();
+        setEvents(data);
+      } catch (error) {
+        console.error("Error loading events", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    getEvents();
+  }, []);
+
   return (
-    <div
-      className={""}
-    >
+    <div>
       <main>
-        {/* Keep the splash/hero section if you want that same top styling */}
+        {/* Reuse SplashPage for the hero section styling */}
         <SplashPage />
-        
-        {/* Content area */}
+
+        {/* Content Area */}
         <section className="-mt-44 mb-24 flex flex-col items-center">
           <h1 className="text-4xl font-bold mb-10">Our Events</h1>
-          
-          {/* Grid of placeholder cards */}
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-12">
-            {[...Array(6)].map((_, index) => (
-              <div
-                key={index}
-                className="w-64 h-64 bg-gray-300 rounded-md shadow-md flex items-center justify-center text-gray-500 text-xl"
-              >
-                {/* Replace with your image or card component */}
-                Image Placeholder
-              </div>
-            ))}
-          </div>
+
+          {loading ? (
+            <p>Loading events...</p>
+          ) : events.length > 0 ? (
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-12">
+              {events.map((event, index) => (
+                <EventCard key={index} event={event} />
+              ))}
+            </div>
+          ) : (
+            <p>No events available at the moment.</p>
+          )}
         </section>
       </main>
-      <Footer/>
+      <Footer />
+    </div>
+  );
+}
+
+function EventCard({ event }: { event: Event }) {
+  return (
+    <div className="w-64 bg-white rounded-md shadow-md overflow-hidden">
+      {/* Event image, if present */}
+      {event.fields.image && (
+        <img
+          src={event.fields.image.fields.file.url}
+          alt={event.fields.title}
+          className="w-full h-40 object-cover"
+        />
+      )}
+      <div className="p-4">
+        <h3 className="font-bold text-xl mb-2">{event.fields.title}</h3>
+        {event.fields.description && (
+          <p className="text-gray-600 text-sm">{event.fields.description}</p>
+        )}
+        {event.fields.date && (
+          <p className="text-gray-500 text-xs mt-2">
+            {new Date(event.fields.date).toLocaleDateString()}
+          </p>
+        )}
+      </div>
     </div>
   );
 }
