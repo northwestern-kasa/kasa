@@ -83,6 +83,13 @@ export default function Home() {
   const secretaryHeads = execs.filter(
     (exec) => exec.fields.role.toLowerCase() === "secretary"
   );
+  const financeHead = execs.filter(
+    (exec) => exec.fields.role.toLowerCase() === "finance"
+  );
+  const recreationHead = execs.filter(
+    (exec) => exec.fields.role.toLowerCase() === "recreational"
+  );
+
 
   return (
     <div>
@@ -135,7 +142,7 @@ export default function Home() {
               />
 
               {/* Other ExecCards in a responsive grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 mt-10 place-items-center mb-24 max-w-2/3 min-w-2/3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mt-10 place-items-center mb-24 m-10 max-w-2/3 min-w-2/3">
                 <ExecCard
                   images={culturalHeads.map((exec) => ({
                     src: exec.fields.photo
@@ -143,7 +150,7 @@ export default function Home() {
                       : "/Logo.svg",
                     alt: exec.fields.name,
                   }))}
-                  role="Cultural Chairs"
+                  role="Cultural"
                 />
                 <ExecCard
                   images={publicityHeads.map((exec) => ({
@@ -152,7 +159,7 @@ export default function Home() {
                       : "/Logo.svg",
                     alt: exec.fields.name,
                   }))}
-                  role="Publicity Chairs"
+                  role="Publicity"
                 />
                 <ExecCard
                   images={fundraisingHeads.map((exec) => ({
@@ -161,7 +168,7 @@ export default function Home() {
                       : "/Logo.svg",
                     alt: exec.fields.name,
                   }))}
-                  role="Fundraising Chairs"
+                  role="Fundraising"
                 />
                 <ExecCard
                   images={outReachHeads.map((exec) => ({
@@ -170,7 +177,7 @@ export default function Home() {
                       : "/Logo.svg",
                     alt: exec.fields.name,
                   }))}
-                  role="Outreach Chairs"
+                  role="Outreach"
                 />
                 <ExecCard
                   images={comDevHeads.map((exec) => ({
@@ -216,6 +223,24 @@ export default function Home() {
                     alt: exec.fields.name,
                   }))}
                   role="Secretary"
+                /> 
+                <ExecCard
+                  images={financeHead.map((exec) => ({
+                    src: exec.fields.photo
+                      ? exec.fields.photo.fields.file.url
+                      : "/Logo.svg",
+                    alt: exec.fields.name,
+                  }))}
+                  role="Finance"
+                /> 
+                <ExecCard
+                  images={recreationHead.map((exec) => ({
+                    src: exec.fields.photo
+                      ? exec.fields.photo.fields.file.url
+                      : "/Logo.svg",
+                    alt: exec.fields.name,
+                  }))}
+                  role="Recreational"
                 /> 
               </div>
             </>

@@ -26,9 +26,9 @@ export default function ExecCard({ images, role }: ExecCardProps) {
 
   return (
     <div className="relative flex flex-col items-center w-full max-w-sm">
-      <h2 className="font-bold text-3xl mb-2">{role}</h2>
+      <h2 className="font-bold text-2xl mb-2">{role}</h2>
       <div id="carousel" className="relative w-full overflow-hidden rounded-lg">
-        <NameTag name={images[slide].alt} />
+        {/* <NameTag name={images[slide].alt} /> */}
         <MdKeyboardArrowLeft
           onClick={prevSlide}
           className="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-12 hover:cursor-pointer"
@@ -40,7 +40,7 @@ export default function ExecCard({ images, role }: ExecCardProps) {
             key={index}
             className={
               slide === index
-                ? "rounded-[35px] w-[400px] h-[500px] object-cover"
+                ? " object-cover"
                 : "hidden"
             }
           />

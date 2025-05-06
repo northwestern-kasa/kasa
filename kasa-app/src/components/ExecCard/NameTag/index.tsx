@@ -1,13 +1,11 @@
 interface NameTagProps {
-    name: string;
-  }
+  name: string;
+}
 
-
-export default function NameTag({name}: NameTagProps) {
-    return (
-        // <div className={styles.nametag}>
-        <div className="absolute w-3/4 h-13 bg-[#2B3467] rounded-tl-[40px] rounded-tr-0 rounded-br-[40px] rounded-bl-0 left-0 p-3">
-            <p className="text-center text-white text-2xl font-extrabold">{name}</p>
-        </div>
-    )
+export default function NameTag({ name }: NameTagProps) {
+  return (
+    <div className="inline-flex items-center bg-white border border-gray-200 rounded-lg shadow-sm px-5 py-2">
+      <span className="text-gray-900 text-lg font-medium">{name}</span>
+    </div>
+  );
 }

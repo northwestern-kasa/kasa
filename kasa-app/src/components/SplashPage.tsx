@@ -24,7 +24,7 @@ export default function SplashPage() {
   const header = pageHeaders[currentPath];
 
   return (
-    <section id="splash" className="relative  h-[75vh] overflow-hidden">
+    <section id="splash" className="relative  h-[75vh] overflow-hidden z-0">
       <img
         src={topLeftBlob}
         alt="blob"
