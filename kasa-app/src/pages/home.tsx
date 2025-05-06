@@ -56,6 +56,11 @@ export default function Home() {
   const presidents = execs.filter(
     (exec) => exec.fields.role.toLowerCase() === "president"
   );
+  
+  // pick the first two
+  const president1 = presidents[0];
+  const president2 = presidents[1];
+
   const culturalHeads = execs.filter(
     (exec) => exec.fields.role.toLowerCase() === "cultural"
   );
@@ -133,13 +138,16 @@ export default function Home() {
           ) : (
             <>
               {/* President ExecCard */}
+              <div className="flex flex-row justify-center gap-10 place-items-center max-w-2xl">
               <ExecCard
-                images={presidents.map((president) => ({
-                  src: president.fields.photo.fields.file.url,
-                  alt: president.fields.name,
-                }))}
-                role="Presidents"
+                images={[{ src: president1.fields.photo.fields.file.url, alt: president1.fields.name }]}
+                role="President"
               />
+              <ExecCard
+                images={[{ src: president2.fields.photo.fields.file.url, alt: president2.fields.name }]}
+                role="President"
+              />
+              </div>
 
               {/* Other ExecCards in a responsive grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mt-10 place-items-center mb-24 m-10 max-w-2/3 min-w-2/3">
@@ -186,7 +194,7 @@ export default function Home() {
                       : "/Logo.svg",
                     alt: exec.fields.name,
                   }))}
-                  role="Community Development"
+                  role="Community Dev."
                 />
                 <ExecCard
                   images={wellnessHeads.map((exec) => ({
