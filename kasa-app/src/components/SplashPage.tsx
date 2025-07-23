@@ -7,7 +7,7 @@ import midRightBlob from "../../assets/blobs/mid-right.svg";
 import textLogo from "../../assets/text-logo.svg";
 import downArrow from "../../assets/down-arrow.svg";
 
-import homeBg from "assets/HomePage.JPG"
+import homeBg from "../../assets/HomePage.png"
 // import familyBg from "../../assets/FamilyPage.png"
 // import eventsBg from "../../assets/EventsPage.png"
 // import applyBg from "../../assets/ApplyPage.png"
@@ -46,8 +46,7 @@ export default function SplashPage() {
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundImage: `url(${bgImage})`,
-          filter: "grayscale(0.5)",
-          filter: "blur(1.9px)",
+          filter: "blur(1.9px) grayscale(100%)",
         }}
       />
       {/* <img
@@ -100,7 +99,7 @@ export default function SplashPage() {
                 header == "home" ? "text-2xl font-bold text-white" : "hidden"
               }
             >
-              Welcome Home
+              Work Hard Play Hard
             </h1>
             <h1
               id="page-name"
