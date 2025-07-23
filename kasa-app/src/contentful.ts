@@ -12,6 +12,7 @@ export const fetchExecutives = async () => {
       order: ['fields.role'],
 
     });
+    // console.log(response.items)
     return response.items;
   } catch (error) {
     console.error("Error fetching executive members:", error);

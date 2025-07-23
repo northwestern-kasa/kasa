@@ -7,6 +7,11 @@ import midRightBlob from "../../assets/blobs/mid-right.svg";
 import textLogo from "../../assets/text-logo.svg";
 import downArrow from "../../assets/down-arrow.svg";
 
+import homeBg from "assets/HomePage.JPG"
+// import familyBg from "../../assets/FamilyPage.png"
+// import eventsBg from "../../assets/EventsPage.png"
+// import applyBg from "../../assets/ApplyPage.png"
+
 import NavBar from "./NavBar";
 import { useLocation } from "react-router-dom";
 
@@ -19,13 +24,33 @@ const pageHeaders: any = {
   "/contact": "Contact Us",
 };
 
+const bgMap: Record<string,string> = {
+    "home":        homeBg,
+    // "Families!":  familyBg,
+    // "Events":  eventsBg,
+    // "Application":   applyBg,
+    // …any others
+  }
+
 export default function SplashPage() {
   const currentPath = useLocation().pathname;
   const header = pageHeaders[currentPath];
+  const bgImage = bgMap[header] || homeBg
+
 
   return (
-    <section id="splash" className="relative  h-[75vh] overflow-hidden z-0">
-      <img
+    <section id="splash" className="relative  h-[100vh] overflow-hidden z-0">
+      <div
+        className="absolute inset-0 bg-center bg-cover"
+        style={{
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundImage: `url(${bgImage})`,
+          filter: "grayscale(0.5)",
+          filter: "blur(1.9px)",
+        }}
+      />
+      {/* <img
         src={topLeftBlob}
         alt="blob"
         className="absolute top-0 left-0 w-[125px] h-[125px] sm:w-[200px] sm:h-[200px] md:w-[250px] lg:w-[275px] lg:h-[275px] xl:w-[325px] 2xl:w-[400px] 2xl:h-[300px]"
@@ -54,7 +79,7 @@ export default function SplashPage() {
         src={midRightBlob}
         alt="blob"
         className="absolute top-32 -right-24 w-[200px] h-[200px] sm:top-36 sm:w-[225px] sm:h-[250px] md:top-44 md:w-[225px] md:h-[325px] lg:w-[250px] lg:h-[400px] xl:top-64 xl:w-[300px] xl:h-[450px]"
-      />
+      /> */}
       <div id="content" className="h-full flex items-center justify-center">
         <div
           id="relative-container"
@@ -68,8 +93,15 @@ export default function SplashPage() {
               width={300}
               src={textLogo}
               alt="KASA's text logo"
-              className={header == "home" ? "" : "hidden"}
+              className={header == "home" ? "invert-[100%]" : "hidden"}
             />
+            <h1
+              className={
+                header == "home" ? "text-2xl font-bold text-white" : "hidden"
+              }
+            >
+              Welcome Home
+            </h1>
             <h1
               id="page-name"
               className={` ${

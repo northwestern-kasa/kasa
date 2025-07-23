@@ -1,5 +1,5 @@
 class FetchApiService {
-    private static baseUrl: string = "https://www.api.northwesternkasa.com"
+    private static baseUrl: string = "http://localhost:8080";
 
     private async request(route: string, options: RequestInit) {
         const res = await fetch(`${FetchApiService.baseUrl}${route}`, {

@@ -59,6 +59,7 @@ export default function Home() {
   
   // pick the first two
   const president1 = presidents[0];
+  // console.log(president1)
   const president2 = presidents[1];
 
   const culturalHeads = execs.filter(

@@ -8,7 +8,7 @@ import MemberForm from './pages/memberform';
 // import Contact from './pages/contact';
 import Login from './pages/login';
 import Register from './pages/register';
-// import Directory from './pages/directory';
+import Directory from './pages/directory';
 import Wip from './pages/wip';
 import { useEffect, useState } from 'react';
 import api from './fetchApiService';
@@ -37,9 +37,9 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/family" element={<Family />} />
         <Route path="/events" element={<Events />} />
-        <Route path="/apply" element={<Wip/>} />
+        <Route path="/apply" element={<Apply />} />
         <Route path="/memberform" element={<MemberForm user={user} />} />
-        <Route path="/directory" element={<Wip/>} />
+        <Route path="/directory" element={<Directory />} />
         <Route path="/contact" element={<Wip/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />

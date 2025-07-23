@@ -1,8 +1,17 @@
 import { Navigate } from "react-router-dom";
 import api from "../fetchApiService";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { useEffect, useState } from "react";
 import AlreadyApplied from "../components/AlreadyApplied";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '../components/ui/card'
+import { Input } from '../components/ui/input'
+import { Calendar } from '../components/ui/calendar'
+import { Button } from '../components/ui/button'
+import { Popover, PopoverTrigger, PopoverContent } from '../components/ui/popover'
+import { CalendarIcon } from 'lucide-react'
+import { format } from 'date-fns'
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuItem } from '../components/ui/dropdown-menu'
+import { Checkbox } from '../components/ui/checkbox'
 
 interface MemberFormInputs {
   name: string;
@@ -15,65 +24,37 @@ interface MemberFormInputs {
 }
 
 export default function MemberForm({ user }: {user: any}) {
+  const { register, handleSubmit, setValue, formState: { errors }, control } = useForm<MemberFormInputs>()
   const [isSubmitted, setIsSubmitted] = useState(false)
-  if (!user) {
-    return <Navigate to="/login" replace/>
-  }
-
-  const retrieveApplication = async () => {
-    const res = await api.get("/user/getApplication")
-    
-    const data = JSON.parse(res.S)
-
-    if (data.submitted) {
-      setIsSubmitted(true)
-    }
-
-    const answers = data.answers
-
-    if (answers) {
-      answers.forEach((answer: { identifier: number; value: any }) => {
-          switch (answer.identifier) {
-            case 1:
-              setValue("name", answer.value);
-              break;
-            case 2:
-              setValue("year", answer.value);
-              break;
-            case 3:
-              setValue("birthday", answer.value);
-              break;
-            case 4:
-              setValue("connection", answer.value);
-              break;
-            case 5:
-              setValue("why_join", answer.value);
-              break;
-            case 6:
-              setValue("gm_attend", answer.value === "Yes");
-              break;
-            case 7:
-              setValue("mandatory_safety", answer.value === "Yes");
-              break;
-            default:
-              break;
-          }
-        });
-    }
-  }
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    retrieveApplication();
-  }, [])
+    async function retrieveApplication() {
+      const res = await api.get("/user/getApplication")
+      const data = JSON.parse(res.S)
+      if (data.submitted) setIsSubmitted(true)
+      if (data.answers) {
+        data.answers.forEach((answer: { identifier: number; value: any }) => {
+          switch (answer.identifier) {
+            case 1: setValue("name", answer.value); break
+            case 2: setValue("year", answer.value); break
+            case 3: setValue("birthday", answer.value); break
+            case 4: setValue("connection", answer.value); break
+            case 5: setValue("why_join", answer.value); break
+            case 6: setValue("gm_attend", answer.value === "Yes"); break
+            case 7: setValue("mandatory_safety", answer.value === "Yes"); break
+          }
+        })
+      }
+    }
+    retrieveApplication()
+  }, [setValue])
 
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    formState: { errors },
-  } = useForm<MemberFormInputs>();
+  if (!user) return <Navigate to="/login" replace />
+  if (isSubmitted) return <AlreadyApplied />
 
-  const apply: SubmitHandler<MemberFormInputs> = async (data) => {
+
+  const apply: SubmitHandler<MemberFormInputs> = async (data) => { 
     const submission = {
       answers: [
         { identifier: 1, value: data.name },
@@ -86,7 +67,9 @@ export default function MemberForm({ user }: {user: any}) {
       ],
       submittedAt: new Date().toISOString(),
     };
-    const res = await api.post("/user/submitApplication", submission);
+    
+    setIsSubmitted(true);
+    const res = await api.post("/user/submitApplication", submission); 
     console.log(res);
   };
 
@@ -103,7 +86,8 @@ export default function MemberForm({ user }: {user: any}) {
       ],
       submittedAt: new Date().toISOString(),
     };
-    const res = await api.post("/user/saveApplication", submission);
+    console.log("Submitting application:", submission);
+    const res = await api.post("/user/saveApplication", submission); 
     console.log(res);
   };
 
@@ -112,208 +96,154 @@ export default function MemberForm({ user }: {user: any}) {
   }
 
   return (
-    <div className="flex justify-center items-center m-20">
-      <div
-        id="container"
-        className="flex flex-col space-y-8 items-center justify-center rounded-[3rem] navBarShadow p-16 min-w-62"
-      >
-        <div id="header" className="flex flex-col space-y-1 text-center">
-          <h2 id="header" className="font-bold text-3xl">
-            General Member Application
-          </h2>
-          <h6 className="text-lg mt-10">
-            Please submit this application by Sunday, January 11 at 11:59 pm.
-          </h6>
-        </div>
-        <form
-          onSubmit={handleSubmit(apply)}
-          method="POST"
-          className="flex flex-col space-y-7 justify-center"
-        >
-          {/* Name */}
-          <div className="flex flex-row justify-between">
-            <label htmlFor="name">Name</label>
-            {errors.name && (
-              <p className="!mt-2 text-red text-sm text-end">
-                {errors.name.message}
-              </p>
-            )}
-          </div>
-          <input
-            id="name"
-            {...register("name", { required: "Name is required" })}
-            type="text"
-            placeholder="Andrew Park / Janice Kim"
-            className="contactInput w-full !mt-2"
-          />
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
+      <Card className="w-full max-w-3xl">
+        <CardHeader className="text-center ">
+          <CardTitle>General Member Application</CardTitle>
+          <CardDescription>Please submit this application by Sunday, January 11 at 11:59 pm.</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6 ">
+          <form onSubmit={handleSubmit(apply)} className="space-y-6 ">
+            {/* Name */}
+            <div className="space-y-1">
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+              <Input id="name" {...register("name", { required: "Name is required" })} placeholder="Caleb Shim" />
+              {errors.name && <p className="text-xs text-red-600">{errors.name.message}</p>}
+            </div>
 
-          {/* Year */}
-
-          <fieldset className="border-4 p-4 w-full rounded-lg">
-            <legend>Year</legend>
-            <div className="flex flex-col space-y-2 mt-2">
-              <div>
-                <input
-                  type="radio"
-                  id="freshman"
-                  value="freshman"
-                  {...register("year", { required: "Year is required" })}
+            {/* Year & Birthday */}
+            <div className="flex sm:flex-row space-x-6">
+              <div className="flex-1 space-y-1">
+                <label htmlFor="year" className="block text-sm font-medium text-gray-700">Year</label>
+                <Controller
+                  control={control}
+                  name="year"
+                  rules={{ required: 'Year is required' }}
+                  render={({ field }) => (
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="outline" className="w-full text-left justify-between">
+                          {field.value || 'Select year'}
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent className="w-full">
+                        <DropdownMenuLabel>Year</DropdownMenuLabel>
+                        <DropdownMenuSeparator />
+                        {['Freshman','Sophomore','Junior','Senior','Other'].map(option => (
+                          <DropdownMenuItem key={option} onSelect={() => field.onChange(option)}>
+                            {option}
+                          </DropdownMenuItem>
+                        ))}
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  )}
                 />
-                <label htmlFor="freshman" className="ml-1">
-                  Freshman
-                </label>
+                {errors.year && <p className="text-xs text-red-600">{errors.year.message}</p>}
               </div>
-              <div>
-                <input
-                  type="radio"
-                  id="sophomore"
-                  value="sophomore"
-                  {...register("year")}
+              <div className="flex-1 space-y-1">
+                <label htmlFor="birthday" className="block text-sm font-medium text-gray-700">Birthday</label>
+                <Controller
+                  control={control}
+                  name="birthday"
+                  rules={{ required: "Birthday is required" }}
+                  render={({ field }) => (
+                    <Popover open={open} onOpenChange={setOpen}>
+                      <PopoverTrigger asChild>
+                        <button
+                          type="button"
+                          id="birthday"
+                          className="inline-flex w-full rounded-lg border border-gray-300 px-4 py-2 text-sm text-left placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-900"
+                        >
+                          {field.value ? format(new Date(field.value), 'PPP') : 'Select date'}
+                          <CalendarIcon className="ml-auto h-4 w-4 text-gray-400" />
+                        </button>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0" align="start">
+                        <Calendar
+                          mode="single"
+                          selected={field.value as unknown as Date | undefined}
+                          onSelect={date => { field.onChange(date); setOpen(false) }}
+                          captionLayout="dropdown"
+                        />
+                      </PopoverContent>
+                    </Popover>
+                  )}
                 />
-                <label htmlFor="sophomore" className="ml-1">
-                  Sophomore
-                </label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  id="junior"
-                  value="junior"
-                  {...register("year")}
-                />
-                <label htmlFor="junior" className="ml-1">
-                  Junior
-                </label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  id="senior"
-                  value="senior"
-                  {...register("year")}
-                />
-                <label htmlFor="senior" className="ml-1">
-                  Senior
-                </label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  id="other"
-                  value="other"
-                  {...register("year")}
-                />
-                <label htmlFor="other" className="ml-1">
-                  Other
-                </label>
+                {errors.birthday && <p className="text-xs text-red-600">{errors.birthday.message}</p>}
               </div>
             </div>
-            {errors.year && (
-              <p className=" text-red text-sm text-end">
-                {errors.year.message}
-              </p>
-            )}
-          </fieldset>
 
-          {/* Birthday */}
-          <div className="flex flex-row justify-between">
-            <label htmlFor="birthday">Birthday</label>
-            {errors.birthday && (
-              <p className="!mt-1 text-red text-sm text-end">
-                {errors.birthday.message}
-              </p>
-            )}
-          </div>
-          <input
-            id="birthday"
-            {...register("birthday", { required: "Birthday is required" })}
-            type="date"
-            className="contactInput !mt-2"
-          />
+            {/* Connection */}
+            <div className="space-y-1">
+              <label htmlFor="connection" className="block text-sm font-medium text-gray-700">How did you hear about KASA?</label>
+              <textarea
+                rows={5}
+                id="connection"
+                {...register("connection", { required: "This field is required" })}
+                placeholder="How did you hear about us?"
+                className="block w-full rounded-lg border border-gray-300 px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-900 resize-none"
+              />
+              {errors.connection && <p className="text-xs text-red-600">{errors.connection.message}</p>}
+            </div>
 
-          {/* Connection */}
-          <div className="flex flex-row justify-between">
-            <label htmlFor="connection">How did you hear about KASA?</label>
-            {errors.connection && (
-              <p className="!mt-1 text-red text-sm text-end">
-                {errors.connection.message}
-              </p>
-            )}
-          </div>
-          <textarea
-            rows={5}
-            id="connection"
-            {...register("connection", {
-              required: "This field is required",
-            })}
-            placeholder="How did you hear about us?"
-            className="contactInput w-full resize-none !mt-2"
-          />
-
-          {/* Why Join */}
-          <div className="flex flex-row justify-between">
-            <label htmlFor="why_join">
-              Why do you want to join KASA? ({`<`}200 words)
-            </label>
-            {errors.why_join && (
-              <p className="!mt-1 text-red text-sm text-end">
-                {errors.why_join.message}
-              </p>
-            )}
-          </div>
-          <textarea
-            rows={5}
-            id="why_join"
-            {...register("why_join", {
-              required: "Please describe why you'd like to join",
-            })}
-            placeholder="Briefly share your motivations..."
-            className="contactInput w-full resize-none !mt-2"
-          />
-
-          {/* GM Attend Checkbox */}
-          <div className="flex items-center space-x-2">
-            <input id="gm_attend" type="checkbox" {...register("gm_attend")} />
-            <label htmlFor="gm_attend">
-              General meetings (GMs) are on Thursdays at 8:00pm in Tech. Can you
-              make this commitment?
-            </label>
-          </div>
-
-          {/* Mandatory Safety Checkbox */}
-          <div className="flex items-center space-x-2">
-            <input
-              id="mandatory_safety"
-              type="checkbox"
-              {...register("mandatory_safety", {
-                required: "Attendance is required",
-              })}
-            />
-            <div className="flex place-content-between space-x-8">
-              <label htmlFor="mandatory_safety">
-                Will you be at the MANDATORY Safety & Wellness GM next Thursday?
+            {/* Why Join */}
+            <div className="space-y-1">
+              <label htmlFor="why_join" className="block text-sm font-medium text-gray-700">
+                Why do you want to join KASA?
               </label>
-              {errors.mandatory_safety && (
-                <p className=" text-red text-sm text-end">
-                  {errors.mandatory_safety.message}
-                </p>
-              )}
+              <textarea
+                rows={5}
+                id="why_join"
+                {...register("why_join", { required: "Please describe why you'd like to join" })}
+                placeholder="Briefly share your motivations..."
+                className="block w-full rounded-lg border border-gray-300 px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-900 resize-none"
+              />
+              {errors.why_join && <p className="text-xs text-red-600">{errors.why_join.message}</p>}
             </div>
-          </div>
-          <div className="flex flex-row justify-between space-x-20">
-            <button onClick={handleSubmit(saveApplication)} className="flex w-48 mt-5 justify-center rounded-full bg-purple-500 text-white px-3 py-1.5 text-md">
-                Save
-            </button>
-            <button 
-                type="submit"
-                className="flex w-48 mt-5 justify-center rounded-full bg-red text-white px-3 py-1.5 text-md"
-            >
-                Submit
-            </button>
-          </div>
-          
-        </form>
-      </div>
+
+            {/* GM Attend */}
+            <div className="space-y-1">
+              <Controller
+                control={control}
+                name="gm_attend"
+                render={({ field }) => (
+                  <div className="flex items-center space-x-2">
+                    <Checkbox id="gm_attend" checked={!!field.value} onCheckedChange={field.onChange} />
+                    <label htmlFor="gm_attend" className="text-sm text-gray-700">
+                      General meetings (GMs) are on Thursdays at 8:00pm. Can you attend?
+                    </label>
+                  </div>
+                )}
+              />
+            </div>
+
+            {/* Mandatory Safety */}
+            <div className="space-y-1">
+              <Controller
+                control={control}
+                name="mandatory_safety"
+                rules={{ required: 'Attendance is required' }}
+                render={({ field }) => (
+                  <div className="flex items-center space-x-2">
+                    <Checkbox id="mandatory_safety" checked={!!field.value} onCheckedChange={field.onChange} />
+                    <div>
+                      <label htmlFor="mandatory_safety" className="text-sm text-gray-700">
+                        Will you be at the MANDATORY Safety & Wellness GM next Thursday?
+                      </label>
+                      {errors.mandatory_safety && <p className="text-xs text-red-600">{errors.mandatory_safety.message}</p>}
+                    </div>
+                  </div>
+                )}
+              />
+            </div>
+            {/* GM Attend Checkbox and others... */}
+          </form>
+        </CardContent>
+        <CardFooter className="flex justify-end space-x-4">
+          {/* <Button onClick={handleSubmit(saveApplication)} className="bg-red hover:bg-red-600">Save</Button> */}
+          <Button onClick={handleSubmit(apply)}>Submit</Button>
+        </CardFooter>
+      </Card>
     </div>
   );
 }
