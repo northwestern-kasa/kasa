@@ -16,14 +16,31 @@ export default function Contact() {
   const { register, handleSubmit } = useForm<ContactFormInputs>();
 
   const sendMsg: SubmitHandler<ContactFormInputs> = async (data) => {
-    const res = await api.post("/contact", data);
-    console.log(res);
+    const formData = new FormData();
+    Object.entries(data).forEach(([key, value]) => {
+      formData.append(key, value as string);
+    });
+    formData.append("access_key", "fa2e40fe-cda4-4b7e-967d-e0f92da61970");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+      const result = await response.json();
+      console.log(result);
+    } catch (error) {
+      console.error("Error sending contact form:", error);
+    }
   };
 
   return (
     <div>
       <main className="">
-        <SplashPage />
+        <div className="h-[80vh] -mt-96">
+          <SplashPage />
+        </div>
+        
 
         <div
           id="contactPage"

@@ -35,16 +35,16 @@ export default function Footer() {
             Events
           </h6>
         </Link>
-        <Link to="/application">
+        {/* <Link to="/apply">
           <h6 className={currentPath == "/application" ? "font-bold" : ""}>
             Application
           </h6>
-        </Link>
-        <Link to="/directory">
+        </Link> */}
+        {/* <Link to="/directory">
           <h6 className={currentPath == "/directory" ? "font-bold" : ""}>
             Directory
           </h6>
-        </Link>
+        </Link> */}
         <Link to="/contact">
           <h6 className={currentPath == "/contact" ? "font-bold" : ""}>
             Contact Us
