@@ -1,8 +1,11 @@
 import Footer from "../components/Footer";
 import SplashPage from "../components/SplashPage";
 import logo from "/Logo.svg";
-import api from "../fetchApiService";
+// import api from "../fetchApiService";
 import { useForm, SubmitHandler } from "react-hook-form";
+import React, { useState } from "react";
+import { Button } from "../components/ui/button";
+import { Input } from "@/components/ui/input";
 
 interface ContactFormInputs {
   firstname: string;
@@ -13,7 +16,8 @@ interface ContactFormInputs {
 }
 
 export default function Contact() {
-  const { register, handleSubmit } = useForm<ContactFormInputs>();
+  const { register, handleSubmit, reset } = useForm<ContactFormInputs>();
+  const [submitted, setSubmitted] = useState(true);
 
   const sendMsg: SubmitHandler<ContactFormInputs> = async (data) => {
     const formData = new FormData();
@@ -29,22 +33,33 @@ export default function Contact() {
       });
       const result = await response.json();
       console.log(result);
+      reset();
+      setSubmitted(true);
     } catch (error) {
       console.error("Error sending contact form:", error);
     }
   };
 
+  if (submitted) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="bg-white p-8 rounded-lg shadow-lg text-center">
+          <h2 className="text-3xl font-bold mb-4">Message Sent!</h2>
+          <p className="text-gray-600">Thank you for reaching out. We'll get back to you soon!</p>
+        </div>
+      </div>
+
+    );
+  }
   return (
     <div>
       <main className="">
         <div className="h-[80vh] -mt-96">
           <SplashPage />
         </div>
-        
-
         <div
           id="contactPage"
-          className="mb-10 -mt-40 flex flex-col items-center justify-center place-content-center"
+          className="mb-10 relative z-10 flex flex-col items-center justify-center place-content-center"
         >
           <h1 className="text-center font-extrabold text-5xl">Get in Touch</h1>
           <p className="text-center mt-1 mb-12 text-gray-500">
@@ -53,7 +68,7 @@ export default function Contact() {
 
           <div
             id="contactbox"
-            className="contactBox m-auto align-middle grid grid-cols-2 p-8 gap-4 pb-1"
+            className="contactBox mb-8 m-auto align-middle grid grid-cols-2 p-8 gap-4 pb-1"
           >
             <div
               id="leftcol"
@@ -78,59 +93,54 @@ export default function Contact() {
                 method="POST"
                 className="space-y-5 place-items-center"
               >
-                <div className="flex flex-col w-full place-content-between sm:flex-row ">
-                  <input
+                <div className="flex flex-col w-full place-content-between sm:flex-row space-x-2">
+                  <Input
                     {...register("firstname", { required: "First name is required" })}
                     type="text"
                     placeholder="First Name"
-                    className="contactInput"
+                    className="block w-full rounded-lg border border-gray-300 px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-900"
                   />
-                  <input
+                  <Input
                     {...register("lastname")}
                     type="text"
                     placeholder="Last Name"
-                    className="contactInput"
+                    className="block w-full rounded-lg border border-gray-300 px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-900"
                   />
                 </div>
-                <input
+                <Input
                   {...register("email", { required: "Email is required" })}
                   type="email"
                   placeholder="Email"
-                  className="contactInput w-full"
+                  className="block w-full rounded-lg border border-gray-300 px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-900"
                 />
-                <input
+                <Input
                   {...register("subject", { required: "Subject is required" })}
                   type="text"
                   placeholder="Subject"
-                  className="contactInput w-full"
+                  className="block w-full rounded-lg border border-gray-300 px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-900"
                 />
                 <textarea
                   rows={7}
                   {...register("message", { required: "Message is required" })}
                   placeholder="Message"
-                  className="contactInput w-full resize-none"
+                  className="block w-full rounded-lg border border-gray-300 px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-900 resize-none"
                 />
                 <div className="flex flex-col place-content-end w-full sm:flex-row ">
-                  <button
+                  <Button
                     type="submit"
                     className="
-                      rounded-3xl
                       border-2
                       border-rose-400
                       bg-white
                       px-6
-                      py-1.5
                       font-semibold
-                      text-red-500
+                      text-black
                       transition-colors
                       hover:bg-gray-100
-                      focus:outline-none
-                      focus:ring-2
-                      focus:ring-red-300
                     "
                   >
                     Submit
-                  </button>
+                  </Button>
                 </div>
               </form>
             </div>
