@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../../assets/Logo.svg";
+import logo from "/Logo.svg";
 // import profile from "../../assets/profile.svg";
 import NavBar from "./NavBar";
 import Join from "./Join";
