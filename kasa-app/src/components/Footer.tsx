@@ -24,7 +24,7 @@ export default function Footer() {
       />
       <div
         id="nav"
-        className="flex flex-col items-center space-between mb-4 gap-8 sm:flex-row sm:gap-12 sm:mb-10"
+        className="flex flex-col items-center space-between mb-8 gap-8 sm:flex-row sm:gap-12 sm:mb-10"
       >
         <Link to="/">
           <h6 className={currentPath == "/" ? "font-bold" : ""}>Home</h6>
@@ -63,23 +63,29 @@ export default function Footer() {
           target="_blank"
           rel="noopener"
           href="https://www.instagram.com/northwesternkasa/"
+          className="flex items-center space-x-2 font-semibold"
         >
-          <img src={instagramIcon} alt="Instagram logo" />
+          <img src={instagramIcon} alt="Instagram logo" className="w-10 h-auto block"/>
+          Instagram
         </a>
         <a
           target="_blank"
           rel="noopener"
           href="https://www.facebook.com/northwesternkasa/"
+          className="flex items-center space-x-2 font-semibold"
         >
-          <img src={facebookIcon} alt="Facebook logo" />
+          <img src={facebookIcon} alt="Facebook logo" className="w-10 h-auto block"/>
+          Facebook
         </a>
 
         <a
           target="_blank"
           rel="noopener"
           href="https://www.youtube.com/channel/UCDkuIQbMa9IqMhe6HBA6OHQ"
+          className="flex items-center space-x-2 font-semibold"
         >
-          <img src={youtubeIcon} alt="Youtube logo" />
+          <img src={youtubeIcon} alt="Youtube logo" className="w-10 h-auto block" />
+          Youtube
         </a>
         {/* <a
           target="_blank"
@@ -91,8 +97,8 @@ export default function Footer() {
 
         
       </div>
-      <div id="copyright" className="text-gray-400 mb-4">
-        ©northwesternkasa
+      <div id="copyright" className="text-gray-400 mb-4 text-xs">
+        ©2025 northwesternkasa
       </div>
     </div>
   );
