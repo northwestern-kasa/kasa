@@ -1,8 +1,5 @@
 // Import SVGs as URLs for production builds
-import instagram from "../../assets/socials/instagram.svg";
-import facebook from "../../assets/socials/facebook.svg";
-import youtube from "../../assets/socials/youtube.svg";
-import tiktok from "../../assets/socials/tiktok.svg";
+// ...existing image imports for textLogo
 import textLogo from "../../assets/text-logo.png";
 import { Link, useLocation } from "react-router-dom";
 
@@ -59,16 +56,16 @@ export default function Footer() {
         <a
           target="_blank"
           rel="noopener"
-          href="https://www.instagram.com/northwesternkasa/?hl=en"
+          href="https://www.instagram.com/northwesternkasa/"
         >
-          <img src={instagram} alt="Instagram logo" />
+          <img src="/assets/socials/instagram.svg" alt="Instagram logo" />
         </a>
         <a
           target="_blank"
           rel="noopener"
           href="https://www.facebook.com/northwesternkasa/"
         >
-          <img src={facebook} alt="Facebook logo" />
+          <img src="/assets/socials/facebook.svg" alt="Facebook logo" />
         </a>
 
         <a
@@ -76,15 +73,15 @@ export default function Footer() {
           rel="noopener"
           href="https://www.youtube.com/channel/UCDkuIQbMa9IqMhe6HBA6OHQ"
         >
-          <img src={youtube} alt="Youtube logo" />
+          <img src="/assets/socials/youtube.svg" alt="Youtube logo" />
         </a>
-        <a
+        {/* <a
           target="_blank"
           rel="noopener"
-          href=""
+          href="https://www.tiktok.com/northwesternkasa"
         >
-          <img src={tiktok} alt="Tiktok logo" />
-        </a>
+          <img src="/assets/socials/tiktok.svg" alt="Tiktok logo" />
+        </a> */}
 
         
       </div>

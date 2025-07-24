@@ -22,7 +22,7 @@ export default function Apply() {
             rel="noopener noreferrer"
             href="https://www.instagram.com/northwesternkasa/?hl=en"
           >
-            Google Forms
+              Apply Now
             </a>
           </Button>
         </div>
