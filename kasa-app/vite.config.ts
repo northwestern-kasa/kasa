@@ -7,8 +7,6 @@ export default defineConfig({
   // Serve the root 'public' directory as the public folder
   publicDir: 'public',
   plugins: [react()],
-  // Base public path when served (e.g. GitHub Pages repo name)
-  base: '/kasa-app/',
   assetsInclude: [
     '**/*.JPG',
     '**/*.JPEG',
