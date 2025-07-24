@@ -1,15 +1,15 @@
-import topLeftBlob from "../../assets/blobs/top-left.svg";
-import topMidLeftBlob from "../../assets/blobs/top-mid-left.svg";
-import topMidRightBlob from "../../assets/blobs/top-mid-right.svg";
-import topRightBlob from "../../assets/blobs/top-right.svg";
-import midLeftBlob from "../../assets/blobs/mid-left.svg";
-import midRightBlob from "../../assets/blobs/mid-right.svg";
+// import topLeftBlob from "../../assets/blobs/top-left.svg";
+// import topMidLeftBlob from "../../assets/blobs/top-mid-left.svg";
+// import topMidRightBlob from "../../assets/blobs/top-mid-right.svg";
+// import topRightBlob from "../../assets/blobs/top-right.svg";
+// import midLeftBlob from "../../assets/blobs/mid-left.svg";
+// import midRightBlob from "../../assets/blobs/mid-right.svg";
 import textLogo from "../../assets/text-logo.svg";
-import downArrow from "../../assets/down-arrow.svg";
+// import downArrow from "../../assets/down-arrow.svg";
 
-import homeBg from "../../assets/HomePage.png"
-import familyBg from "../../assets/FamilyPage.png"
-import eventsBg from "../../assets/EventPage.JPG"
+import homeBg from "../../assets/HomePage.webp"
+import familyBg from "../../assets/FamilyPage.webp"
+import eventsBg from "../../assets/EventPage.webp"
 // import applyBg from "../../assets/ApplyPage.png"
 
 import NavBar from "./NavBar";
