@@ -78,7 +78,7 @@ export default function SplashPage() {
               id="page-name"
               className={`${
                 header == "home" ? "hidden" : ""
-              } text-7xl font-bold`}
+              } text-7xl font-bold text-white md:text-8xl lg:text-9xl text-center`}
             >
               {header}
             </h1>

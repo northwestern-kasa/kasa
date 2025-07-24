@@ -3,9 +3,10 @@ import SplashPage from "../components/SplashPage";
 import logo from "/Logo.svg";
 // import api from "../fetchApiService";
 import { useForm, SubmitHandler } from "react-hook-form";
-import React, { useState } from "react";
 import { Button } from "../components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Toaster, toast } from "sonner";
+
 
 interface ContactFormInputs {
   firstname: string;
@@ -17,7 +18,6 @@ interface ContactFormInputs {
 
 export default function Contact() {
   const { register, handleSubmit, reset } = useForm<ContactFormInputs>();
-  const [submitted, setSubmitted] = useState(true);
 
   const sendMsg: SubmitHandler<ContactFormInputs> = async (data) => {
     const formData = new FormData();
@@ -32,34 +32,34 @@ export default function Contact() {
         body: formData
       });
       const result = await response.json();
-      console.log(result);
+      // console.log(result);
+
       reset();
-      setSubmitted(true);
+      
+      toast.success("Email sent successfully!", {
+          description: "Thank you for reaching out to us.",
+        });
+      
+      
     } catch (error) {
       console.error("Error sending contact form:", error);
+      toast.error("Failed to send message.", {
+        description: "Please try again later.",
+      });
     }
   };
 
-  if (submitted) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="bg-white p-8 rounded-lg shadow-lg text-center">
-          <h2 className="text-3xl font-bold mb-4">Message Sent!</h2>
-          <p className="text-gray-600">Thank you for reaching out. We'll get back to you soon!</p>
-        </div>
-      </div>
-
-    );
-  }
   return (
     <div>
       <main className="">
         <div className="h-[80vh] -mt-96">
           <SplashPage />
         </div>
+        
+
         <div
           id="contactPage"
-          className="mb-10 relative z-10 flex flex-col items-center justify-center place-content-center"
+          className="-mt-20 mb-10 relative z-10 flex flex-col items-center justify-center place-content-center"
         >
           <h1 className="text-center font-extrabold text-5xl">Get in Touch</h1>
           <p className="text-center mt-1 mb-12 text-gray-500">

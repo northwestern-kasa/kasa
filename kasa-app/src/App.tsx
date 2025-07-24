@@ -14,6 +14,7 @@ import Wip from './pages/wip';
 import { useEffect, useState } from 'react';
 import api from './fetchApiService';
 import Family from './pages/family';
+import { Toaster } from "@/components/ui/sonner"
 
 export default function App() {
   const [user, setUser] = useState({});
@@ -34,6 +35,7 @@ export default function App() {
   return (
     <Router>
       <Header/>
+      <Toaster position="top-center" richColors />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/family" element={<Family />} />

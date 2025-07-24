@@ -43,7 +43,7 @@ export default function Events() {
         <SplashPage />
 
         {/* Content Area */}
-        <section className="-mt-44 mb-24 flex flex-col items-center">
+        <section className="mt-10 mb-24 flex flex-col items-center">
           <h1 className="text-4xl font-bold mb-10">Our Events</h1>
 
           {loading ? (

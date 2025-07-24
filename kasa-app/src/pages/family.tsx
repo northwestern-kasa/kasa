@@ -12,9 +12,9 @@ export default function Family() {
     >
       <main className="">
         <SplashPage />
-        <div id="familyContent" className="-mt-44">
+        <div id="familyContent" className="mt-10 mb-24 flex flex-col items-center">
           <div id="familyMain">
-            <h1 className="text-center font-bold text-[72px]">What are Families?</h1>
+            <h1 className="text-center font-bold text-6xl">What are Families?</h1>
             <div className="flex items-center justify-center">
               <p className="text-center justify-center mt-4 w-[1238px]">Within KASA are three families — <span className="text-[#F59597] font-bold">Goguryeo</span>, <span className="text-[#76D3FF] font-bold">Silla</span>  and <span className="text-[#FFE845] font-bold">Baekje</span>, — which have proven increasingly essential as the organization continues to grow. Every member is placed into a family, their choice influenced by many factors: a potential sunbae (선배), the family’s character, and the friends they meet. The families symbolize the various kingdoms of Korea before Korea became one nation. Family within family. </p>
             </div>
