@@ -1,8 +1,8 @@
 // Import SVGs as URLs for production builds
 // ...existing image imports for textLogo
-import facebookIcon from "/socials/facebook.svg";
-import instagramIcon from "/socials/instagram.svg";
-import youtubeIcon from "/socials/youtube.svg";
+import facebookIcon from "/socials/facebook.webp";
+import instagramIcon from "/socials/instagram.webp";
+import youtubeIcon from "/socials/youtube.webp";
 // import tiktokIcon from "/socials/tiktok.svg";
 
 // Import text logo
