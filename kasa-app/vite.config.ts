@@ -4,6 +4,8 @@ import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig({
+  // Serve the root 'public' directory as the public folder
+  publicDir: 'public',
   plugins: [react()],
   base: '/',
   assetsInclude: [

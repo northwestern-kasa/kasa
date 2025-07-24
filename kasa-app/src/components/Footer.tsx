@@ -58,14 +58,14 @@ export default function Footer() {
           rel="noopener"
           href="https://www.instagram.com/northwesternkasa/"
         >
-          <img src="/assets/socials/instagram.svg" alt="Instagram logo" />
+          <img src="/public/socials/instagram.svg" alt="Instagram logo" />
         </a>
         <a
           target="_blank"
           rel="noopener"
           href="https://www.facebook.com/northwesternkasa/"
         >
-          <img src="/assets/socials/facebook.svg" alt="Facebook logo" />
+          <img src="/public/socials/facebook.svg" alt="Facebook logo" />
         </a>
 
         <a
@@ -73,7 +73,7 @@ export default function Footer() {
           rel="noopener"
           href="https://www.youtube.com/channel/UCDkuIQbMa9IqMhe6HBA6OHQ"
         >
-          <img src="/assets/socials/youtube.svg" alt="Youtube logo" />
+          <img src="/public/socials/youtube.svg" alt="Youtube logo" />
         </a>
         {/* <a
           target="_blank"
