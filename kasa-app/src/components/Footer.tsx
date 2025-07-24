@@ -1,5 +1,11 @@
 // Import SVGs as URLs for production builds
 // ...existing image imports for textLogo
+import facebookIcon from "/socials/facebook.svg";
+import instagramIcon from "/socials/instagram.svg";
+import youtubeIcon from "/socials/youtube.svg";
+// import tiktokIcon from "/socials/tiktok.svg";
+
+// Import text logo
 import textLogo from "../../assets/text-logo.png";
 import { Link, useLocation } from "react-router-dom";
 
@@ -18,7 +24,7 @@ export default function Footer() {
       />
       <div
         id="nav"
-        className="flex flex-col items-center space-between mb-8 gap-8 sm:flex-row sm:gap-12 sm:mb-12"
+        className="flex flex-col items-center space-between mb-4 gap-8 sm:flex-row sm:gap-12 sm:mb-10"
       >
         <Link to="/">
           <h6 className={currentPath == "/" ? "font-bold" : ""}>Home</h6>
@@ -58,14 +64,14 @@ export default function Footer() {
           rel="noopener"
           href="https://www.instagram.com/northwesternkasa/"
         >
-          <img src="/socials/instagram.svg" alt="Instagram logo" />
+          <img src={instagramIcon} alt="Instagram logo" />
         </a>
         <a
           target="_blank"
           rel="noopener"
           href="https://www.facebook.com/northwesternkasa/"
         >
-          <img src="/socials/facebook.svg" alt="Facebook logo" />
+          <img src={facebookIcon} alt="Facebook logo" />
         </a>
 
         <a
@@ -73,14 +79,14 @@ export default function Footer() {
           rel="noopener"
           href="https://www.youtube.com/channel/UCDkuIQbMa9IqMhe6HBA6OHQ"
         >
-          <img src="/socials/youtube.svg" alt="Youtube logo" />
+          <img src={youtubeIcon} alt="Youtube logo" />
         </a>
         {/* <a
           target="_blank"
           rel="noopener"
           href="https://www.tiktok.com/northwesternkasa"
         >
-          <img src="/assets/socials/tiktok.svg" alt="Tiktok logo" />
+          <img src={tiktokIcon} alt="Tiktok logo" />
         </a> */}
 
         

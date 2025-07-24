@@ -8,15 +8,12 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 flex items-center justify-between p-2 z-10 bg-white select-none">
       {/* Logo visible always */}
-      <div className="flex items-center space-x-3">
-        <Link to="/" className="block w-10">
-          <img src={logo} alt="Kasa's logo" className="block w-full h-auto"/>
-        </Link>
+      <Link to="/" className="flex items-center space-x-3">
+        <img src={logo} alt="Kasa's logo" className="w-10 h-auto block" />
         <h1 className="text-2xl font-bold text-stone-900">
           KASA
         </h1>
-      </div>
-      
+      </Link>
       
       {/* Mobile Navbar: Visible only on mobile devices */}
       <div className="block md:hidden">
