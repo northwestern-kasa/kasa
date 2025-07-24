@@ -33,7 +33,7 @@ export default function NavBar() {
 
       {/* Mobile Navbar: Hamburger Menu */}
       
-      <div className="fixed md:hidden flex items-center right-1 top-2">
+      <div className="fixed md:hidden flex items-center right-1 top-2" onClick={toggleMenu}>
         <h3 className="text-2xl font-black text-black -mr-1">
           MENU
         </h3>
