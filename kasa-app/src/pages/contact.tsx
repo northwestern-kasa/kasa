@@ -59,7 +59,7 @@ export default function Contact() {
 
         <div
           id="contactPage"
-          className="-mt-28 mb-10 relative z-5 flex flex-col items-center justify-center place-content-center"
+          className="-mt-28 mb-24 relative z-5 flex flex-col items-center justify-center place-content-center"
         >
           {/* <h1 className="text-center font-extrabold text-3xl sm:text-4xl px-2 sm:px-10">Get in Touch</h1>
           <p className="text-center mt-1 mb-12 text-gray-500 px-10 sm:px-10">

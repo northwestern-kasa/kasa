@@ -10,11 +10,16 @@ export default defineConfig({
     '**/*.JPG',
     '**/*.JPEG',
     '**/*.PNG',
-    '**/*.SVG'
+    '**/*.SVG',
+    '**/*.svg',
+    '**/*.WEBP',
   ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
     },
+  },
+  build: {
+    assetsInlineLimit: 0,
   },
 })

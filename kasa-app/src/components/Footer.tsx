@@ -1,3 +1,4 @@
+// Import SVGs as URLs for production builds
 import instagram from "../../assets/socials/instagram.svg";
 import facebook from "../../assets/socials/facebook.svg";
 import youtube from "../../assets/socials/youtube.svg";
@@ -14,7 +15,7 @@ export default function Footer() {
     >
       <img
         id="logo"
-        className="mb-6 sm:mb-12"
+        className="w-32 mb-6 sm:mb-7 select-none"
         src={textLogo}
         alt="Kasa's text logo"
       />

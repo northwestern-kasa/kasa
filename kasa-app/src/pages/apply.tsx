@@ -9,7 +9,7 @@ export default function Apply() {
         <div className="h-[80vh] -mt-40">
           <SplashPage />
         </div>
-        <div id="content" className="-mt-48 mb-32 relative z-5 flex flex-col items-center justify-center place-content-center">
+        <div id="content" className="-mt-28 mb-24 relative z-5 flex flex-col items-center justify-center place-content-center">
           <h1 className="text-3xl font-bold mb-4 text-center">
             Newest Applications
           </h1>
@@ -20,7 +20,7 @@ export default function Apply() {
             <a
             target="_blank"
             rel="noopener noreferrer"
-            href="https://docs.google.com/presentation/d/1Ad3-4FKsEs2lC-MzCGzO1g8lgCwaAipCe3niCnz2o6Q/edit?usp=sharing"
+            href="https://www.instagram.com/northwesternkasa/?hl=en"
           >
             Google Forms
             </a>
