@@ -6,7 +6,7 @@ import youtubeIcon from "/socials/youtube.svg";
 // import tiktokIcon from "/socials/tiktok.svg";
 
 // Import text logo
-import textLogo from "../../assets/text-logo.png";
+import textLogo from "/text-logo.webp";
 import { Link, useLocation } from "react-router-dom";
 
 export default function Footer() {
