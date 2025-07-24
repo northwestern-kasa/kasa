@@ -5,7 +5,7 @@ import logo from "/Logo.svg";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Button } from "../components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Toaster, toast } from "sonner";
+import { toast } from "sonner";
 
 
 interface ContactFormInputs {
@@ -52,7 +52,7 @@ export default function Contact() {
   return (
     <div>
       <main className="">
-        <div className="h-[80vh] -mt-96">
+        <div className="h-[80vh] -mt-40">
           <SplashPage />
         </div>
         
@@ -61,8 +61,8 @@ export default function Contact() {
           id="contactPage"
           className="-mt-20 mb-10 relative z-10 flex flex-col items-center justify-center place-content-center"
         >
-          <h1 className="text-center font-extrabold text-5xl">Get in Touch</h1>
-          <p className="text-center mt-1 mb-12 text-gray-500">
+          <h1 className="text-center font-extrabold text-4xl px-10">Get in Touch</h1>
+          <p className="text-center mt-1 mb-12 text-gray-500 px-10">
             Fill out the form and our team will get to you with 24 hours
           </p>
 

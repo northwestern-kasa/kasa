@@ -6,7 +6,7 @@ import Join from "./Join";
 
 export default function Header() {
   return (
-    <header className="fixed top-0 left-0 right-0 flex items-center justify-between p-2 z-10 bg-white">
+    <header className="fixed top-0 left-0 right-0 flex items-center justify-between p-2 z-10 bg-white select-none">
       {/* Logo visible always */}
       <div className="flex items-center space-x-2">
         <Link to="/" className="md:block w-10">

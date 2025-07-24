@@ -76,7 +76,7 @@
 body {
   color: #232323;
   /* background-color: #fff; */
-  overflow-x: hidden;
+  overflow-x: auto;
 }
 
 .navBarShadow {

@@ -39,8 +39,8 @@ export default function SplashPage() {
 
 
   return (
-    <section id="splash" className="relative h-[100vh] overflow-hidden z-0">
-      {header !== "Contact Us" && (
+    <section id="splash" className="relative h-[100vh] overflow-hidden z-0 select-none">
+      {(header !== "Contact Us" && header !== "Application") && (
         <div
           className="absolute inset-0 bg-center bg-cover"
           style={{
@@ -62,7 +62,7 @@ export default function SplashPage() {
             className="flex flex-col items-center justify-center space-y-8"
           >
             <img
-              width={300}
+              width="320"
               src={textLogo}
               alt="KASA's text logo"
               className={header == "home" ? "invert-[100%]" : "hidden"}
@@ -76,9 +76,12 @@ export default function SplashPage() {
             </h1>
             <h1
               id="page-name"
-              className={`${
-                header == "home" ? "hidden" : ""
-              } text-7xl font-bold text-white md:text-8xl lg:text-9xl text-center`}
+              className={`
+                ${header === "home" ? "hidden" : ""} 
+                ${((header === "Contact Us" || header === "Application") ? 'text-black' : 'text-white')}
+                text-5xl font-bold 
+                md:text-8xl lg:text-9xl text-center
+              `}
             >
               {header}
             </h1>

@@ -9,6 +9,7 @@ import { fetchExecutives } from "../contentful";
 import community from "../../assets/etc/community.svg";
 import cultural from "../../assets/etc/cultural.svg";
 import impact from "../../assets/etc/impact.svg";
+import Join from "@/components/Join";
 
 import underlineBlue from "../../assets/etc/blueunderline.svg";
 // import underlineRed from "../../assets/etc/redunderline.svg";
@@ -99,12 +100,12 @@ export default function Home() {
 
   return (
     <div>
-      <main>
+      <main className="">
         {/* Hero/Splash section */}
         <SplashPage />
 
-        {/* Info Cards Section */}
-        <div id="whatIs" className="-mt-44 lg:mt-24">
+        <section className="mt-10 mb-24 flex flex-col items-center">
+        <div id="whatIs" className="">
           <h1 className="text-[44px] font-bold text-center"> What is KASA? </h1>
           <div
             id="underlineblue"
@@ -255,6 +256,16 @@ export default function Home() {
             </>
           )}
         </div>
+        <div className="flex flex-col items-center justify-center mb-24">
+          <h2 className="text-center font-bold text-2xl mb-8">
+            Join KASA Today!
+          </h2>
+          <p className="text-center mb-8 px-10">
+            Interested in becoming a member? Click the button below to apply.
+          </p>
+          <Join />
+        </div>
+        </section>
       </main>
 
       {/* Footer */}

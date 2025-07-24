@@ -1,28 +1,33 @@
 import Footer from "../components/Footer";
 import SplashPage from "../components/SplashPage";
-import { Link } from 'react-router-dom'
+import { Button } from "@/components/ui/button";
 
 export default function Apply() {
   return (
-    <div
-      className={""}
-    >
+    <div className={""}>
       <main className="">
-        <SplashPage />
-        <div id="content" className="w-full flex justify-center -mt-40 pb-48">
-          <div id="apply-container" className="border border-gray-300 rounded-2xl p-8">
-            <p className="text-gray-500 text-sm">Winter 2025</p>
-            <h4 className="font-bold text-2xl">General Member Application</h4>
-            <p className="text-sm">due 01/10/2025</p>
-            <Link to="/memberform" className="">
-              <button className="bg-red text-white text-sm py-2 px-8 rounded-full mt-4">
-                Apply
-              </button>
-            </Link>
-          </div>
+        <div className="h-[80vh] -mt-40">
+          <SplashPage />
+        </div>
+        <div id="content" className="-mt-48 mb-32 relative z-5 flex flex-col items-center justify-center place-content-center">
+          <h1 className="text-3xl font-bold mb-4 text-center">
+            Newest Applications
+          </h1>
+          <Button
+            asChild
+            className="bg-[#ff3939cd] font-black text-black hover:bg-red/90 w-1/2 md:w-1/3 lg:w-1/4 mb-8"
+          >
+            <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://docs.google.com/presentation/d/1Ad3-4FKsEs2lC-MzCGzO1g8lgCwaAipCe3niCnz2o6Q/edit?usp=sharing"
+          >
+            Google Forms
+            </a>
+          </Button>
         </div>
       </main>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

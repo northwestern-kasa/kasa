@@ -44,10 +44,10 @@ export default function Events() {
 
         {/* Content Area */}
         <section className="mt-10 mb-24 flex flex-col items-center">
-          <h1 className="text-4xl font-bold mb-10">Our Events</h1>
+          <h1 className="text-center font-bold text-6xl mb-10">Our Events</h1>
 
           {loading ? (
-            <p>Loading events...</p>
+            <p className="text-center text-xl">Loading events...</p>
           ) : events.length > 0 ? (
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-12">
               {events.map((event, index) => (
