@@ -59,20 +59,20 @@ export default function Contact() {
 
         <div
           id="contactPage"
-          className="-mt-20 mb-10 relative z-10 flex flex-col items-center justify-center place-content-center"
+          className="-mt-28 mb-10 relative z-5 flex flex-col items-center justify-center place-content-center"
         >
-          <h1 className="text-center font-extrabold text-4xl px-10">Get in Touch</h1>
-          <p className="text-center mt-1 mb-12 text-gray-500 px-10">
+          {/* <h1 className="text-center font-extrabold text-3xl sm:text-4xl px-2 sm:px-10">Get in Touch</h1>
+          <p className="text-center mt-1 mb-12 text-gray-500 px-10 sm:px-10">
             Fill out the form and our team will get to you with 24 hours
-          </p>
+          </p> */}
 
           <div
             id="contactbox"
-            className="contactBox mb-8 m-auto align-middle grid grid-cols-2 p-8 gap-4 pb-1"
+            className=" mb-8 grid grid-cols-1 md:grid-cols-2 p-4 w-full md:w-3/4"
           >
             <div
               id="leftcol"
-              className="flex flex-col items-start justify-center"
+              className="flex flex-col items-center sm:items-start justify-center"
             >
               <div className="p-4 -mt-10">
                 <h2 className="font-bold text-2xl">Have Questions?</h2>
@@ -80,20 +80,21 @@ export default function Contact() {
                   northwesternkasa@gmail.com
                 </p>
               </div>
+              
               <img
                 src={logo}
                 alt="KASA Logo"
-                className="w-1/3 self-center m-20  min-w-[120px]"
+                className="w-1/2  self-center m-10 hidden md:block"
               />
             </div>
 
-            <div id="rightcol" className="flex flex-col justify-center">
+            <div id="rightcol" className="flex flex-col justify-center sm:w-full">
               <form
                 onSubmit={handleSubmit(sendMsg)}
                 method="POST"
-                className="space-y-5 place-items-center"
+              className="space-y-5"
               >
-                <div className="flex flex-col w-full place-content-between sm:flex-row space-x-2">
+                <div className="flex flex-col w-full space-y-2 sm:flex-row sm:space-x-2 sm:space-y-0">
                   <Input
                     {...register("firstname", { required: "First name is required" })}
                     type="text"
@@ -125,19 +126,10 @@ export default function Contact() {
                   placeholder="Message"
                   className="block w-full rounded-lg border border-gray-300 px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-900 resize-none"
                 />
-                <div className="flex flex-col place-content-end w-full sm:flex-row ">
+                <div className="flex w-full justify-center sm:justify-end">
                   <Button
                     type="submit"
-                    className="
-                      border-2
-                      border-rose-400
-                      bg-white
-                      px-6
-                      font-semibold
-                      text-black
-                      transition-colors
-                      hover:bg-gray-100
-                    "
+                    className="w-full sm:w-auto border-2 border-rose-400 bg-white px-6 font-semibold text-black transition-colors hover:bg-gray-100"
                   >
                     Submit
                   </Button>

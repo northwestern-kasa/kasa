@@ -17,7 +17,7 @@ import { useLocation } from "react-router-dom";
 
 const pageHeaders: any = {
   "/": "home",
-  "/family": "Families!",
+  "/family": "Families",
   "/events": "Events",
   "/apply": "Application",
   "/directory": "Directory",
@@ -26,7 +26,7 @@ const pageHeaders: any = {
 
 const bgMap: Record<string,string> = {
     "home":        homeBg,
-    "Families!":  familyBg,
+    "Families":  familyBg,
     "Events":  eventsBg,
     // "Application":   applyBg,
     // …any others
@@ -39,7 +39,7 @@ export default function SplashPage() {
 
 
   return (
-    <section id="splash" className="relative h-[100vh] overflow-hidden z-0 select-none">
+    <section id="splash" className="relative h-[85vh] sm:h-[96vh] z-0 select-none">
       {(header !== "Contact Us" && header !== "Application") && (
         <div
           className="absolute inset-0 bg-center bg-cover"
@@ -47,7 +47,7 @@ export default function SplashPage() {
             backgroundPosition: "center",
             backgroundSize: "cover",
             backgroundImage: `url(${bgImage})`,
-            filter: "blur(1.9px) grayscale(100%)",
+            filter: "blur(1px) grayscale(100%)",
           }}
         />
       )}
@@ -79,7 +79,7 @@ export default function SplashPage() {
               className={`
                 ${header === "home" ? "hidden" : ""} 
                 ${((header === "Contact Us" || header === "Application") ? 'text-black' : 'text-white')}
-                text-5xl font-bold 
+                text-7xl font-bold 
                 md:text-8xl lg:text-9xl text-center
               `}
             >

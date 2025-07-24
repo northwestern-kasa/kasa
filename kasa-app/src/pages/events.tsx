@@ -44,7 +44,7 @@ export default function Events() {
 
         {/* Content Area */}
         <section className="mt-10 mb-24 flex flex-col items-center">
-          <h1 className="text-center font-bold text-6xl mb-10">Our Events</h1>
+          <h1 className="text-center font-bold text-6xl mb-10 px-10">Our Events</h1>
 
           {loading ? (
             <p className="text-center text-xl">Loading events...</p>

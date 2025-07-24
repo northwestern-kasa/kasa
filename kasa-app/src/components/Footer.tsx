@@ -1,7 +1,7 @@
-import instagram from "../../assets/socials/instagram.png";
-import facebook from "../../assets/socials/facebook.png";
-import youtube from "../../assets/socials/youtube.png";
-import tiktok from "../../assets/socials/tiktok.png";
+import instagram from "../../assets/socials/instagram.svg";
+import facebook from "../../assets/socials/facebook.svg";
+import youtube from "../../assets/socials/youtube.svg";
+import tiktok from "../../assets/socials/tiktok.svg";
 import textLogo from "../../assets/text-logo.png";
 import { Link, useLocation } from "react-router-dom";
 
@@ -51,9 +51,9 @@ export default function Footer() {
           </h6>
         </Link>
       </div>
-      <h6 id="cta" className="font-bold mb-4 hidden sm:block">
+      {/* <h6 id="cta" className="font-bold mb-4 hidden sm:block">
         Stay in touch
-      </h6>
+      </h6> */}
       <div id="socials" className="flex flex-row mb-8 space-x-8">
         <a
           target="_blank"

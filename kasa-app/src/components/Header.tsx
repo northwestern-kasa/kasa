@@ -8,9 +8,9 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 flex items-center justify-between p-2 z-10 bg-white select-none">
       {/* Logo visible always */}
-      <div className="flex items-center space-x-2">
+      <div className="flex items-center space-x-3">
         <Link to="/" className="md:block w-10">
-          <img src={logo} alt="Kasa's logo" />
+          <img src={logo} alt="Kasa's logo" className="w-full h-auto"/>
         </Link>
         <h1 className="text-2xl font-bold text-stone-900">
           KASA

@@ -104,7 +104,7 @@ export default function Home() {
         {/* Hero/Splash section */}
         <SplashPage />
 
-        <section className="mt-10 mb-24 flex flex-col items-center">
+        <section className="mt-10 mb-24 flex flex-col items-center px-10">
         <div id="whatIs" className="">
           <h1 className="text-[44px] font-bold text-center"> What is KASA? </h1>
           <div
@@ -257,7 +257,7 @@ export default function Home() {
           )}
         </div>
         <div className="flex flex-col items-center justify-center mb-24">
-          <h2 className="text-center font-bold text-2xl mb-8">
+          <h2 className="text-center font-bold text-4xl mb-8">
             Join KASA Today!
           </h2>
           <p className="text-center mb-8 px-10">
