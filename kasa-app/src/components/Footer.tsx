@@ -58,7 +58,7 @@ export default function Footer() {
       {/* <h6 id="cta" className="font-bold mb-4 hidden sm:block">
         Stay in touch
       </h6> */}
-      <div id="socials" className="flex flex-row mb-8 space-x-8">
+      <div id="socials" className="flex flex-row mb-8 space-x-8 px-6">
         <a
           target="_blank"
           rel="noopener"
@@ -97,8 +97,13 @@ export default function Footer() {
 
         
       </div>
-      <div id="copyright" className="text-gray-400 mb-4 text-xs">
-        ©2025 northwesternkasa
+      <div className="w-full bg-gray-50 py-6">
+        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-6 text-gray-600 text-sm">
+          <span>© {new Date().getFullYear()} Northwestern KASA</span>
+          <span className="hidden sm:inline">|</span>
+          {/* Easter egg: drink calculator */}
+          <span>Made with<Link to="/calculator" className=""> ❤️ </Link>by KASA</span>
+        </div>
       </div>
     </div>
   );

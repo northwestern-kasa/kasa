@@ -50,7 +50,7 @@ export default function Events() {
           {loading ? (
             <p className="text-center text-xl">Loading events...</p>
           ) : events.length > 0 ? (
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-12">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-12 px-10">
               {events.map((event, index) => (
                 <EventCard key={index} event={event} />
               ))}
