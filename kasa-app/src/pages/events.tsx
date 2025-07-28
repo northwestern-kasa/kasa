@@ -2,6 +2,7 @@ import Footer from "../components/Footer";
 import SplashPage from "../components/SplashPage";
 import { useState, useEffect } from "react";
 import { fetchEvents } from "../contentful";
+import { Link } from 'react-router-dom';
 
 // interface Event {
 //   fields: {
@@ -65,30 +66,35 @@ export default function Events() {
 }
 
 function EventCard({ event }: { event: any }) {
+  const imageUrl = event.fields.image?.fields.file.url;
+  const id = event.sys.id;
   return (
-    <div className="w-64 bg-white rounded-md shadow-md overflow-hidden">
+    <Link
+      to={`/events/${id}`}
+      className="block w-full sm:w-80 bg-white rounded-lg shadow-lg hover:shadow-2xl overflow-hidden transition-shadow duration-200 mx-auto"
+    >
       {/* Event image, if present */}
-      {event.fields.image && (
+      {imageUrl && (
         <img
-          src={event.fields.image.fields.file.url}
+          src={imageUrl}
           alt={event.fields.title}
-          className="w-full h-40 object-cover"
+          className="w-full h-48 object-cover"
         />
       )}
-      <div className="p-4">
-        <h3 className="font-bold text-xl mb-2">{event.fields.title}</h3>
+      <div className="p-5">
+        <h3 className="font-semibold text-2xl mb-2 truncate">{event.fields.title}</h3>
         {event.fields.description && (
-          <p className="text-gray-600 text-sm">{event.fields.description}</p>
+          <p className="text-gray-600 text-sm mb-2 line-clamp-3">{event.fields.description}</p>
         )}
         {event.fields.date && (
           <p className="text-gray-500 text-xs mt-2">
-            {new Date(event.fields.date).toLocaleDateString()}
+            {new Date(event.fields.date).toLocaleDateString(undefined, { year:'numeric', month:'short', day:'numeric'})}
           </p>
         )}
         {/* Display video if present */}
         {event.fields.video && (
           // Using native HTML5 video element
-          <video controls className="mt-4 w-full h-auto">
+          <video controls className="mt-4 w-full rounded">
             <source 
               src={event.fields.video.fields.file.url} 
               type="video/quicktime" 
@@ -97,7 +103,7 @@ function EventCard({ event }: { event: any }) {
           </video>
         )}
       </div>
-    </div>
+    </Link>
   );
 }
 

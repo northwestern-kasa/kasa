@@ -47,6 +47,16 @@ export const fetchBanners = async () => {
     return [];
   }
 };
+// Fetch a single event by its Contentful entry ID
+export const fetchEventById = async (id: string) => {
+  try {
+    const response = await client.getEntry(id);
+    return response;
+  } catch (error) {
+    console.error(`Error fetching event ${id}:`, error);
+    return null;
+  }
+};
 
 // export const fetchSplashPage = async () => {
 //   try {

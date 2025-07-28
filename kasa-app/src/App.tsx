@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Home from './pages/home';
 import Family from './pages/family';
 import Events from './pages/events';
+import EventDetail from './pages/EventDetail';
 import Apply from './pages/apply';
 import Contact from './pages/contact';
 // import MemberForm from './pages/memberform';
@@ -44,6 +45,7 @@ export default function App() {
         {/* <Route path="/memberform" element={<MemberForm user={user} />} /> */}
         {/* <Route path="/directory" element={<Directory />} /> */}
         <Route path="/contact" element={<Contact />} />
+        <Route path ="/events/:id" element={<EventDetail />} />
         {/* <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} /> */}
       </Routes>
