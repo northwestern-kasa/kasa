@@ -87,8 +87,8 @@ export default function NavBar() {
               </li>
             ))}
             <li>
-              <div className="flex justify-center mt-80">
-                <Join />
+              <div className="flex justify-center mt-80" onClick={() => setIsOpen(false)}>
+                <Join  />
               </div>
             </li>
           </ul>
