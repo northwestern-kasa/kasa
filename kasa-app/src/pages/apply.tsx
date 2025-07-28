@@ -15,7 +15,7 @@ export default function Apply() {
           </h1>
           <Button
             asChild
-            className="bg-[#ff3939cd] font-black text-black hover:bg-red/90 w-1/2 md:w-1/3 lg:w-1/4 mb-8"
+            className="bg-gradient-to-r from-[rgba(255,57,57,0.8)] to-pink-500 text-white font-black  hover:bg-red/90 w-2/3 sm:w-1/3 border-black  h-full py-4 px-10 text-3xl rounded-lg shadow-lg transition-transform hover:scale-105 hover:from-rose-600 hover:to-pink-600"
           >
             <a
             target="_blank"

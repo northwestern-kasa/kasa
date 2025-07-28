@@ -10,6 +10,8 @@ import community from "../../assets/etc/community.svg";
 import cultural from "../../assets/etc/cultural.svg";
 import impact from "../../assets/etc/impact.svg";
 import Join from "@/components/Join";
+import {Button} from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 import underlineBlue from "../../assets/etc/blueunderline.svg";
 // import underlineRed from "../../assets/etc/redunderline.svg";
@@ -263,7 +265,12 @@ export default function Home() {
           <p className="text-center mb-8 px-10">
             Interested in becoming a member? Click the button below to apply.
           </p>
-          <Join />
+          {/* <Join /> */}
+          <Button asChild className="bg-gradient-to-r from-[rgba(255,57,57,0.8)] to-pink-500 text-white font-black  hover:bg-red/90 w-full border-black  h-full py-6 px-10 text-3xl rounded-lg shadow-lg transition-transform hover:scale-105 hover:from-rose-600 hover:to-pink-600">
+            <Link to="/apply" className="w-full inline-block text-center">
+              Apply Now
+            </Link>
+          </Button>
         </div>
         </section>
       </main>
