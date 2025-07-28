@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import SplashPage from "../components/SplashPage";
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 import HomeInfoCard from "../components/HomeInfoCard";
 import ExecCard from "../components/ExecCard/ExecCard"; // Import your ExecCard component
 import { fetchExecutives } from "../contentful";
@@ -269,7 +269,7 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

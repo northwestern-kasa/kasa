@@ -59,7 +59,7 @@ export default function EventDetail() {
           )}
         </section>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

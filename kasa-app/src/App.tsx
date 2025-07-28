@@ -3,7 +3,7 @@ import Header from './components/Header';
 import Home from './pages/home';
 import Family from './pages/family';
 import Events from './pages/events';
-import EventDetail from './pages/EventDetail';
+import EventDetail from './pages/eventdetail';
 import Apply from './pages/apply';
 import Contact from './pages/contact';
 // import MemberForm from './pages/memberform';
@@ -16,6 +16,7 @@ import Contact from './pages/contact';
 // import { useEffect, useState } from 'react';
 // import api from './fetchApiService';
 import { Toaster } from "@/components/ui/sonner"
+import Footer from './components/Footer';
 
 export default function App() {
   // const [user, setUser] = useState({});
@@ -49,6 +50,7 @@ export default function App() {
         {/* <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} /> */}
       </Routes>
+      <Footer />
     </Router>
   )
 }

@@ -1,4 +1,4 @@
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 import SplashPage from "../components/SplashPage";
 
 import ggr from "../../assets/ggr.svg";
@@ -58,7 +58,7 @@ export default function Family() {
           </div>
         </div>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
