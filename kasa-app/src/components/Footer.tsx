@@ -98,7 +98,7 @@ export default function Footer() {
         
       </div>
       <div className="w-full bg-gray-50 py-6">
-        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-6 text-gray-600 text-sm">
+        <div className="select-none max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-6 text-gray-600 text-sm">
           <span>© {new Date().getFullYear()} Northwestern KASA</span>
           <span className="hidden sm:inline">|</span>
           {/* Easter egg: drink calculator */}
