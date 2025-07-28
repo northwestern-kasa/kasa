@@ -33,3 +33,28 @@ export const fetchEvents = async () => {
     return [];
   }
 };
+
+export const fetchBanners = async () => {
+  try {
+    const response = await client.getEntries({
+      content_type: "banner",
+      order: ['fields.page'],
+
+    });
+    return response.items;
+  } catch (error) {
+    console.error("Error fetching banners:", error);
+    return [];
+  }
+};
+
+// export const fetchSplashPage = async () => {
+//   try {
+//     const response = await client.getEntry('banner')
+//     return response;
+//   } catch (error) {
+//     console.error("Error fetching splash page:", error);
+//     return [];
+//   }
+// }
+

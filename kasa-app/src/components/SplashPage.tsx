@@ -7,9 +7,13 @@
 import textLogo from "../../assets/text-logo.svg";
 // import downArrow from "../../assets/down-arrow.svg";
 
+import { fetchBanners } from "@/contentful";
+import { useEffect, useState } from "react";
 import homeBg from "../../assets/HomePage.webp"
 import familyBg from "../../assets/FamilyPage.webp"
 import eventsBg from "../../assets/EventPage.webp"
+
+
 // import applyBg from "../../assets/ApplyPage.png"
 
 import NavBar from "./NavBar";
@@ -33,9 +37,28 @@ const bgMap: Record<string,string> = {
   }
 
 export default function SplashPage() {
+  const [banners, setBanners] = useState<any[]>([]);
   const currentPath = useLocation().pathname;
   const header = pageHeaders[currentPath];
-  const bgImage = bgMap[header] || homeBg
+  const bgImage = bgMap[header] || homeBg;
+  // Look for a matching Contentful banner for this page
+  const pageBanner = banners.find((b: any) => b.fields.page?.toLowerCase() === header?.toLowerCase());
+  // Build URL from Contentful asset if present
+  const contentfulBg = pageBanner?.fields.image?.fields?.file?.url
+    ? `https:${pageBanner.fields.image.fields.file.url}`
+    : bgImage;
+  
+  useEffect(() => {
+      async function getBanners() {
+        try {
+          const data = await fetchBanners();
+          setBanners(data);
+        } catch (error) {
+          console.error("Error loading banners", error);
+        } 
+      }
+      getBanners();
+    }, []);
 
 
   return (
@@ -46,7 +69,7 @@ export default function SplashPage() {
           style={{
             backgroundPosition: "center",
             backgroundSize: "cover",
-            backgroundImage: `url(${bgImage})`,
+            backgroundImage: `url(${contentfulBg})`,
             filter: "blur(1px) grayscale(100%)",
           }}
         />
