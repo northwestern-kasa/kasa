@@ -1,4 +1,4 @@
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 import SplashPage from "../components/SplashPage";
 import logo from "/Logo.svg";
 // import api from "../fetchApiService";
@@ -139,7 +139,6 @@ export default function Contact() {
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }

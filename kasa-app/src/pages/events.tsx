@@ -1,4 +1,4 @@
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 import SplashPage from "../components/SplashPage";
 import { useState, useEffect } from "react";
 import { fetchEvents } from "../contentful";
@@ -60,7 +60,6 @@ export default function Events() {
           )}
         </section>
       </main>
-      <Footer />
     </div>
   );
 }

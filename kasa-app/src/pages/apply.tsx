@@ -1,4 +1,4 @@
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 import SplashPage from "../components/SplashPage";
 import { Button } from "@/components/ui/button";
 
@@ -27,7 +27,6 @@ export default function Apply() {
           </Button>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }

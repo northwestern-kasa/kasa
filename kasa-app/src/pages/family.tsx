@@ -58,7 +58,6 @@ export default function Family() {
           </div>
         </div>
       </main>
-      {/* <Footer /> */}
     </div>
   );
 }
