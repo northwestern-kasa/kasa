@@ -23,7 +23,7 @@ export default function NavBar() {
       {/* Desktop Navbar */}
       <div className="hidden md:flex navBarShadow space-x-20 rounded-full py-4 px-24 text-2xl font-sans bg-white">
         {menuItems.map((item) => (
-          <Link key={item.path} to={item.path}>
+          <Link key={item.path} to={item.path} prefetch="intent">
             <h3 className={currentPath === item.path ? "font-bold" : ""}>
               {item.label}
             </h3>
@@ -54,12 +54,14 @@ export default function NavBar() {
         className={`fixed md:hidden inset-0 bg-black bg-opacity-50 transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "translate-x-full"
         } z-40`}
+        onClick={() => setIsOpen(false)}
       >
         {/* Slide-Out Panel from the Right */}
         <div
           className={`absolute right-0 top-0 h-full w-3/4 sm:w-1/2 bg-white shadow-lg transition-transform duration-300 ${
             isOpen ? "translate-x-0" : "translate-x-full"
           }`}
+          onClick={(e) => e.stopPropagation()}
         >
           {/* Close Button */}
           <div className="flex justify-end p-4">
@@ -78,6 +80,7 @@ export default function NavBar() {
                 <Link
                   to={item.path}
                   onClick={() => setIsOpen(false)}
+                  prefetch="viewport"
                   className={`block text-xl px-4 py-2 ${
                     currentPath === item.path ? "font-bold" : ""
                   }`}
