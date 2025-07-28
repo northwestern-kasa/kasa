@@ -4,7 +4,7 @@
 // import topRightBlob from "../../assets/blobs/top-right.svg";
 // import midLeftBlob from "../../assets/blobs/mid-left.svg";
 // import midRightBlob from "../../assets/blobs/mid-right.svg";
-import textLogo from "../../assets/text-logo.svg";
+import textLogo from "/text-logo.webp";
 // import downArrow from "../../assets/down-arrow.svg";
 
 import { fetchBanners } from "@/contentful";
@@ -88,7 +88,7 @@ export default function SplashPage() {
               width="320"
               src={textLogo}
               alt="KASA's text logo"
-              className={header == "home" ? "invert-[100%]" : "hidden"}
+              className={header == "home" ? "invert" : "hidden"}
             />
             <h1
               className={
