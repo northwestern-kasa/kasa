@@ -3,7 +3,7 @@ import Header from './components/Header';
 import Home from './pages/home';
 import Family from './pages/family';
 import Events from './pages/events';
-import EventDetail from './pages/eventdetail';
+import EventDetail from './pages/EventDetail';
 import Apply from './pages/apply';
 import Contact from './pages/contact';
 // import MemberForm from './pages/memberform';

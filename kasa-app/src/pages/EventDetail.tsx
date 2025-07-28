@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { fetchEventById } from "../contentful";
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 // import SplashPage from "../components/SplashPage";
 
 export default function EventDetail() {
