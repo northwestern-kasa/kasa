@@ -64,14 +64,15 @@ export default function SplashPage() {
   return (
     <section id="splash" className="relative h-[85vh] sm:h-[96vh] z-0 select-none">
       {(header !== "Contact Us" && header !== "Application") && (
-        <div
-          className="absolute inset-0 bg-center bg-cover"
-          style={{
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-            backgroundImage: `url(${contentfulBg})`,
-            filter: "blur(1px) grayscale(100%)",
-          }}
+        <img
+          src={`${contentfulBg}?fm=webp&w=1920&q=70`}
+          alt=""
+          width={1920}
+          height={1080}
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
+          className="absolute inset-0 w-full h-full object-cover [filter:blur(1px)_grayscale(100%)]"
         />
       )}
       {/* ...other blob images (commented out) */}
