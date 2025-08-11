@@ -267,7 +267,7 @@ export default function Home() {
           </p>
           {/* <Join /> */}
           <Button asChild className="bg-gradient-to-r from-[rgba(255,57,57,0.8)] to-pink-500 text-white font-black  hover:bg-red/90 w-full border-black  h-full py-6 px-10 text-3xl rounded-lg shadow-lg transition-transform hover:scale-105 hover:from-rose-600 hover:to-pink-600">
-            <Link to="/apply" className="w-full inline-block text-center">
+            <Link to="/apply" className="w-full inline-block text-center" prefetch="intent">
               Apply Now
             </Link>
           </Button>

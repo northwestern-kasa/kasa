@@ -50,7 +50,7 @@ export default function Events() {
           {loading ? (
             <p className="text-center text-xl">Loading events...</p>
           ) : events.length > 0 ? (
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-12 px-10">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-12 px-10 ">
               {events.map((event, index) => (
                 <EventCard key={index} event={event} />
               ))}
@@ -70,13 +70,17 @@ function EventCard({ event }: { event: any }) {
   return (
     <Link
       to={`/events/${id}`}
-      className="block w-full sm:w-80 bg-white rounded-lg shadow-lg hover:shadow-2xl overflow-hidden transition-shadow duration-200 mx-auto"
+      className="block w-full sm:w-80 bg-white rounded-lg shadow-lg hover:shadow-2xl overflow-hidden transition-shadow duration-200 mx-auto "
     >
       {/* Event image, if present */}
       {imageUrl && (
         <img
-          src={imageUrl}
+          src={`https:${imageUrl}?fm=webp&w=640&h=360&fit=fill&q=70`}
           alt={event.fields.title}
+          width={640}
+          height={360}
+          loading="lazy"
+          decoding="async"
           className="w-full h-48 object-cover"
         />
       )}
@@ -92,12 +96,8 @@ function EventCard({ event }: { event: any }) {
         )}
         {/* Display video if present */}
         {event.fields.video && (
-          // Using native HTML5 video element
-          <video controls className="mt-4 w-full rounded">
-            <source 
-              src={event.fields.video.fields.file.url} 
-              type="video/quicktime" 
-            />
+          <video controls className="mt-4 w-full rounded" preload="none" poster={imageUrl ? `https:${imageUrl}?fm=webp&w=640&h=360&fit=fill&q=60` : undefined}>
+            <source src={event.fields.video.fields.file.url} type="video/quicktime" />
             Your browser does not support the video tag.
           </video>
         )}
