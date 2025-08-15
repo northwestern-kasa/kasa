@@ -96,7 +96,7 @@ export default function SplashPage() {
                 header == "home" ? "text-2xl font-bold text-white" : "hidden"
               }
             >
-              Work Hard Play Hard
+              Community Through Culture
             </h1>
             <h1
               id="page-name"
