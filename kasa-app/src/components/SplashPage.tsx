@@ -9,9 +9,9 @@ import textLogo from "/text-logo.webp";
 
 import { fetchBanners } from "@/contentful";
 import { useEffect, useState } from "react";
-import homeBg from "../../assets/HomePage.webp"
-import familyBg from "../../assets/FamilyPage.webp"
-import eventsBg from "../../assets/EventPage.webp"
+// import homeBg from "../../assets/HomePage.webp"
+// import familyBg from "../../assets/FamilyPage.webp"
+// import eventsBg from "../../assets/EventPage.webp"
 
 
 // import applyBg from "../../assets/ApplyPage.png"
@@ -28,25 +28,25 @@ const pageHeaders: any = {
   "/contact": "Contact Us",
 };
 
-const bgMap: Record<string,string> = {
-    "home":        homeBg,
-    "Families":  familyBg,
-    "Events":  eventsBg,
-    // "Application":   applyBg,
-    // …any others
-  }
+// const bgMap: Record<string,string> = {
+//     "home":        homeBg,
+//     "Families":  familyBg,
+//     "Events":  eventsBg,
+//     // "Application":   applyBg,
+//     // …any others
+//   }
 
 export default function SplashPage() {
   const [banners, setBanners] = useState<any[]>([]);
   const currentPath = useLocation().pathname;
   const header = pageHeaders[currentPath];
-  const bgImage = bgMap[header] || homeBg;
+  // const bgImage = bgMap[header] || homeBg;
   // Look for a matching Contentful banner for this page
   const pageBanner = banners.find((b: any) => b.fields.page?.toLowerCase() === header?.toLowerCase());
   // Build URL from Contentful asset if present
   const contentfulBg = pageBanner?.fields.image?.fields?.file?.url
     ? `https:${pageBanner.fields.image.fields.file.url}`
-    : bgImage;
+    : '';
   
   useEffect(() => {
       async function getBanners() {
