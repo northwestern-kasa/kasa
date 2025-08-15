@@ -67,12 +67,12 @@ export default function SplashPage() {
         <img
           src={`${contentfulBg}?fm=webp&w=1920&q=70`}
           alt=""
-          width={1920}
-          height={1080}
+          // width={1920}
+          // height={1080}
           loading="eager"
           decoding="async"
           fetchPriority="high"
-          className="absolute inset-0 w-full h-full object-cover [filter:blur(1px)_grayscale(100%)]"
+          className="absolute inset-0 w-full h-full object-cover [filter:blur(3px)]"
         />
       )}
       {/* ...other blob images (commented out) */}
@@ -89,11 +89,11 @@ export default function SplashPage() {
               width="320"
               src={textLogo}
               alt="KASA's text logo"
-              className={header == "home" ? "invert" : "hidden"}
+              className={header == "home" ? "" : "hidden"}
             />
             <h1
               className={
-                header == "home" ? "text-2xl font-bold text-white" : "hidden"
+                header == "home" ? "text-2xl font-bold text-black" : "hidden"
               }
             >
               Community Through Culture

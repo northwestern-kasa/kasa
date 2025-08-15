@@ -37,36 +37,6 @@ async function getEntriesCached<T extends EntrySkeletonType>(
   return res;
 }
 
-/**
- * Helper to build optimized Contentful Image URLs
- * Example: buildImageUrl(url, { fm: "webp", w: 640, h: 360, fit: "fill", q: 70 })
- */
-export type ImgParams = {
-  w?: number;
-  h?: number;
-  q?: number;
-  fm?: "avif" | "webp" | "jpg" | "png" | "gif";
-  fit?: "fill" | "thumb" | "pad" | "crop" | "scale";
-  r?: number; // rounded corners
-};
-
-const ensureHttps = (u: string) => (u.startsWith("http") ? u : `https:${u}`);
-
-export const buildImageUrl = (url: string, p: ImgParams = {}) => {
-  const u = new URL(ensureHttps(url));
-  if (p.w) u.searchParams.set("w", `${p.w}`);
-  if (p.h) u.searchParams.set("h", `${p.h}`);
-  if (p.q) u.searchParams.set("q", `${p.q}`);
-  if (p.fit) u.searchParams.set("fit", p.fit);
-  if (p.r) u.searchParams.set("r", `${p.r}`);
-  u.searchParams.set("fm", p.fm ?? "webp");
-  return u.toString();
-};
-
-/**
- * Data fetchers
- * Note: include=1 resolves linked assets (e.g., photos) without pulling deep trees.
- */
 
 export const fetchExecutives = async () => {
   try {

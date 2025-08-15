@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
-import NameTag from "./NameTag";
+// import NameTag from "./NameTag";
 
 interface ExecImage {
   src: string;
@@ -42,6 +42,7 @@ export default function ExecCard({ images, role }: ExecCardProps) {
             src={item.src}
             alt={item.alt}
             key={index}
+            style={{ width: "100%", height: "auto" }}
             className={
               slide === index
                 ? " object-cover"

@@ -19,6 +19,7 @@
     "@radix-ui/react-slot": "^1.2.3",
     "@types/react-router-dom": "^5.3.3",
     "bun": "^1.1.42",
+    "caniuse-lite": "^1.0.30001735",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "contentful": "^11.5.0",

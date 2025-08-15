@@ -9,14 +9,14 @@ import { fetchExecutives } from "../contentful";
 import community from "../../assets/etc/community.svg";
 import cultural from "../../assets/etc/cultural.svg";
 import impact from "../../assets/etc/impact.svg";
-import Join from "@/components/Join";
+// import Join from "@/components/Join";
 import {Button} from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 import underlineBlue from "../../assets/etc/blueunderline.svg";
 // import underlineRed from "../../assets/etc/redunderline.svg";
-import blob1 from "../../assets/blobs/mission-blob1.svg";
-import blob2 from "../../assets/blobs/mission-blob2.svg";
+// import blob1 from "../../assets/blobs/mission-blob1.svg";
+// import blob2 from "../../assets/blobs/mission-blob2.svg";
 
 // Sample data for Home Info Cards (static for now)
 const infoCards = [
@@ -144,11 +144,11 @@ export default function Home() {
               {/* President ExecCard */}
               <div className="flex flex-row justify-center gap-10 place-items-center max-w-2xl">
               <ExecCard
-                images={[{ src: president1.fields.photo.fields.file.url, alt: president1.fields.name }]}
+                images={[{ src: `${president1.fields.photo.fields.file.url}?fm=webp&q=70`, alt: president1.fields.name }]}
                 role="President"
               />
               <ExecCard
-                images={[{ src: president2.fields.photo.fields.file.url, alt: president2.fields.name }]}
+                images={[{ src: `${president2.fields.photo.fields.file.url}?fm=webp&q=70`, alt: president2.fields.name }]}
                 role="President"
               />
               </div>
@@ -158,7 +158,7 @@ export default function Home() {
                 <ExecCard
                   images={culturalHeads.map((exec) => ({
                     src: exec.fields.photo
-                      ? exec.fields.photo.fields.file.url
+                      ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
                       : "/Logo.svg",
                     alt: exec.fields.name,
                   }))}
@@ -167,7 +167,7 @@ export default function Home() {
                 <ExecCard
                   images={publicityHeads.map((exec) => ({
                     src: exec.fields.photo
-                      ? exec.fields.photo.fields.file.url
+                      ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
                       : "/Logo.svg",
                     alt: exec.fields.name,
                   }))}
@@ -176,7 +176,7 @@ export default function Home() {
                 <ExecCard
                   images={fundraisingHeads.map((exec) => ({
                     src: exec.fields.photo
-                      ? exec.fields.photo.fields.file.url
+                      ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
                       : "/Logo.svg",
                     alt: exec.fields.name,
                   }))}
@@ -185,7 +185,7 @@ export default function Home() {
                 <ExecCard
                   images={outReachHeads.map((exec) => ({
                     src: exec.fields.photo
-                      ? exec.fields.photo.fields.file.url
+                      ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
                       : "/Logo.svg",
                     alt: exec.fields.name,
                   }))}
@@ -194,7 +194,7 @@ export default function Home() {
                 <ExecCard
                   images={comDevHeads.map((exec) => ({
                     src: exec.fields.photo
-                      ? exec.fields.photo.fields.file.url
+                      ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
                       : "/Logo.svg",
                     alt: exec.fields.name,
                   }))}
@@ -203,7 +203,7 @@ export default function Home() {
                 <ExecCard
                   images={wellnessHeads.map((exec) => ({
                     src: exec.fields.photo
-                      ? exec.fields.photo.fields.file.url
+                      ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
                       : "/Logo.svg",
                     alt: exec.fields.name,
                   }))}
@@ -212,7 +212,7 @@ export default function Home() {
                 <ExecCard
                   images={FamilyHeads.map((exec) => ({
                     src: exec.fields.photo
-                      ? exec.fields.photo.fields.file.url
+                      ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
                       : "/Logo.svg",
                     alt: exec.fields.name,
                   }))}
@@ -221,7 +221,7 @@ export default function Home() {
                 <ExecCard
                   images={socialMediaHeads.map((exec) => ({
                     src: exec.fields.photo
-                      ? exec.fields.photo.fields.file.url
+                      ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
                       : "/Logo.svg",
                     alt: exec.fields.name,
                   }))}
@@ -230,7 +230,7 @@ export default function Home() {
                 <ExecCard
                   images={secretaryHeads.map((exec) => ({
                     src: exec.fields.photo
-                      ? exec.fields.photo.fields.file.url
+                      ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
                       : "/Logo.svg",
                     alt: exec.fields.name,
                   }))}
@@ -239,7 +239,7 @@ export default function Home() {
                 <ExecCard
                   images={financeHead.map((exec) => ({
                     src: exec.fields.photo
-                      ? exec.fields.photo.fields.file.url
+                      ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
                       : "/Logo.svg",
                     alt: exec.fields.name,
                   }))}
@@ -248,7 +248,7 @@ export default function Home() {
                 <ExecCard
                   images={recreationHead.map((exec) => ({
                     src: exec.fields.photo
-                      ? exec.fields.photo.fields.file.url
+                      ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
                       : "/Logo.svg",
                     alt: exec.fields.name,
                   }))}
