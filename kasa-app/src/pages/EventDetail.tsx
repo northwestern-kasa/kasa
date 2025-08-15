@@ -32,7 +32,7 @@ export default function EventDetail() {
   }
 
   const { fields } = event;
-  const imageUrl = fields.image?.fields.file.url;
+  const imageUrl = `${fields.image?.fields.file.url}?fm=webp&q=80`;
   const dateStr = fields.date ? new Date(fields.date).toLocaleDateString(undefined, { year:'numeric', month:'long', day:'numeric'}) : "";
 
   return (

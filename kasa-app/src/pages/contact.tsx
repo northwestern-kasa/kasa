@@ -33,7 +33,6 @@ export default function Contact() {
       });
       const result = await response.json();
       // console.log(result);
-
       reset();
       
       toast.success("Email sent successfully!", {

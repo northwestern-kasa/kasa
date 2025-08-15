@@ -75,7 +75,7 @@ function EventCard({ event }: { event: any }) {
       {/* Event image, if present */}
       {imageUrl && (
         <img
-          src={`https:${imageUrl}?fm=webp&w=640&h=360&fit=fill&q=70`}
+          src={`${imageUrl}?fm=webp&w=640&fit=fill&q=70`}
           alt={event.fields.title}
           width={640}
           height={360}
