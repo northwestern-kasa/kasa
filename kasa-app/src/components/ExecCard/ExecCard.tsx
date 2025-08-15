@@ -43,9 +43,10 @@ export default function ExecCard({ images, role }: ExecCardProps) {
             alt={item.alt}
             key={index}
             style={{ width: "100%", height: "auto" }}
+            loading="lazy"
             className={
               slide === index
-                ? " object-cover"
+                ? ""
                 : "hidden"
             }
           />

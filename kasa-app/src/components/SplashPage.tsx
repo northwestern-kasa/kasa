@@ -72,7 +72,7 @@ export default function SplashPage() {
           loading="eager"
           decoding="async"
           fetchPriority="high"
-          className="absolute inset-0 w-full h-full object-cover [filter:blur(3px)_brightness(0.6)_contrast(1.1)]"
+          className="absolute inset-0 w-full h-full object-cover [filter:blur(2px)_brightness(0.6)_contrast(1.1)]"
         />
       )}
       {/* ...other blob images (commented out) */}
