@@ -1,16 +1,22 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/Logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Northwestern Korean American Student Association (KASA)" />
+    <meta
+      name="description"
+      content="Northwestern Korean American Student Association (KASA)"
+    />
     <link rel="canonical" href="https://northwesternkasa.com/" />
     <title>Northwestern KASA</title>
     <!-- Open Graph / Facebook -->
     <meta property="og:site_name" content="Northwestern KASA" />
     <meta property="og:title" content="Northwestern KASA" />
-    <meta property="og:description" content="Northwestern Korean American Student Association (KASA)" />
+    <meta
+      property="og:description"
+      content="Northwestern Korean American Student Association (KASA)"
+    />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://northwesternkasa.com/" />
     <meta property="og:image" content="/text-logo.webp" />
@@ -20,7 +26,10 @@
     <meta name="twitter:site" content="@NorthwesternKASA" />
     <meta name="twitter:creator" content="@NorthwesternKASA" />
     <meta name="twitter:title" content="Northwestern KASA" />
-    <meta name="twitter:description" content="Northwestern Korean American Student Association (KASA)" />
+    <meta
+      name="twitter:description"
+      content="Northwestern Korean American Student Association (KASA)"
+    />
     <meta name="twitter:image" content="/text-logo.webp" />
     <link rel="dns-prefetch" href="https://images.ctfassets.net" />
     <link rel="preconnect" href="https://images.ctfassets.net" crossorigin />
@@ -29,32 +38,60 @@
     <!-- If you know the home hero URL at build-time, you can also preload it -->
     <!-- <link rel="preload" as="image" href="https://images.ctfassets.net/.../hero.webp?w=1920&q=70&fm=webp" imagesrcset="... 1x, ... 2x" /> -->
     <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Northwestern KASA",
-  "url": "https://northwesternkasa.com",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://www.google.com/search?q=site:northwesternkasa.com+{search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"Organization",
-  "name":"Northwestern KASA",
-  "url":"https://northwesternkasa.com
-  "logo":"https://northwesternkasa.com/Logo.svg",
-  "sameAs":[
-    "https://www.instagram.com/northwesternkasa/",
-    "https://www.facebook.com/northwesternkasa/",
-    "https://www.youtube.com/channel/UCDkuIQbMa9IqMhe6HBA6OHQ"
-  ]
-}
-</script>
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Northwestern KASA",
+        "url": "https://northwesternkasa.com",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://www.google.com/search?q=site:northwesternkasa.com+{search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context":"https://schema.org",
+        "@type":"Organization",
+        "name":"Northwestern KASA",
+        "url":"https://northwesternkasa.com
+        "logo":"https://northwesternkasa.com/Logo.svg",
+        "sameAs":[
+          "https://www.instagram.com/northwesternkasa/",
+          "https://www.facebook.com/northwesternkasa/",
+          "https://www.youtube.com/channel/UCDkuIQbMa9IqMhe6HBA6OHQ"
+        ]
+      }
+    </script>
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // MIT License
+      // https://github.com/rafgraph/spa-github-pages
+      // This script checks to see if a redirect is present in the query string,
+      // converts it back into the correct url and adds it to the
+      // browser's history using window.history.replaceState(...),
+      // which won't cause the browser to attempt to load the new url.
+      // When the single page app is loaded further down in this file,
+      // the correct url will be waiting in the browser's history for
+      // the single page app to route accordingly.
+      (function (l) {
+        if (l.search[1] === "/") {
+          var decoded = l.search
+            .slice(1)
+            .split("&")
+            .map(function (s) {
+              return s.replace(/~and~/g, "&");
+            })
+            .join("?");
+          window.history.replaceState(
+            null,
+            null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      })(window.location);
+    </script>
   </head>
   <body>
     <div id="root"></div>
