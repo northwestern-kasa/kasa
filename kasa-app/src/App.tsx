@@ -39,7 +39,7 @@ export default function App() {
   //   validateToken()
   // }, [])
   return (
-    <Router basename="/kasa-app">
+    <Router basename="/">
       <Header/>
       <Toaster position="top-center" richColors />
       <Suspense fallback={<div className="min-h-[50vh] flex items-center justify-center">Loading…</div>}>
