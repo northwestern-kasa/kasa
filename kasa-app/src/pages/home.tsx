@@ -143,117 +143,168 @@ export default function Home() {
             <>
               {/* President ExecCard */}
               <div className="flex flex-row justify-center gap-10 place-items-center max-w-2xl">
-              <ExecCard
-                images={[{ src: `${president1.fields.photo.fields.file.url}?fm=webp&q=70`, alt: president1.fields.name }]}
-                role="President"
-              />
-              <ExecCard
-                images={[{ src: `${president2.fields.photo.fields.file.url}?fm=webp&q=70`, alt: president2.fields.name }]}
-                role="President"
-              />
+                {president1 && (
+                  <ExecCard
+                    images={[
+                      {
+                        src: president1.fields?.photo?.fields?.file?.url
+                          ? `${president1.fields.photo.fields.file.url}?fm=webp&q=70`
+                          : "/Logo.svg",
+                        alt: president1.fields?.name ?? "President",
+                      },
+                    ]}
+                    role="President"
+                  />
+                )}
+
+                {president2 && (
+                  <ExecCard
+                    images={[
+                      {
+                        src: president2.fields?.photo?.fields?.file?.url
+                          ? `${president2.fields.photo.fields.file.url}?fm=webp&q=70`
+                          : "/Logo.svg",
+                        alt: president2.fields?.name ?? "President",
+                      },
+                    ]}
+                    role="President"
+                  />
+                )}
               </div>
 
               {/* Other ExecCards in a responsive grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mt-10 place-items-center mb-24 m-10 max-w-2/3 min-w-2/3">
-                <ExecCard
-                  images={culturalHeads.map((exec) => ({
-                    src: exec.fields.photo
-                      ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
-                      : "/Logo.svg",
-                    alt: exec.fields.name,
-                  }))}
-                  role="Cultural"
-                />
-                <ExecCard
-                  images={publicityHeads.map((exec) => ({
-                    src: exec.fields.photo
-                      ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
-                      : "/Logo.svg",
-                    alt: exec.fields.name,
-                  }))}
-                  role="Publicity"
-                />
-                <ExecCard
-                  images={fundraisingHeads.map((exec) => ({
-                    src: exec.fields.photo
-                      ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
-                      : "/Logo.svg",
-                    alt: exec.fields.name,
-                  }))}
-                  role="Fundraising"
-                />
-                <ExecCard
-                  images={outReachHeads.map((exec) => ({
-                    src: exec.fields.photo
-                      ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
-                      : "/Logo.svg",
-                    alt: exec.fields.name,
-                  }))}
-                  role="Outreach"
-                />
-                <ExecCard
-                  images={comDevHeads.map((exec) => ({
-                    src: exec.fields.photo
-                      ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
-                      : "/Logo.svg",
-                    alt: exec.fields.name,
-                  }))}
-                  role="Community Dev."
-                />
-                <ExecCard
-                  images={wellnessHeads.map((exec) => ({
-                    src: exec.fields.photo
-                      ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
-                      : "/Logo.svg",
-                    alt: exec.fields.name,
-                  }))}
-                  role="Wellness"
-                />
-                <ExecCard
-                  images={FamilyHeads.map((exec) => ({
-                    src: exec.fields.photo
-                      ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
-                      : "/Logo.svg",
-                    alt: exec.fields.name,
-                  }))}
-                  role="Family Heads"
-                />
-                <ExecCard
-                  images={socialMediaHeads.map((exec) => ({
-                    src: exec.fields.photo
-                      ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
-                      : "/Logo.svg",
-                    alt: exec.fields.name,
-                  }))}
-                  role="Social Media"
-                />
-                <ExecCard
-                  images={secretaryHeads.map((exec) => ({
-                    src: exec.fields.photo
-                      ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
-                      : "/Logo.svg",
-                    alt: exec.fields.name,
-                  }))}
-                  role="Secretary"
-                /> 
-                <ExecCard
-                  images={financeHead.map((exec) => ({
-                    src: exec.fields.photo
-                      ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
-                      : "/Logo.svg",
-                    alt: exec.fields.name,
-                  }))}
-                  role="Finance"
-                /> 
-                <ExecCard
-                  images={recreationHead.map((exec) => ({
-                    src: exec.fields.photo
-                      ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
-                      : "/Logo.svg",
-                    alt: exec.fields.name,
-                  }))}
-                  role="Recreational"
-                /> 
+                {culturalHeads.length > 0 && (
+                  <ExecCard
+                    images={culturalHeads.map((exec) => ({
+                      src: exec.fields?.photo?.fields?.file?.url
+                        ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
+                        : "/Logo.svg",
+                      alt: exec.fields?.name ?? "Member",
+                    }))}
+                    role="Cultural"
+                  />
+                )}
+
+                {publicityHeads.length > 0 && (
+                  <ExecCard
+                    images={publicityHeads.map((exec) => ({
+                      src: exec.fields?.photo?.fields?.file?.url
+                        ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
+                        : "/Logo.svg",
+                      alt: exec.fields?.name ?? "Member",
+                    }))}
+                    role="Publicity"
+                  />
+                )}
+
+                {fundraisingHeads.length > 0 && (
+                  <ExecCard
+                    images={fundraisingHeads.map((exec) => ({
+                      src: exec.fields?.photo?.fields?.file?.url
+                        ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
+                        : "/Logo.svg",
+                      alt: exec.fields?.name ?? "Member",
+                    }))}
+                    role="Fundraising"
+                  />
+                )}
+
+                {outReachHeads.length > 0 && (
+                  <ExecCard
+                    images={outReachHeads.map((exec) => ({
+                      src: exec.fields?.photo?.fields?.file?.url
+                        ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
+                        : "/Logo.svg",
+                      alt: exec.fields?.name ?? "Member",
+                    }))}
+                    role="Outreach"
+                  />
+                )}
+
+                {comDevHeads.length > 0 && (
+                  <ExecCard
+                    images={comDevHeads.map((exec) => ({
+                      src: exec.fields?.photo?.fields?.file?.url
+                        ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
+                        : "/Logo.svg",
+                      alt: exec.fields?.name ?? "Member",
+                    }))}
+                    role="Community Dev."
+                  />
+                )}
+
+                {wellnessHeads.length > 0 && (
+                  <ExecCard
+                    images={wellnessHeads.map((exec) => ({
+                      src: exec.fields?.photo?.fields?.file?.url
+                        ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
+                        : "/Logo.svg",
+                      alt: exec.fields?.name ?? "Member",
+                    }))}
+                    role="Wellness"
+                  />
+                )}
+
+                {FamilyHeads.length > 0 && (
+                  <ExecCard
+                    images={FamilyHeads.map((exec) => ({
+                      src: exec.fields?.photo?.fields?.file?.url
+                        ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
+                        : "/Logo.svg",
+                      alt: exec.fields?.name ?? "Member",
+                    }))}
+                    role="Family Heads"
+                  />
+                )}
+
+                {socialMediaHeads.length > 0 && (
+                  <ExecCard
+                    images={socialMediaHeads.map((exec) => ({
+                      src: exec.fields?.photo?.fields?.file?.url
+                        ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
+                        : "/Logo.svg",
+                      alt: exec.fields?.name ?? "Member",
+                    }))}
+                    role="Social Media"
+                  />
+                )}
+
+                {secretaryHeads.length > 0 && (
+                  <ExecCard
+                    images={secretaryHeads.map((exec) => ({
+                      src: exec.fields?.photo?.fields?.file?.url
+                        ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
+                        : "/Logo.svg",
+                      alt: exec.fields?.name ?? "Member",
+                    }))}
+                    role="Secretary"
+                  />
+                )}
+
+                {financeHead.length > 0 && (
+                  <ExecCard
+                    images={financeHead.map((exec) => ({
+                      src: exec.fields?.photo?.fields?.file?.url
+                        ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
+                        : "/Logo.svg",
+                      alt: exec.fields?.name ?? "Member",
+                    }))}
+                    role="Finance"
+                  />
+                )}
+
+                {recreationHead.length > 0 && (
+                  <ExecCard
+                    images={recreationHead.map((exec) => ({
+                      src: exec.fields?.photo?.fields?.file?.url
+                        ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
+                        : "/Logo.svg",
+                      alt: exec.fields?.name ?? "Member",
+                    }))}
+                    role="Recreational"
+                  />
+                )}
               </div>
             </>
           )}
