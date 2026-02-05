@@ -95,9 +95,28 @@ export default function Home() {
   const financeHead = execs.filter(
     (exec) => exec.fields.role.toLowerCase() === "finance"
   );
-  const recreationHead = execs.filter(
-    (exec) => exec.fields.role.toLowerCase() === "recreational"
-  );
+
+  const knownRoleKeywords = [
+    "president",
+    "cultural",
+    "publicity",
+    "fundraising",
+    "community development",
+    "outreach",
+    "wellness",
+    "family",
+    "social media",
+    "secretary",
+    "finance",
+  ];
+
+  const otherExecs = execs.filter((exec) => {
+    const role = (exec.fields?.role || "").toString().toLowerCase().trim();
+    // treat empty/missing role as "innovation"
+    if (!role) return true;
+    return !knownRoleKeywords.some((kw) => role.includes(kw));
+  });
+
 
 
   return (
@@ -293,16 +312,15 @@ export default function Home() {
                     role="Finance"
                   />
                 )}
-
-                {recreationHead.length > 0 && (
+                {otherExecs.length > 0 && (
                   <ExecCard
-                    images={recreationHead.map((exec) => ({
+                    images={otherExecs.map((exec) => ({
                       src: exec.fields?.photo?.fields?.file?.url
                         ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
                         : "/Logo.svg",
                       alt: exec.fields?.name ?? "Member",
                     }))}
-                    role="Recreational"
+                    role="Innovation"
                   />
                 )}
               </div>
