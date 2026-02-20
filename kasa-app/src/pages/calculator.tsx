@@ -76,16 +76,16 @@ export default function DrinkCalculator() {
 
   return (
     <div>
-      <main>
-        <section className="p-4 max-w-lg mx-auto my-16">
-          <h1 className="text-3xl font-bold mb-6 text-center">Drink Calculator</h1>
+      <main className="pt-24 px-4">
+        <section className="kasa-surface p-6 max-w-lg mx-auto my-10">
+          <h1 className="mb-6 text-center text-3xl font-black text-blue">Drink Calculator</h1>
           {/* Preset Options */}
           <div className="mb-4">
             <label htmlFor="preset" className="block mb-1 font-semibold">Choose a preset:</label>
             <select
               id="preset"
               onChange={handlePresetChange}
-              className="border p-2 rounded w-full"
+              className="w-full rounded-lg border border-[#2b3467]/20 p-2"
               value={selectedPresetIndex}
             >
               {presets.map((p, idx) => (
@@ -102,7 +102,7 @@ export default function DrinkCalculator() {
                 type="number"
                 value={volume}
                 onChange={e => setVolume(e.target.value)}
-                className="border p-2 rounded w-full"
+                className="w-full rounded-lg border border-[#2b3467]/20 p-2"
                 placeholder="e.g., 750"
               />
             </div>
@@ -114,19 +114,19 @@ export default function DrinkCalculator() {
                 type="number"
                 value={percentage}
                 onChange={e => setPercentage(e.target.value)}
-                className="border p-2 rounded w-full"
+                className="w-full rounded-lg border border-[#2b3467]/20 p-2"
                 placeholder="e.g., 13.5"
               />
             </div>
             <Button
               type="submit"
-              className="bg-rose-600 text-white px-4 py-2 rounded hover:bg-rose-700 float-right"
+              className="kasa-btn-primary float-right rounded-lg px-4 py-2 text-white"
             >Add Drink</Button>
           </form>
         </section>
         {/* Drink Log and Summary */}
-        <section className="max-w-lg mx-auto mb-16  px-10">
-          <h2 className="text-xl font-semibold mb-4 text-center">Drink Log</h2>
+        <section className="kasa-surface max-w-lg mx-auto mb-16 px-8 py-7">
+          <h2 className="mb-4 text-center text-xl font-black text-blue">Drink Log</h2>
           {drinksLog.length === 0 ? (
             <p className="text-center text-gray-600">No drinks added yet.</p>
           ) : (

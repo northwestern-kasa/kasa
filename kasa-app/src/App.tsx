@@ -7,6 +7,7 @@ import Home from "./pages/home";
 
 // Lazy-load non-critical routes to cut initial JS
 const Family = lazy(() => import("./pages/family"));
+const FamilyDetail = lazy(() => import("./pages/familyDetail"));
 const Events = lazy(() => import("./pages/events"));
 const Apply = lazy(() => import("./pages/apply"));
 const Contact = lazy(() => import("./pages/contact"));
@@ -43,6 +44,7 @@ export default function App() {
     // Warm route chunks shortly after load so navigation stays instant
     const timer = window.setTimeout(() => {
       void import("./pages/family");
+      void import("./pages/familyDetail");
       void import("./pages/events");
       void import("./pages/apply");
       void import("./pages/contact");
@@ -57,24 +59,26 @@ export default function App() {
     <Router basename="/">
       <Header />
       <Suspense fallback={<div className="min-h-[50vh] flex items-center justify-center">Loading…</div>}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/family" element={<Family />} />
-          <Route path="/events" element={<Events />} />
-          <Route path="/apply" element={<Apply />} />
-          {/* <Route path="/memberform" element={<MemberForm user={user} />} /> */}
-          {/* <Route path="/directory" element={<Directory />} /> */}
-          <Route path="/contact" element={<Contact />} />
-          {/* Easter egg route: hidden Drink Calculator */}
-          <Route path="/calculator" element={<Calculator />} />
-          <Route path="/events/:id" element={<EventDetail />} />
-          {/* <Route path="/wip" element={<Wip />} /> */}
-          
-          {/* Uncomment these routes when login and register pages are ready */}
-          {/* <Route path="/login" element={<Login/>} />
-          <Route path="/register" element={<Register/>} /> */}
+        <div className="kasa-page-fade">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/family" element={<Family />} />
+            <Route path="/family/:familyId" element={<FamilyDetail />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/apply" element={<Apply />} />
+            {/* <Route path="/memberform" element={<MemberForm user={user} />} /> */}
+            {/* <Route path="/directory" element={<Directory />} /> */}
+            <Route path="/contact" element={<Contact />} />
+            {/* Easter egg route: hidden Drink Calculator */}
+            <Route path="/calculator" element={<Calculator />} />
+            <Route path="/events/:id" element={<EventDetail />} />
+            {/* <Route path="/wip" element={<Wip />} /> */}
 
-        </Routes>
+            {/* Uncomment these routes when login and register pages are ready */}
+            {/* <Route path="/login" element={<Login/>} />
+            <Route path="/register" element={<Register/>} /> */}
+          </Routes>
+        </div>
       </Suspense>
       <Footer />
     </Router>

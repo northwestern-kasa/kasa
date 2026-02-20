@@ -27,16 +27,19 @@ export default function ExecCard({ images, role }: ExecCardProps) {
   const moreThan1 = images.length > 1;
 
   return (
-    <div className="relative flex flex-col items-center w-full max-w-sm">
-      <h2 className="font-bold text-2xl mb-2">{role}</h2>
-      <div id="carousel" className="relative w-full overflow-hidden rounded-lg">
+    <div className="kasa-surface kasa-floating-card relative flex w-full max-w-sm flex-col items-center p-4">
+      <h2 className="mb-3 text-2xl font-black text-blue">{role}</h2>
+      <div
+        id="carousel"
+        className="relative w-full overflow-hidden rounded-xl border border-[#2b3467]/10 bg-white"
+      >
         {/* <NameTag name={images[slide].alt} /> */}
         {moreThan1 && (
           <MdKeyboardArrowLeft
-          onClick={prevSlide}
-          className="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-12 hover:cursor-pointer"
-        />
-        )}  
+            onClick={prevSlide}
+            className="absolute left-2 top-1/2 z-10 h-11 w-11 -translate-y-1/2 cursor-pointer rounded-full bg-white/85 p-1 text-blue shadow-md backdrop-blur-sm transition-colors hover:bg-white"
+          />
+        )}
         {images.map((item, index) => (
           <img
             src={item.src}
@@ -47,26 +50,28 @@ export default function ExecCard({ images, role }: ExecCardProps) {
             decoding="async"
             className={
               slide === index
-                ? ""
+                ? "aspect-[3/4] w-full object-cover transition-opacity duration-300"
                 : "hidden"
             }
           />
         ))}
         {moreThan1 && (
           <MdKeyboardArrowRight
-          onClick={nextSlide}
-          className="absolute right-0 top-1/2 -translate-y-1/2 w-12 h-12 hover:cursor-pointer"
+            onClick={nextSlide}
+            className="absolute right-2 top-1/2 z-10 h-11 w-11 -translate-y-1/2 cursor-pointer rounded-full bg-white/85 p-1 text-blue shadow-md backdrop-blur-sm transition-colors hover:bg-white"
           />
         )}
         {/* Dots for each image */}
-        
+
         {moreThan1 && (
           <span className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
           {images.map((_, index) => (
             <button
               key={index}
+              type="button"
+              aria-label={`View slide ${index + 1}`}
               className={`h-2 w-2 rounded-full ${
-                slide === index ? "bg-black" : "bg-gray-400"
+                slide === index ? "bg-blue" : "bg-blue/30"
               }`}
               onClick={() => setSlide(index)}
             />
@@ -75,8 +80,8 @@ export default function ExecCard({ images, role }: ExecCardProps) {
         )}
         
       </div>
-      <div className="py-2">
-        <p className=" text-gray-900 text-xl font-bold">{images[slide].alt}</p>
+      <div className="py-3">
+        <p className="text-xl font-bold text-gray-900">{images[slide].alt}</p>
       </div>
     </div>
   );

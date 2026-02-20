@@ -14,19 +14,25 @@
 
 ---
 
-![KASA homepage preview](./assets/HomePage.webp)
+<!-- ![KASA homepage preview](./assets/HomePage.webp) -->
 
 ## Table of Contents
+- [Table of Contents](#table-of-contents)
 - [Overview](#overview)
 - [Features](#features)
 - [Tech Stack](#tech-stack)
 - [Quick Start](#quick-start)
+  - [Prerequisites](#prerequisites)
+  - [1) Install dependencies](#1-install-dependencies)
+  - [2) Configure environment variables](#2-configure-environment-variables)
+  - [3) Start development server](#3-start-development-server)
 - [Environment Variables](#environment-variables)
 - [Scripts](#scripts)
 - [Project Structure](#project-structure)
 - [Contentful Notes](#contentful-notes)
 - [Deployment](#deployment)
 - [Contributing](#contributing)
+- [License](#license)
 
 ## Overview
 KASA Frontend is the public-facing website for USC KASA. It includes:

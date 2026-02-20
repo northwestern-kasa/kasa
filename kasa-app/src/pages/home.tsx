@@ -152,13 +152,13 @@ export default function Home() {
 
   return (
     <div>
-      <main className="">
+      <main>
         {/* Hero/Splash section */}
         <SplashPage />
 
-        <section className="mt-10 mb-24 flex flex-col items-center px-10">
-        <div id="whatIs" className="">
-          <h1 className="text-[44px] font-bold text-center"> What is KASA? </h1>
+        <section className="mt-12 mb-24 flex flex-col items-center px-6 sm:px-10">
+        <div id="whatIs" className="kasa-reveal w-full max-w-6xl">
+          <h1 className="text-center text-4xl font-black text-blue sm:text-[44px]"> What is KASA? </h1>
           <div
             id="underlineblue"
             className="flex items-center justify-center -mt-[16px]"
@@ -169,7 +169,7 @@ export default function Home() {
               className="w-[380px] h-[28px]"
             />
           </div>
-          <div className="lg:flex lg:items-center lg:justify-center lg:gap-8 xl:gap-[100px]">
+          <div className="lg:flex lg:items-center lg:justify-center lg:gap-8 xl:gap-16">
             {infoCards.map((card, i) => (
               <HomeInfoCard
                 img={card.img}
@@ -182,17 +182,17 @@ export default function Home() {
         </div>
 
         {/* Meet the Execs Section */}
-        <div id="execs" ref={execSectionRef} className="mt-32 flex flex-col items-center">
-          <h2 className="text-center font-bold text-2xl mb-8">
+        <div id="execs" ref={execSectionRef} className="mt-28 flex w-full flex-col items-center">
+          <h2 className="text-center text-2xl font-black text-blue mb-8">
             Meet the 24&apos;-25&apos; Executives
           </h2>
 
           {!shouldLoadExecs || loading ? (
-            <div>Loading executives…</div>
+            <div className="kasa-surface rounded-2xl px-6 py-4 font-semibold text-blue">Loading executives…</div>
           ) : (
             <>
               {/* President ExecCard */}
-              <div className="flex flex-row justify-center gap-10 place-items-center max-w-2xl">
+              <div className="flex max-w-5xl flex-col place-items-center justify-center gap-10 sm:flex-row">
                 {president1 && (
                   <ExecCard
                     images={[
@@ -223,7 +223,7 @@ export default function Home() {
               </div>
 
               {/* Other ExecCards in a responsive grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mt-10 place-items-center mb-24 m-10 max-w-2/3 min-w-2/3">
+              <div className="mt-10 mb-24 grid w-full max-w-[1300px] grid-cols-1 place-items-center gap-8 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
                 {culturalHeads.length > 0 && (
                   <ExecCard
                     images={culturalHeads.map((exec) => ({
@@ -358,15 +358,15 @@ export default function Home() {
             </>
           )}
         </div>
-        <div className="flex flex-col items-center justify-center mb-24">
-          <h2 className="text-center font-bold text-4xl mb-8">
+        <div className="kasa-surface kasa-reveal-delay mb-24 flex w-full max-w-4xl flex-col items-center justify-center rounded-[1.5rem] px-6 py-12 sm:px-12">
+          <h2 className="mb-6 text-center text-4xl font-black text-blue">
             Join KASA Today!
           </h2>
-          <p className="text-center mb-8 px-10">
+          <p className="mb-8 text-center text-slate-700">
             Interested in becoming a member? Click the button below to apply.
           </p>
           {/* <Join /> */}
-          <Button asChild className="bg-gradient-to-r from-[rgba(255,57,57,0.8)] to-pink-500 text-white font-black  hover:bg-red/90 w-full border-black  h-full py-6 px-10 text-3xl rounded-lg shadow-lg transition-transform hover:scale-105 hover:from-rose-600 hover:to-pink-600">
+          <Button asChild className="kasa-btn-primary h-full w-full rounded-xl px-10 py-6 text-3xl font-black text-white sm:w-auto">
             <Link to="/apply" className="w-full inline-block text-center" prefetch="intent">
               Apply Now
             </Link>
