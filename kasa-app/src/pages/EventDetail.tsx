@@ -25,10 +25,10 @@ export default function EventDetail() {
   }, [id]);
 
   if (loading) {
-    return <p className="text-center mt-20">Loading event...</p>;
+    return <p className="mt-24 text-center font-semibold text-blue">Loading event...</p>;
   }
   if (!event) {
-    return <p className="text-center mt-20">Event not found.</p>;
+    return <p className="mt-24 text-center font-semibold text-blue">Event not found.</p>;
   }
 
   const { fields } = event;
@@ -37,19 +37,19 @@ export default function EventDetail() {
 
   return (
     <div>
-      <main>
+      <main className="pt-24 px-4">
         {/* <SplashPage /> */}
-        <section className="max-w-3xl mx-auto my-16 p-4">
-          <Link to="/events" className="text-blue-600 hover:underline">
+        <section className="kasa-surface max-w-3xl mx-auto my-12 p-6 sm:p-8">
+          <Link to="/events" className="text-blue-600 hover:underline font-semibold">
             &larr; Back to Events
           </Link>
-          <h1 className="text-4xl font-bold mt-4 mb-2">{fields.title}</h1>
+          <h1 className="mb-2 mt-4 text-4xl font-black text-blue">{fields.title}</h1>
           {dateStr && <p className="text-gray-500 mb-4">{dateStr}</p>}
           {imageUrl && (
             <img
               src={imageUrl}
               alt={fields.title}
-              className="w-full h-auto rounded-lg mb-6"
+              className="mb-6 h-auto w-full rounded-xl"
             />
           )}
           {fields.description && (

@@ -44,13 +44,13 @@ export default function Events() {
         <SplashPage />
 
         {/* Content Area */}
-        <section className="mt-10 mb-24 flex flex-col items-center">
-          <h1 className="text-center font-bold text-6xl mb-10 px-10">Our Events</h1>
+        <section className="mt-12 mb-24 flex flex-col items-center px-6">
+          <h1 className="kasa-reveal mb-10 px-10 text-center text-5xl font-black text-blue sm:text-6xl">Our Events</h1>
 
           {loading ? (
-            <p className="text-center text-xl">Loading events...</p>
+            <p className="kasa-surface rounded-2xl px-6 py-4 text-center text-xl font-semibold text-blue">Loading events...</p>
           ) : events.length > 0 ? (
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-12 px-10 ">
+            <div className="grid w-full max-w-[1200px] grid-cols-1 gap-8 px-2 md:grid-cols-2 xl:grid-cols-3">
               {events.map((event, index) => (
                 <EventCard key={index} event={event} />
               ))}
@@ -70,7 +70,7 @@ function EventCard({ event }: { event: any }) {
   return (
     <Link
       to={`/events/${id}`}
-      className="block w-full sm:w-80 bg-white rounded-lg shadow-lg hover:shadow-2xl overflow-hidden transition-shadow duration-200 mx-auto "
+      className="kasa-surface kasa-floating-card mx-auto block w-full overflow-hidden rounded-2xl"
     >
       {/* Event image, if present */}
       {imageUrl && (
@@ -81,16 +81,16 @@ function EventCard({ event }: { event: any }) {
           height={360}
           loading="lazy"
           decoding="async"
-          className="w-full h-48 object-cover"
+          className="h-56 w-full object-cover"
         />
       )}
       <div className="p-5">
-        <h3 className="font-semibold text-2xl mb-2 truncate">{event.fields.title}</h3>
+        <h3 className="mb-2 truncate text-2xl font-black text-blue">{event.fields.title}</h3>
         {event.fields.description && (
-          <p className="text-gray-600 text-sm mb-2 line-clamp-3">{event.fields.description}</p>
+          <p className="mb-2 line-clamp-3 text-sm text-gray-600">{event.fields.description}</p>
         )}
         {event.fields.date && (
-          <p className="text-gray-500 text-xs mt-2">
+          <p className="mt-3 inline-flex rounded-full bg-rose-50 px-3 py-1 text-xs font-semibold text-rose-700">
             {new Date(event.fields.date).toLocaleDateString(undefined, { year:'numeric', month:'short', day:'numeric'})}
           </p>
         )}
@@ -105,4 +105,3 @@ function EventCard({ event }: { event: any }) {
     </Link>
   );
 }
-

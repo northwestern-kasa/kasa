@@ -51,7 +51,7 @@ export default function Contact() {
 
   return (
     <div>
-      <main className="">
+      <main>
         <Toaster position="top-center" richColors />
         <div className="h-[80vh] -mt-40">
           <SplashPage />
@@ -60,7 +60,7 @@ export default function Contact() {
 
         <div
           id="contactPage"
-          className="-mt-28 mb-24 relative z-5 flex flex-col items-center justify-center place-content-center"
+          className="relative z-10 -mt-28 mb-24 flex flex-col items-center justify-center place-content-center px-6"
         >
           {/* <h1 className="text-center font-extrabold text-3xl sm:text-4xl px-2 sm:px-10">Get in Touch</h1>
           <p className="text-center mt-1 mb-12 text-gray-500 px-10 sm:px-10">
@@ -69,15 +69,15 @@ export default function Contact() {
 
           <div
             id="contactbox"
-            className=" mb-8 grid grid-cols-1 md:grid-cols-2 p-4 w-full md:w-3/4"
+            className="kasa-surface mb-8 grid w-full max-w-[76rem] grid-cols-1 p-5 md:w-[78%] md:grid-cols-2 md:gap-6 md:p-8"
           >
             <div
               id="leftcol"
-              className="flex flex-col items-center sm:items-start justify-center"
+              className="flex flex-col items-center justify-center rounded-2xl bg-[#fff8f2] p-4 sm:items-start"
             >
-              <div className="p-4 -mt-10">
-                <h2 className="font-bold text-2xl">Have Questions?</h2>
-                <p className="text-gray-600 text-xs">
+              <div className="p-4 md:-mt-2">
+                <h2 className="text-3xl font-black text-blue">Have Questions?</h2>
+                <p className="mt-2 text-xs text-gray-600">
                   northwesternkasa@gmail.com
                 </p>
               </div>
@@ -85,7 +85,7 @@ export default function Contact() {
               <img
                 src={logo}
                 alt="KASA Logo"
-                className="w-1/2  self-center m-10 hidden md:block"
+                className="m-10 hidden w-1/2 self-center drop-shadow-xl md:block"
               />
             </div>
 
@@ -100,37 +100,37 @@ export default function Contact() {
                     {...register("firstname", { required: "First name is required" })}
                     type="text"
                     placeholder="First Name"
-                    className="block w-full rounded-lg border border-gray-300 px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-900"
+                    className="block w-full rounded-lg border border-[#2b3467]/20 bg-white px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#eb455f]"
                   />
                   <Input
                     {...register("lastname")}
                     type="text"
                     placeholder="Last Name"
-                    className="block w-full rounded-lg border border-gray-300 px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-900"
+                    className="block w-full rounded-lg border border-[#2b3467]/20 bg-white px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#eb455f]"
                   />
                 </div>
                 <Input
                   {...register("email", { required: "Email is required" })}
                   type="email"
                   placeholder="Email"
-                  className="block w-full rounded-lg border border-gray-300 px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-900"
+                  className="block w-full rounded-lg border border-[#2b3467]/20 bg-white px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#eb455f]"
                 />
                 <Input
                   {...register("subject", { required: "Subject is required" })}
                   type="text"
                   placeholder="Subject"
-                  className="block w-full rounded-lg border border-gray-300 px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-900"
+                  className="block w-full rounded-lg border border-[#2b3467]/20 bg-white px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#eb455f]"
                 />
                 <textarea
                   rows={7}
                   {...register("message", { required: "Message is required" })}
                   placeholder="Message"
-                  className="block w-full rounded-lg border border-gray-300 px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-900 resize-none"
+                  className="block w-full resize-none rounded-lg border border-[#2b3467]/20 bg-white px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#eb455f]"
                 />
                 <div className="flex w-full justify-center sm:justify-end">
                   <Button
                     type="submit"
-                    className="w-full sm:w-auto border-2 border-rose-400 bg-white px-6 font-semibold text-black transition-colors hover:bg-gray-100"
+                    className="kasa-btn-primary w-full rounded-xl px-7 font-semibold text-white sm:w-auto"
                   >
                     Submit
                   </Button>

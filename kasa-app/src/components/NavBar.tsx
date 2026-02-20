@@ -19,46 +19,54 @@ export default function NavBar() {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="p-4 relative z-50 ">
+    <nav className="relative z-50">
       {/* Desktop Navbar */}
-      <div className="hidden md:flex navBarShadow space-x-20 rounded-full py-4 px-24 text-2xl font-sans bg-white">
+      <div className="navBarShadow kasa-glass hidden items-center rounded-full p-2 md:flex md:gap-2">
         {menuItems.map((item) => (
-          <Link key={item.path} to={item.path} prefetch="intent">
-            <h3 className={currentPath === item.path ? "font-bold" : ""}>
-              {item.label}
-            </h3>
+          <Link
+            key={item.path}
+            to={item.path}
+            prefetch="intent"
+            className={`rounded-full px-5 py-2 text-base font-semibold tracking-wide transition-colors ${
+              currentPath === item.path
+                ? "bg-blue text-white shadow"
+                : "text-blue hover:bg-rose-50"
+            }`}
+          >
+            {item.label}
           </Link>
         ))}
       </div>
 
       {/* Mobile Navbar: Hamburger Menu */}
-      
-      <div className="fixed md:hidden flex items-center right-1 top-2" onClick={toggleMenu}>
-        <h3 className="text-2xl font-black text-black -mr-1">
+      <button
+        type="button"
+        className="flex items-center rounded-lg px-1 md:hidden"
+        onClick={toggleMenu}
+        aria-label={isOpen ? "Close mobile menu" : "Open mobile menu"}
+      >
+        <h3 className="text-sm font-black tracking-[0.16em] text-blue">
           MENU
         </h3>
         <Cheeseburger
           isToggled={isOpen}
-          onClick={toggleMenu}
           rounded={true}
-          color="black"
-          width={50}
-          height={50}
+          color="#2b3467"
+          width={42}
+          height={42}
         />
-        
-        
-      </div>
+      </button>
 
       {/* Full-Screen Mobile Menu Overlay (slides from right) */}
       <div
-        className={`fixed md:hidden inset-0 bg-black bg-opacity-50 transition-transform duration-300 ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        } z-40`}
+        className={`fixed inset-0 z-[60] bg-black/40 transition-opacity duration-300 md:hidden ${
+          isOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
+        }`}
         onClick={() => setIsOpen(false)}
       >
         {/* Slide-Out Panel from the Right */}
         <div
-          className={`absolute right-0 top-0 h-full w-3/4 sm:w-1/2 bg-white shadow-lg transition-transform duration-300 ${
+          className={`absolute right-0 top-0 h-full w-4/5 border-l border-white/45 bg-gradient-to-b from-[#fff7ef] to-white p-2 shadow-2xl transition-transform duration-300 sm:w-1/2 ${
             isOpen ? "translate-x-0" : "translate-x-full"
           }`}
           onClick={(e) => e.stopPropagation()}
@@ -68,21 +76,23 @@ export default function NavBar() {
             <button
               onClick={toggleMenu}
               aria-label="Close mobile menu"
-              className="text-gray-800 text-2xl focus:outline-none"
+              className="rounded-md px-2 text-2xl text-gray-800 transition-colors hover:bg-black/5 focus:outline-none"
             >
               ✕
             </button>
           </div>
           {/* Menu List */}
-          <ul className="mt-8 space-y-6 text-center">
+          <ul className="mt-10 space-y-4 text-center">
             {menuItems.map((item) => (
               <li key={item.path}>
                 <Link
                   to={item.path}
                   onClick={() => setIsOpen(false)}
                   prefetch="viewport"
-                  className={`block text-xl px-4 py-2 ${
-                    currentPath === item.path ? "font-bold" : ""
+                  className={`mx-4 block rounded-xl px-4 py-3 text-xl font-semibold transition-colors ${
+                    currentPath === item.path
+                      ? "bg-blue text-white shadow"
+                      : "text-blue hover:bg-rose-50"
                   }`}
                 >
                   {item.label}
@@ -90,8 +100,11 @@ export default function NavBar() {
               </li>
             ))}
             <li>
-              <div className="flex justify-center mt-80" onClick={() => setIsOpen(false)}>
-                <Join  />
+              <div
+                className="mt-24 flex justify-center px-6"
+                onClick={() => setIsOpen(false)}
+              >
+                <Join />
               </div>
             </li>
           </ul>

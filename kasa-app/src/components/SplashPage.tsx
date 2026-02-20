@@ -65,7 +65,10 @@ export default function SplashPage() {
 
 
   return (
-    <section id="splash" className="relative h-[85vh] sm:h-[96vh] z-0 select-none">
+    <section
+      id="splash"
+      className="relative z-0 h-[85vh] select-none overflow-hidden sm:h-[96vh]"
+    >
       {(header !== "Contact Us" && header !== "Application" && contentfulBg) && (
         <img
           src={`${contentfulBg}?fm=webp&w=1920&q=70`}
@@ -77,14 +80,26 @@ export default function SplashPage() {
           loading="eager"
           decoding="async"
           fetchPriority="high"
-          className="absolute inset-0 w-full h-full object-cover [filter:blur(2px)_brightness(0.6)_contrast(1.1)]"
+          className="absolute inset-0 h-full w-full object-cover [filter:blur(1px)_brightness(0.58)_contrast(1.08)]"
         />
       )}
+      <div
+        className={`absolute inset-0 ${
+          header === "Contact Us" || header === "Application"
+            ? "bg-[#fffaf3]/88"
+            : "bg-black/40"
+        }`}
+      />
+      <div className="absolute -left-16 top-20 h-44 w-44 rounded-full bg-[#ffd56d]/45 blur-3xl" />
+      <div className="absolute -right-12 bottom-16 h-56 w-56 rounded-full bg-[#eb455f]/35 blur-3xl" />
       {/* ...other blob images (commented out) */}
-      <div id="content" className="h-full flex items-center justify-center">
+      <div
+        id="content"
+        className="relative z-10 flex h-full items-center justify-center px-6"
+      >
         <div
           id="relative-container"
-          className="flex flex-col items-center justify-center relative"
+          className="relative flex flex-col items-center justify-center"
         >
           <div
             id="header"
@@ -94,11 +109,13 @@ export default function SplashPage() {
               width="320"
               src={textLogo}
               alt="KASA's text logo"
-              className={header == "home" ? "invert" : "hidden"}
+              className={header == "home" ? "kasa-reveal invert drop-shadow-xl" : "hidden"}
             />
             <h1
               className={
-                header == "home" ? "text-2xl font-bold text-white" : "hidden"
+                header == "home"
+                  ? "kasa-reveal-delay text-center text-xl font-bold tracking-wide text-white md:text-2xl"
+                  : "hidden"
               }
             >
               Community Through Culture
@@ -108,13 +125,13 @@ export default function SplashPage() {
               className={`
                 ${header === "home" ? "hidden" : ""} 
                 ${((header === "Contact Us" || header === "Application") ? 'text-black' : 'text-white')}
-                text-7xl font-bold 
-                md:text-8xl lg:text-9xl text-center
+                kasa-title-glow kasa-reveal text-center text-6xl font-black tracking-tight
+                md:text-8xl lg:text-9xl
               `}
             >
               {header}
             </h1>
-            <div className="scale-75 hidden md:block relative z-50">
+            <div className="kasa-reveal-delay relative z-50 hidden scale-75 md:block">
               <NavBar />
             </div>
           </div>
