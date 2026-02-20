@@ -44,6 +44,7 @@ export default function ExecCard({ images, role }: ExecCardProps) {
             key={index}
             style={{ width: "100%", height: "auto" }}
             loading="lazy"
+            decoding="async"
             className={
               slide === index
                 ? ""

@@ -6,8 +6,6 @@
 // import midRightBlob from "../../assets/blobs/mid-right.svg";
 import textLogo from "/text-logo.webp";
 // import downArrow from "../../assets/down-arrow.svg";
-
-import { fetchBanners } from "@/contentful";
 import { useEffect, useState } from "react";
 // import homeBg from "../../assets/HomePage.webp"
 // import familyBg from "../../assets/FamilyPage.webp"
@@ -46,26 +44,33 @@ export default function SplashPage() {
   // Build URL from Contentful asset if present
   const contentfulBg = pageBanner?.fields.image?.fields?.file?.url
     ? `https:${pageBanner.fields.image.fields.file.url}`
-    : '';
+    : "";
   
   useEffect(() => {
+      let active = true;
       async function getBanners() {
         try {
+          const { fetchBanners } = await import("@/contentful");
           const data = await fetchBanners();
-          setBanners(data);
+          if (active) setBanners(data);
         } catch (error) {
           console.error("Error loading banners", error);
         } 
       }
       getBanners();
+      return () => {
+        active = false;
+      };
     }, []);
 
 
   return (
     <section id="splash" className="relative h-[85vh] sm:h-[96vh] z-0 select-none">
-      {(header !== "Contact Us" && header !== "Application") && (
+      {(header !== "Contact Us" && header !== "Application" && contentfulBg) && (
         <img
           src={`${contentfulBg}?fm=webp&w=1920&q=70`}
+          srcSet={`${contentfulBg}?fm=webp&w=640&q=65 640w, ${contentfulBg}?fm=webp&w=960&q=70 960w, ${contentfulBg}?fm=webp&w=1440&q=70 1440w, ${contentfulBg}?fm=webp&w=1920&q=70 1920w`}
+          sizes="100vw"
           alt=""
           // width={1920}
           // height={1080}

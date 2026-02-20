@@ -1,10 +1,9 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import SplashPage from "../components/SplashPage";
 // import Footer from "../components/Footer";
 import HomeInfoCard from "../components/HomeInfoCard";
 import ExecCard from "../components/ExecCard/ExecCard"; // Import your ExecCard component
-import { fetchExecutives } from "../contentful";
 
 import community from "../../assets/etc/community.svg";
 import cultural from "../../assets/etc/cultural.svg";
@@ -40,20 +39,52 @@ const infoCards = [
 export default function Home() {
   const [execs, setExecs] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const execSectionRef = useRef<HTMLDivElement | null>(null);
+  const [shouldLoadExecs, setShouldLoadExecs] = useState(false);
 
   useEffect(() => {
+    const target = execSectionRef.current;
+    if (!target) return;
+    if (typeof IntersectionObserver === "undefined") {
+      setShouldLoadExecs(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setShouldLoadExecs(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "300px 0px" }
+    );
+
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!shouldLoadExecs) return;
+    let active = true;
+
     async function getExecs() {
       try {
+        const { fetchExecutives } = await import("../contentful");
         const data = await fetchExecutives();
-        setExecs(data);
+        if (active) setExecs(data);
       } catch (error) {
         console.error("Error loading executive members", error);
       } finally {
-        setLoading(false);
+        if (active) setLoading(false);
       }
     }
+
     getExecs();
-  }, []);
+    return () => {
+      active = false;
+    };
+  }, [shouldLoadExecs]);
 
   // Filter for various roles
   const presidents = execs.filter(
@@ -151,12 +182,12 @@ export default function Home() {
         </div>
 
         {/* Meet the Execs Section */}
-        <div id="execs" className="mt-32 flex flex-col items-center">
+        <div id="execs" ref={execSectionRef} className="mt-32 flex flex-col items-center">
           <h2 className="text-center font-bold text-2xl mb-8">
             Meet the 24&apos;-25&apos; Executives
           </h2>
 
-          {loading ? (
+          {!shouldLoadExecs || loading ? (
             <div>Loading executives…</div>
           ) : (
             <>

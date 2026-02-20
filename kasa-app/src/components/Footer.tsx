@@ -21,6 +21,8 @@ export default function Footer() {
         className="w-32 mb-6 sm:mb-7 select-none"
         src={textLogo}
         alt="Kasa's text logo"
+        loading="lazy"
+        decoding="async"
       />
       <div
         id="nav"
@@ -65,7 +67,7 @@ export default function Footer() {
           href="https://www.instagram.com/northwesternkasa/"
           className="flex items-center space-x-2 font-semibold"
         >
-          <img src={instagramIcon} alt="Instagram logo" className="w-10 h-auto block"/>
+          <img src={instagramIcon} alt="Instagram logo" className="w-10 h-auto block" loading="lazy" decoding="async" />
           Instagram
         </a>
         <a
@@ -74,7 +76,7 @@ export default function Footer() {
           href="https://www.facebook.com/northwesternkasa/"
           className="flex items-center space-x-2 font-semibold"
         >
-          <img src={facebookIcon} alt="Facebook logo" className="w-10 h-auto block"/>
+          <img src={facebookIcon} alt="Facebook logo" className="w-10 h-auto block" loading="lazy" decoding="async" />
           Facebook
         </a>
 
@@ -84,7 +86,7 @@ export default function Footer() {
           href="https://www.youtube.com/channel/UCDkuIQbMa9IqMhe6HBA6OHQ"
           className="flex items-center space-x-2 font-semibold"
         >
-          <img src={youtubeIcon} alt="Youtube logo" className="w-10 h-auto block" />
+          <img src={youtubeIcon} alt="Youtube logo" className="w-10 h-auto block" loading="lazy" decoding="async" />
           Youtube
         </a>
         {/* <a

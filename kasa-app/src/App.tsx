@@ -1,15 +1,17 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
-import { Suspense, lazy } from "react";
-// Lazy pages that aren’t needed for first paint
-const Events = lazy(() => import("./pages/events"));
-const Calculator = lazy(() => import("./pages/calculator"));
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import { Suspense, lazy, useEffect } from "react";
 
-import Home from './pages/home';
-import Family from './pages/family';
-import EventDetail from './pages/EventDetail';
-import Apply from './pages/apply';
-import Contact from './pages/contact';
+// Keep home route eager for fastest first paint
+import Home from "./pages/home";
+
+// Lazy-load non-critical routes to cut initial JS
+const Family = lazy(() => import("./pages/family"));
+const Events = lazy(() => import("./pages/events"));
+const Apply = lazy(() => import("./pages/apply"));
+const Contact = lazy(() => import("./pages/contact"));
+const EventDetail = lazy(() => import("./pages/EventDetail"));
+const Calculator = lazy(() => import("./pages/calculator"));
 // import MemberForm from './pages/memberform';
 
 // import Login from './pages/login';
@@ -17,10 +19,9 @@ import Contact from './pages/contact';
 // import Directory from './pages/directory';
 // import Contact from './pages/contact';
 // import Wip from './pages/wip';
-// import { useEffect, useState } from 'react';
+// import { useState } from 'react';
 // import api from './fetchApiService';
-import { Toaster } from "@/components/ui/sonner"
-import Footer from './components/Footer';
+import Footer from "./components/Footer";
 
 export default function App() {
   // const [user, setUser] = useState({});
@@ -38,10 +39,23 @@ export default function App() {
   // useEffect(() => {
   //   validateToken()
   // }, [])
+  useEffect(() => {
+    // Warm route chunks shortly after load so navigation stays instant
+    const timer = window.setTimeout(() => {
+      void import("./pages/family");
+      void import("./pages/events");
+      void import("./pages/apply");
+      void import("./pages/contact");
+      void import("./pages/EventDetail");
+      void import("./pages/calculator");
+    }, 2000);
+
+    return () => window.clearTimeout(timer);
+  }, []);
+
   return (
     <Router basename="/">
-      <Header/>
-      <Toaster position="top-center" richColors />
+      <Header />
       <Suspense fallback={<div className="min-h-[50vh] flex items-center justify-center">Loading…</div>}>
         <Routes>
           <Route path="/" element={<Home />} />

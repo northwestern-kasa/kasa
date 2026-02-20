@@ -37,6 +37,8 @@ export default function Family() {
                 <img
                   src={ggr}
                   alt="family"
+                  loading="lazy"
+                  decoding="async"
                   className="w-[400px] h-[400px] md:w-[320px] md:h-[320px] lg:w-[400px] lg:h-[400px] 2xl:w-[500px] 2xl:h-[500px]"
                 />
               </div>
@@ -44,6 +46,8 @@ export default function Family() {
                 <img
                   src={silla}
                   alt="family"
+                  loading="lazy"
+                  decoding="async"
                   className="w-[400px] h-[400px] -mt-32 md:w-[320px] md:h-[320px] lg:w-[400px] lg:h-[400px] 2xl:w-[500px] 2xl:h-[500px]"
                 />
               </div>
@@ -51,6 +55,8 @@ export default function Family() {
                 <img
                   src={baekjae}
                   alt="family"
+                  loading="lazy"
+                  decoding="async"
                   className="w-[400px] h-[400px] -mt-24 md:w-[320px] md:h-[320px] lg:w-[400px] lg:h-[400px] 2xl:w-[500px] 2xl:h-[500px]"
                 />
               </div>

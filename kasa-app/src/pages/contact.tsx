@@ -6,6 +6,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { Button } from "../components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
+import { Toaster } from "@/components/ui/sonner";
 
 
 interface ContactFormInputs {
@@ -31,7 +32,7 @@ export default function Contact() {
         method: "POST",
         body: formData
       });
-      const result = await response.json();
+      await response.json();
       // console.log(result);
       reset();
       
@@ -51,6 +52,7 @@ export default function Contact() {
   return (
     <div>
       <main className="">
+        <Toaster position="top-center" richColors />
         <div className="h-[80vh] -mt-40">
           <SplashPage />
         </div>
