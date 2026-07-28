@@ -19,6 +19,7 @@
 ## Table of Contents
 - [Table of Contents](#table-of-contents)
 - [Overview](#overview)
+  - [Updating website content](#updating-website-content)
 - [Features](#features)
 - [Tech Stack](#tech-stack)
 - [Quick Start](#quick-start)
@@ -39,6 +40,12 @@ KASA Frontend is the public-facing website for USC KASA. It includes:
 - route-based pages for club information and applications
 - dynamic event and executive data fetched from Contentful
 - responsive UI components built with Tailwind and Radix-based primitives
+
+### Updating website content
+
+For step-by-step instructions written for non-developers, see the
+[Contentful update guide](./CONTENTFUL_README.md). It covers banner images,
+events, executive members, publishing, and troubleshooting.
 
 ## Features
 - Fast Vite dev/build pipeline
