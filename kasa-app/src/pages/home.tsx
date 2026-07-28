@@ -183,7 +183,7 @@ export default function Home() {
         {/* Meet the Execs Section */}
         <div id="execs" ref={execSectionRef} className="mt-28 flex w-full flex-col items-center">
           <h2 className="text-center text-2xl font-black text-blue mb-8">
-            Meet the 24&apos;-25&apos; Executives
+            Meet the Executive Board
           </h2>
 
           {!shouldLoadExecs || loading ? (
