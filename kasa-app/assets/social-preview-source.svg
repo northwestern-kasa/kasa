@@ -1,0 +1,47 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="shade" x1="600" y1="74" x2="600" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0.28" stop-color="#071126" stop-opacity="0"/>
+      <stop offset="0.67" stop-color="#071126" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#071126" stop-opacity="0.94"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="0" y1="315" x2="760" y2="315" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#071126" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#071126" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="card-shadow" x="35" y="25" width="342" height="122" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#071126" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <image
+    href="https://images.ctfassets.net/7snjmwgue2my/2o9IYKnkEtzK2PYroPlKF8/b5ccb3da221557e041bf51c57af2dc41/_plioumedia_KASASHOW2025-147.jpeg?fm=jpg&amp;w=1600&amp;q=90"
+    x="0"
+    y="0"
+    width="1200"
+    height="630"
+    preserveAspectRatio="xMidYMid slice"
+  />
+  <rect width="1200" height="630" fill="url(#shade)"/>
+  <rect width="1200" height="630" fill="url(#edge)"/>
+
+  <g filter="url(#card-shadow)">
+    <rect x="56" y="46" width="300" height="80" rx="18" fill="#FFFCF7" fill-opacity="0.94"/>
+  </g>
+  <image
+    href="./Logo.svg"
+    x="76"
+    y="56"
+    width="48"
+    height="60"
+    preserveAspectRatio="xMidYMid meet"
+  />
+  <text x="145" y="80" fill="#303B75" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="3">NORTHWESTERN</text>
+  <text x="143" y="111" fill="#303B75" font-family="Helvetica, Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="1">KASA</text>
+
+  <rect x="60" y="465" width="64" height="6" rx="3" fill="#EF4562"/>
+  <text x="58" y="535" fill="#FFFFFF" font-family="Helvetica, Arial, sans-serif" font-size="56" font-weight="700" letter-spacing="-1.4">Community Through Culture</text>
+  <text x="60" y="580" fill="#E8ECFA" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="400" letter-spacing="0.3">Korean American Student Association</text>
+
+  <rect x="5" y="5" width="1190" height="620" rx="25" stroke="#FFFFFF" stroke-opacity="0.28" stroke-width="10"/>
+</svg>
