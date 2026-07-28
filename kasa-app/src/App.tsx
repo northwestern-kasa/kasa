@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
-import { Suspense, lazy, useEffect } from "react";
+import { Suspense, lazy } from "react";
 
 // Keep home route eager for fastest first paint
 import Home from "./pages/home";
@@ -40,21 +40,6 @@ export default function App() {
   // useEffect(() => {
   //   validateToken()
   // }, [])
-  useEffect(() => {
-    // Warm route chunks shortly after load so navigation stays instant
-    const timer = window.setTimeout(() => {
-      void import("./pages/family");
-      void import("./pages/familyDetail");
-      void import("./pages/events");
-      void import("./pages/apply");
-      void import("./pages/contact");
-      void import("./pages/EventDetail");
-      void import("./pages/calculator");
-    }, 2000);
-
-    return () => window.clearTimeout(timer);
-  }, []);
-
   return (
     <Router basename="/">
       <Header />

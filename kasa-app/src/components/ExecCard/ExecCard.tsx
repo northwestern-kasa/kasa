@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 // import NameTag from "./NameTag";
 
 interface ExecImage {
@@ -35,10 +34,14 @@ export default function ExecCard({ images, role }: ExecCardProps) {
       >
         {/* <NameTag name={images[slide].alt} /> */}
         {moreThan1 && (
-          <MdKeyboardArrowLeft
+          <button
+            type="button"
             onClick={prevSlide}
-            className="absolute left-2 top-1/2 z-10 h-11 w-11 -translate-y-1/2 cursor-pointer rounded-full bg-white/85 p-1 text-blue shadow-md backdrop-blur-sm transition-colors hover:bg-white"
-          />
+            aria-label={`Previous ${role} member`}
+            className="absolute left-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/85 text-4xl leading-none text-blue shadow-md backdrop-blur-sm transition-colors hover:bg-white"
+          >
+            <span aria-hidden="true">‹</span>
+          </button>
         )}
         {images.map((item, index) => (
           <img
@@ -56,10 +59,14 @@ export default function ExecCard({ images, role }: ExecCardProps) {
           />
         ))}
         {moreThan1 && (
-          <MdKeyboardArrowRight
+          <button
+            type="button"
             onClick={nextSlide}
-            className="absolute right-2 top-1/2 z-10 h-11 w-11 -translate-y-1/2 cursor-pointer rounded-full bg-white/85 p-1 text-blue shadow-md backdrop-blur-sm transition-colors hover:bg-white"
-          />
+            aria-label={`Next ${role} member`}
+            className="absolute right-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/85 text-4xl leading-none text-blue shadow-md backdrop-blur-sm transition-colors hover:bg-white"
+          >
+            <span aria-hidden="true">›</span>
+          </button>
         )}
         {/* Dots for each image */}
 

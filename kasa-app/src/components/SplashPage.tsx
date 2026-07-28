@@ -7,9 +7,9 @@
 import textLogo from "/text-logo.webp";
 // import downArrow from "../../assets/down-arrow.svg";
 import { useEffect, useState } from "react";
-// import homeBg from "../../assets/HomePage.webp"
-// import familyBg from "../../assets/FamilyPage.webp"
-// import eventsBg from "../../assets/EventPage.webp"
+import homeBg from "../../assets/HomePage.webp";
+import familyBg from "../../assets/FamilyPage.webp";
+import eventsBg from "../../assets/EventPage.webp";
 
 
 // import applyBg from "../../assets/ApplyPage.png"
@@ -26,19 +26,17 @@ const pageHeaders: any = {
   "/contact": "Contact Us",
 };
 
-// const bgMap: Record<string,string> = {
-//     "home":        homeBg,
-//     "Families":  familyBg,
-//     "Events":  eventsBg,
-//     // "Application":   applyBg,
-//     // …any others
-//   }
+const bgMap: Record<string, string> = {
+  home: homeBg,
+  Families: familyBg,
+  Events: eventsBg,
+};
 
 export default function SplashPage() {
   const [banners, setBanners] = useState<any[]>([]);
   const currentPath = useLocation().pathname;
   const header = pageHeaders[currentPath];
-  // const bgImage = bgMap[header] || homeBg;
+  const fallbackBg = bgMap[header];
   // Look for a matching Contentful banner for this page
   const pageBanner = banners.find((b: any) => b.fields.page?.toLowerCase() === header?.toLowerCase());
   // Build URL from Contentful asset if present
@@ -69,14 +67,26 @@ export default function SplashPage() {
       id="splash"
       className="relative z-0 h-[85vh] select-none overflow-hidden sm:h-[96vh]"
     >
+      {(header !== "Contact Us" && header !== "Application" && fallbackBg) && (
+        <img
+          src={fallbackBg}
+          alt=""
+          width={1920}
+          height={1080}
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
+          className="absolute inset-0 h-full w-full object-cover [filter:blur(1px)_brightness(0.58)_contrast(1.08)]"
+        />
+      )}
       {(header !== "Contact Us" && header !== "Application" && contentfulBg) && (
         <img
           src={`${contentfulBg}?fm=webp&w=1920&q=70`}
           srcSet={`${contentfulBg}?fm=webp&w=640&q=65 640w, ${contentfulBg}?fm=webp&w=960&q=70 960w, ${contentfulBg}?fm=webp&w=1440&q=70 1440w, ${contentfulBg}?fm=webp&w=1920&q=70 1920w`}
           sizes="100vw"
           alt=""
-          // width={1920}
-          // height={1080}
+          width={1920}
+          height={1080}
           loading="eager"
           decoding="async"
           fetchPriority="high"

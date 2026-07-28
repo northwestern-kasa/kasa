@@ -1,21 +1,20 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import SplashPage from "../components/SplashPage";
 // import Footer from "../components/Footer";
 import HomeInfoCard from "../components/HomeInfoCard";
-import ExecCard from "../components/ExecCard/ExecCard"; // Import your ExecCard component
 
 import community from "../../assets/etc/community.svg";
 import cultural from "../../assets/etc/cultural.svg";
 import impact from "../../assets/etc/impact.svg";
-// import Join from "@/components/Join";
-import {Button} from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 import underlineBlue from "../../assets/etc/blueunderline.svg";
 // import underlineRed from "../../assets/etc/redunderline.svg";
 // import blob1 from "../../assets/blobs/mission-blob1.svg";
 // import blob2 from "../../assets/blobs/mission-blob2.svg";
+
+const ExecCard = lazy(() => import("../components/ExecCard/ExecCard"));
 
 // Sample data for Home Info Cards (static for now)
 const infoCards = [
@@ -190,7 +189,7 @@ export default function Home() {
           {!shouldLoadExecs || loading ? (
             <div className="kasa-surface rounded-2xl px-6 py-4 font-semibold text-blue">Loading executives…</div>
           ) : (
-            <>
+            <Suspense fallback={<div className="kasa-surface rounded-2xl px-6 py-4 font-semibold text-blue">Loading executives…</div>}>
               {/* President ExecCard */}
               <div className="flex max-w-5xl flex-col place-items-center justify-center gap-10 sm:flex-row">
                 {president1 && (
@@ -198,7 +197,7 @@ export default function Home() {
                     images={[
                       {
                         src: president1.fields?.photo?.fields?.file?.url
-                          ? `${president1.fields.photo.fields.file.url}?fm=webp&q=70`
+                          ? `${president1.fields.photo.fields.file.url}?fm=webp&w=768&q=75`
                           : "/Logo.svg",
                         alt: president1.fields?.name ?? "President",
                       },
@@ -212,7 +211,7 @@ export default function Home() {
                     images={[
                       {
                         src: president2.fields?.photo?.fields?.file?.url
-                          ? `${president2.fields.photo.fields.file.url}?fm=webp&q=70`
+                          ? `${president2.fields.photo.fields.file.url}?fm=webp&w=768&q=75`
                           : "/Logo.svg",
                         alt: president2.fields?.name ?? "President",
                       },
@@ -228,7 +227,7 @@ export default function Home() {
                   <ExecCard
                     images={culturalHeads.map((exec) => ({
                       src: exec.fields?.photo?.fields?.file?.url
-                        ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
+                        ? `${exec.fields.photo.fields.file.url}?fm=webp&w=768&q=75`
                         : "/Logo.svg",
                       alt: exec.fields?.name ?? "Member",
                     }))}
@@ -240,7 +239,7 @@ export default function Home() {
                   <ExecCard
                     images={publicityHeads.map((exec) => ({
                       src: exec.fields?.photo?.fields?.file?.url
-                        ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
+                        ? `${exec.fields.photo.fields.file.url}?fm=webp&w=768&q=75`
                         : "/Logo.svg",
                       alt: exec.fields?.name ?? "Member",
                     }))}
@@ -252,7 +251,7 @@ export default function Home() {
                   <ExecCard
                     images={fundraisingHeads.map((exec) => ({
                       src: exec.fields?.photo?.fields?.file?.url
-                        ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
+                        ? `${exec.fields.photo.fields.file.url}?fm=webp&w=768&q=75`
                         : "/Logo.svg",
                       alt: exec.fields?.name ?? "Member",
                     }))}
@@ -264,7 +263,7 @@ export default function Home() {
                   <ExecCard
                     images={outReachHeads.map((exec) => ({
                       src: exec.fields?.photo?.fields?.file?.url
-                        ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
+                        ? `${exec.fields.photo.fields.file.url}?fm=webp&w=768&q=75`
                         : "/Logo.svg",
                       alt: exec.fields?.name ?? "Member",
                     }))}
@@ -276,7 +275,7 @@ export default function Home() {
                   <ExecCard
                     images={comDevHeads.map((exec) => ({
                       src: exec.fields?.photo?.fields?.file?.url
-                        ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
+                        ? `${exec.fields.photo.fields.file.url}?fm=webp&w=768&q=75`
                         : "/Logo.svg",
                       alt: exec.fields?.name ?? "Member",
                     }))}
@@ -288,7 +287,7 @@ export default function Home() {
                   <ExecCard
                     images={wellnessHeads.map((exec) => ({
                       src: exec.fields?.photo?.fields?.file?.url
-                        ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
+                        ? `${exec.fields.photo.fields.file.url}?fm=webp&w=768&q=75`
                         : "/Logo.svg",
                       alt: exec.fields?.name ?? "Member",
                     }))}
@@ -300,7 +299,7 @@ export default function Home() {
                   <ExecCard
                     images={FamilyHeads.map((exec) => ({
                       src: exec.fields?.photo?.fields?.file?.url
-                        ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
+                        ? `${exec.fields.photo.fields.file.url}?fm=webp&w=768&q=75`
                         : "/Logo.svg",
                       alt: exec.fields?.name ?? "Member",
                     }))}
@@ -312,7 +311,7 @@ export default function Home() {
                   <ExecCard
                     images={socialMediaHeads.map((exec) => ({
                       src: exec.fields?.photo?.fields?.file?.url
-                        ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
+                        ? `${exec.fields.photo.fields.file.url}?fm=webp&w=768&q=75`
                         : "/Logo.svg",
                       alt: exec.fields?.name ?? "Member",
                     }))}
@@ -324,7 +323,7 @@ export default function Home() {
                   <ExecCard
                     images={secretaryHeads.map((exec) => ({
                       src: exec.fields?.photo?.fields?.file?.url
-                        ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
+                        ? `${exec.fields.photo.fields.file.url}?fm=webp&w=768&q=75`
                         : "/Logo.svg",
                       alt: exec.fields?.name ?? "Member",
                     }))}
@@ -336,7 +335,7 @@ export default function Home() {
                   <ExecCard
                     images={financeHead.map((exec) => ({
                       src: exec.fields?.photo?.fields?.file?.url
-                        ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
+                        ? `${exec.fields.photo.fields.file.url}?fm=webp&w=768&q=75`
                         : "/Logo.svg",
                       alt: exec.fields?.name ?? "Member",
                     }))}
@@ -347,7 +346,7 @@ export default function Home() {
                   <ExecCard
                     images={otherExecs.map((exec) => ({
                       src: exec.fields?.photo?.fields?.file?.url
-                        ? `${exec.fields.photo.fields.file.url}?fm=webp&q=70`
+                        ? `${exec.fields.photo.fields.file.url}?fm=webp&w=768&q=75`
                         : "/Logo.svg",
                       alt: exec.fields?.name ?? "Member",
                     }))}
@@ -355,7 +354,7 @@ export default function Home() {
                   />
                 )}
               </div>
-            </>
+            </Suspense>
           )}
         </div>
         <div className="kasa-surface kasa-reveal-delay mb-24 flex w-full max-w-4xl flex-col items-center justify-center rounded-[1.5rem] px-6 py-12 sm:px-12">
@@ -365,12 +364,13 @@ export default function Home() {
           <p className="mb-8 text-center text-slate-700">
             Interested in becoming a member? Click the button below to apply.
           </p>
-          {/* <Join /> */}
-          <Button asChild className="kasa-btn-primary h-full w-full rounded-xl px-10 py-6 text-3xl font-black text-white sm:w-auto">
-            <Link to="/apply" className="w-full inline-block text-center" prefetch="intent">
-              Apply Now
-            </Link>
-          </Button>
+          <Link
+            to="/apply"
+            className="kasa-btn-primary inline-flex w-full items-center justify-center rounded-xl px-10 py-6 text-center text-3xl font-black text-white sm:w-auto"
+            prefetch="intent"
+          >
+            Apply Now
+          </Link>
         </div>
         </section>
       </main>
