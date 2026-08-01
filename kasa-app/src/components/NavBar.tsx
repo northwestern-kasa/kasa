@@ -48,6 +48,35 @@ const menuItems: MenuItem[] = [
   },
 ];
 
+export function DesktopNavBar() {
+  const currentPath = useLocation().pathname;
+
+  const isActive = (path: string) =>
+    path === "/" ? currentPath === "/" : currentPath.startsWith(path);
+
+  return (
+    <nav
+      aria-label="Primary navigation"
+      className="navBarShadow kasa-glass flex items-center gap-2 rounded-full p-2"
+    >
+      {menuItems.map((item) => (
+        <Link
+          key={item.path}
+          to={item.path}
+          prefetch="intent"
+          className={`rounded-full px-5 py-2 text-base font-semibold tracking-wide transition-colors ${
+            isActive(item.path)
+              ? "bg-blue text-white shadow"
+              : "text-blue hover:bg-rose-50"
+          }`}
+        >
+          {item.label}
+        </Link>
+      ))}
+    </nav>
+  );
+}
+
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const currentPath = useLocation().pathname;
@@ -105,23 +134,6 @@ export default function NavBar() {
   return (
     <>
       <nav className="relative z-50">
-        <div className="navBarShadow kasa-glass hidden items-center rounded-full p-2 md:flex md:gap-2">
-          {menuItems.map((item) => (
-            <Link
-              key={item.path}
-              to={item.path}
-              prefetch="intent"
-              className={`rounded-full px-5 py-2 text-base font-semibold tracking-wide transition-colors ${
-                isActive(item.path)
-                  ? "bg-blue text-white shadow"
-                  : "text-blue hover:bg-rose-50"
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </div>
-
         <button
           ref={triggerRef}
           type="button"
