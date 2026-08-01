@@ -366,6 +366,8 @@ export default function Home() {
           </p>
           <Link
             to="/apply"
+            target="_blank"
+            rel="noopener noreferrer"
             className="kasa-btn-primary inline-flex w-full items-center justify-center rounded-xl px-10 py-6 text-center text-3xl font-black text-white sm:w-auto"
             prefetch="intent"
           >
