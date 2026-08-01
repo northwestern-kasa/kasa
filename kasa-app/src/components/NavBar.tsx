@@ -249,6 +249,8 @@ export default function NavBar() {
                 </p>
                 <Link
                   to="/apply"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => setIsOpen(false)}
                   className="kasa-btn-primary flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl px-6 py-3 text-lg font-black text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 focus-visible:ring-offset-2"
                 >
