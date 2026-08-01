@@ -1,13 +1,20 @@
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 import logo from "/Logo.webp";
 // import profile from "../../assets/profile.svg";
 import NavBar from "./NavBar";
 import Join from "./Join";
+import MergedDesktopNav from "./MergedDesktopNav";
 
 export default function Header() {
+  const headerRef = useRef<HTMLDivElement>(null);
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-2 py-2 md:px-4 md:py-3 select-none">
-      <div className="kasa-glass mx-auto flex max-w-[1400px] items-center justify-between rounded-2xl px-3 py-2 md:px-6">
+      <div
+        ref={headerRef}
+        className="kasa-glass mx-auto flex max-w-[1400px] items-center justify-between rounded-2xl px-3 py-2 md:px-6"
+      >
         <Link to="/" className="group flex items-center space-x-3">
           <img
             src={logo}
@@ -27,6 +34,7 @@ export default function Header() {
           <Join />
         </div>
       </div>
+      <MergedDesktopNav headerRef={headerRef} />
     </header>
   );
 }
