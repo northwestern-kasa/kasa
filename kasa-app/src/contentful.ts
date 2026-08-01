@@ -21,6 +21,12 @@ type ContentfulCollection = {
   [key: string]: any;
 };
 
+export type ApplicationSettings = {
+  name: string;
+  applicationUrl: string;
+  applicationsOpen: boolean;
+};
+
 /**
  * Lightweight in-memory cache to avoid refetching across client routes
  */
@@ -132,6 +138,34 @@ export const fetchBanners = async () => {
   } catch (error) {
     console.error("Error fetching banners:", error);
     return [];
+  }
+};
+
+export const fetchApplicationSettings = async (): Promise<ApplicationSettings | null> => {
+  try {
+    const response = await getEntriesCached({
+      content_type: "applicationSettings",
+      order: ["-sys.updatedAt"],
+      limit: 1,
+    });
+    const fields = response.items[0]?.fields;
+
+    if (
+      !fields ||
+      typeof fields.applicationUrl !== "string" ||
+      typeof fields.applicationsOpen !== "boolean"
+    ) {
+      return null;
+    }
+
+    return {
+      name: typeof fields.name === "string" ? fields.name : "KASA Application",
+      applicationUrl: fields.applicationUrl,
+      applicationsOpen: fields.applicationsOpen,
+    };
+  } catch (error) {
+    console.error("Error fetching application settings:", error);
+    return null;
   }
 };
 
