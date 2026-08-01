@@ -71,8 +71,6 @@ export default function MergedDesktopNav({
           naturalCenter + (targetCenter - naturalCenter) * progress;
       }
 
-      const startScale = 0.75;
-      const scale = startScale + (1 - startScale) * progress;
       const unmerged = 1 - progress;
 
       nav.style.setProperty(
@@ -92,7 +90,7 @@ export default function MergedDesktopNav({
         `${(10 * unmerged).toFixed(2)}px`
       );
       nav.style.top = `${center}px`;
-      nav.style.transform = `translate3d(-50%, -50%, 0) scale(${scale})`;
+      nav.style.transform = "translate3d(-50%, -50%, 0) scale(1)";
       nav.dataset.mergeProgress = progress.toFixed(4);
     };
 
