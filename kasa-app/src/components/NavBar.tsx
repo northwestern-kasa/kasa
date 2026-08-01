@@ -57,14 +57,14 @@ export function DesktopNavBar() {
   return (
     <nav
       aria-label="Primary navigation"
-      className="kasa-desktop-nav flex items-center gap-2 rounded-full p-2"
+      className="kasa-desktop-nav flex items-center gap-0.5 rounded-full p-2 lg:gap-1 xl:gap-2"
     >
       {menuItems.map((item) => (
         <Link
           key={item.path}
           to={item.path}
           prefetch="intent"
-          className={`rounded-full px-5 py-2 text-base font-semibold tracking-wide transition-colors ${
+          className={`rounded-full px-3 py-2 text-sm font-semibold tracking-wide transition-colors lg:px-4 lg:text-base xl:px-5 ${
             isActive(item.path)
               ? "bg-blue text-white shadow"
               : "text-blue hover:bg-rose-50"

@@ -23,6 +23,21 @@ export default function MergedDesktopNav({
     const nav = navRef.current;
     if (!nav) return;
 
+    const root = document.getElementById("root");
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
+    let observedAnchor: HTMLElement | null = null;
+    let resizeObserver: ResizeObserver | null = null;
+
+    const observeAnchor = (anchor: HTMLElement | null) => {
+      if (!resizeObserver || observedAnchor === anchor) return;
+
+      if (observedAnchor) resizeObserver.unobserve(observedAnchor);
+      if (anchor) resizeObserver.observe(anchor);
+      observedAnchor = anchor;
+    };
+
     const positionNav = () => {
       const header = headerRef.current;
       if (!header) return;
@@ -32,6 +47,7 @@ export default function MergedDesktopNav({
       const anchor = document.querySelector<HTMLElement>(
         "[data-kasa-nav-anchor]"
       );
+      observeAnchor(anchor);
 
       let center = targetCenter;
       let progress = 1;
@@ -46,7 +62,11 @@ export default function MergedDesktopNav({
           1
         );
 
-        progress = smoothstep(rawProgress);
+        progress = reducedMotion.matches
+          ? rawProgress === 1
+            ? 1
+            : 0
+          : smoothstep(rawProgress);
         center =
           naturalCenter + (targetCenter - naturalCenter) * progress;
       }
@@ -73,6 +93,7 @@ export default function MergedDesktopNav({
       );
       nav.style.top = `${center}px`;
       nav.style.transform = `translate3d(-50%, -50%, 0) scale(${scale})`;
+      nav.dataset.mergeProgress = progress.toFixed(4);
     };
 
     const schedulePosition = () => {
@@ -84,9 +105,23 @@ export default function MergedDesktopNav({
       });
     };
 
+    if (typeof ResizeObserver !== "undefined") {
+      resizeObserver = new ResizeObserver(schedulePosition);
+      if (headerRef.current) resizeObserver.observe(headerRef.current);
+    }
+
+    const mutationObserver =
+      root && typeof MutationObserver !== "undefined"
+        ? new MutationObserver(schedulePosition)
+        : null;
+    if (mutationObserver && root) {
+      mutationObserver.observe(root, { childList: true, subtree: true });
+    }
+
     positionNav();
     window.addEventListener("scroll", schedulePosition, { passive: true });
     window.addEventListener("resize", schedulePosition);
+    reducedMotion.addEventListener("change", schedulePosition);
 
     return () => {
       if (frameRef.current !== null) {
@@ -95,12 +130,16 @@ export default function MergedDesktopNav({
       }
       window.removeEventListener("scroll", schedulePosition);
       window.removeEventListener("resize", schedulePosition);
+      reducedMotion.removeEventListener("change", schedulePosition);
+      resizeObserver?.disconnect();
+      mutationObserver?.disconnect();
     };
   }, [currentPath, headerRef]);
 
   return (
     <div
       ref={navRef}
+      data-kasa-merged-nav
       className="fixed left-1/2 top-[46px] z-[60] hidden origin-center -translate-x-1/2 -translate-y-1/2 will-change-transform md:block"
     >
       <DesktopNavBar />

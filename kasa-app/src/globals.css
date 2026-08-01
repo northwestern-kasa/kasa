@@ -209,6 +209,10 @@ body::before {
   .kasa-reveal-delay {
     animation: none !important;
   }
+
+  .kasa-desktop-nav * {
+    transition-duration: 0.01ms !important;
+  }
 }
 
 .contactBox {
