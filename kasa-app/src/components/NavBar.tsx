@@ -57,7 +57,7 @@ export function DesktopNavBar() {
   return (
     <nav
       aria-label="Primary navigation"
-      className="navBarShadow kasa-glass flex items-center gap-2 rounded-full p-2"
+      className="kasa-desktop-nav flex items-center gap-2 rounded-full p-2"
     >
       {menuItems.map((item) => (
         <Link

@@ -118,6 +118,14 @@ body::before {
   box-shadow: var(--kasa-shadow-lift);
 }
 
+.kasa-desktop-nav {
+  border: 1px solid rgba(255, 255, 255, var(--kasa-nav-border-alpha, 0));
+  background: rgba(255, 255, 255, var(--kasa-nav-surface-alpha, 0));
+  backdrop-filter: blur(var(--kasa-nav-blur, 0));
+  box-shadow: 0 24px 42px
+    rgba(26, 32, 51, var(--kasa-nav-shadow-alpha, 0));
+}
+
 .kasa-glass {
   border: 1px solid var(--kasa-glass-border);
   background: rgba(255, 255, 255, 0.84);

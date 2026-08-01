@@ -13,7 +13,6 @@ import eventsBg from "../../assets/EventPage.webp";
 
 
 // import applyBg from "../../assets/ApplyPage.png"
-import { DesktopNavBar } from "./NavBar";
 import { useLocation } from "react-router-dom";
 
 const pageHeaders: any = {
@@ -140,9 +139,11 @@ export default function SplashPage() {
             >
               {header}
             </h1>
-            <div className="kasa-reveal-delay relative z-50 hidden scale-75 md:block">
-              <DesktopNavBar />
-            </div>
+            <div
+              data-kasa-nav-anchor
+              aria-hidden="true"
+              className="relative z-50 hidden h-[58px] w-px md:block"
+            />
           </div>
         </div>
       </div>
