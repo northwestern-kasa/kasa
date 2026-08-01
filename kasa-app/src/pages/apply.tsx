@@ -1,6 +1,3 @@
-// import Footer from "../components/Footer";
-import SplashPage from "../components/SplashPage";
-import { Button } from "@/components/ui/button";
 import {
   fetchApplicationSettings,
   type ApplicationSettings,
@@ -45,42 +42,43 @@ export default function Apply() {
   const applicationUrl =
     getSafeApplicationUrl(settings?.applicationUrl) ?? FALLBACK_APPLICATION_URL;
 
+  useEffect(() => {
+    if (!isLoading && applicationsOpen) {
+      window.location.replace(applicationUrl);
+    }
+  }, [applicationUrl, applicationsOpen, isLoading]);
+
   return (
-    <div className={""}>
-      <main>
-        <div className="h-[80vh] -mt-40">
-          <SplashPage />
-        </div>
-        <div id="content" className="relative z-10 -mt-28 mb-24 flex flex-col items-center justify-center place-content-center px-6">
-          <h1 className="mb-6 text-center text-4xl font-black text-blue">
-            {applicationsOpen ? "Newest Applications" : "Applications Closed"}
-          </h1>
-          {applicationsOpen ? (
-            <Button
-              asChild={!isLoading}
-              disabled={isLoading}
-              className="kasa-btn-primary h-full w-2/3 rounded-xl px-10 py-5 text-3xl font-black text-white sm:w-1/3"
-            >
-              {isLoading ? (
-                "Loading Application..."
-              ) : (
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={applicationUrl}
-                >
-                  Apply Now
-                </a>
-              )}
-            </Button>
-          ) : (
-            <p className="max-w-xl text-center text-lg font-medium text-slate-700">
-              Applications are currently closed. Check back here or follow KASA
-              on Instagram for the next application period.
-            </p>
-          )}
-        </div>
-      </main>
-    </div>
+    <main className="flex min-h-[70vh] items-center justify-center px-6 py-24">
+      <section
+        aria-live="polite"
+        className="kasa-surface w-full max-w-2xl rounded-[1.5rem] px-6 py-12 text-center sm:px-12"
+      >
+        <h1 className="mb-6 text-4xl font-black text-blue">
+          {isLoading || applicationsOpen
+            ? "Opening Application..."
+            : "Applications Closed"}
+        </h1>
+        {isLoading ? (
+          <p className="text-lg font-medium text-slate-700">
+            Checking the current application…
+          </p>
+        ) : applicationsOpen ? (
+          <p className="text-lg font-medium text-slate-700">
+            Taking you to the current KASA application. If you are not
+            redirected,{" "}
+            <a className="font-bold text-blue underline" href={applicationUrl}>
+              continue here
+            </a>
+            .
+          </p>
+        ) : (
+          <p className="max-w-xl text-center text-lg font-medium text-slate-700">
+            Applications are currently closed. Check back here or follow KASA
+            on Instagram for the next application period.
+          </p>
+        )}
+      </section>
+    </main>
   );
 }
